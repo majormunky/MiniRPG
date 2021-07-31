@@ -2,8 +2,8 @@ extends Node2D
 
 
 onready var world_manager = $WorldManager
-onready var menu = $Menu
-onready var dialog = $Dialog
+onready var menu = $CanvasLayer/Menu
+onready var dialog = $CanvasLayer/Dialog
 
 func _ready():
 	pass
