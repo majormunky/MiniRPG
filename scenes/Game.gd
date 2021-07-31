@@ -12,5 +12,8 @@ func _input(event):
 		if menu.visible:
 			print("open menu")
 			menu.visible = false
+			get_tree().paused = false
 		else:
 			menu.visible = true
+			get_tree().paused = true
+			

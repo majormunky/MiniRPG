@@ -5,12 +5,14 @@
 [ext_resource path="res://scenes/Game.gd" type="Script" id=4]
 
 [node name="Game" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 4 )
 
 [node name="WorldManager" type="Node2D" parent="."]
 script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+pause_mode = 1
 position = Vector2( 577.235, 415.59 )
 
 [node name="Menu" type="PopupPanel" parent="."]
