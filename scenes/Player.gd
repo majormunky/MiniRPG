@@ -5,7 +5,15 @@ var speed = 200
 onready var animation_player = $AnimationPlayer
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
+onready var camera = $Camera2D
 
+# These values will eventually come from a global map info object thing
+const map_max_width = 2976
+const map_max_height = 1696
+
+func _ready():
+	camera.limit_right = map_max_width
+	camera.limit_bottom = map_max_height
 
 func _physics_process(delta):
 	var input = Vector2.ZERO
