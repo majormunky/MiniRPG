@@ -3,6 +3,7 @@ extends Node2D
 
 onready var world_manager = $WorldManager
 onready var menu = $Menu
+onready var dialog = $Dialog
 
 func _ready():
 	pass
@@ -16,4 +17,9 @@ func _input(event):
 		else:
 			menu.visible = true
 			get_tree().paused = true
-			
+	elif event.is_action_pressed("inspect"):
+		if dialog.visible:
+			dialog.visible = false
+		else:
+			dialog.visible = true
+		print("inspect")
