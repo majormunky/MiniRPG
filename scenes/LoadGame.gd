@@ -1,10 +1,12 @@
 extends Control
 
 onready var save_game_list = $MarginContainer/VBoxContainer/ItemList
+onready var transition = $TransitionRect
 var saved_game_file_list = null
 
 func _ready():
 	print("Load Game - Ready")
+	transition.fadeOut()
 	var saved_games = File.new()
 	saved_games.open("user://savedgames.save", File.READ)
 	var text = saved_games.get_as_text()
@@ -61,4 +63,6 @@ func _on_LoadGameButton_pressed():
 
 
 func _on_BackButton_pressed():
+	transition.fadeIn()
+	yield(get_tree().create_timer(0.5), "timeout")
 	get_tree().change_scene("res://scenes/MainMenu.tscn")
