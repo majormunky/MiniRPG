@@ -59,3 +59,5 @@ margin_right = 1272.0
 margin_bottom = 242.0
 custom_fonts/normal_font = SubResource( 2 )
 text = "This is a test of the godot dialog system.  This is just a test."
+
+[connection signal="new_player_position" from="WorldManager" to="." method="_on_WorldManager_new_player_position"]

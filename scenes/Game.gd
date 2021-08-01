@@ -23,3 +23,9 @@ func _input(event):
 		else:
 			dialog.visible = true
 		print("inspect")
+
+
+func _on_WorldManager_new_player_position(data):
+	print("in game.gd setting new player position")
+	get_node("Player").position.x = data.x
+	get_node("Player").position.y = data.y
