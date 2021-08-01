@@ -281,4 +281,3 @@ parameters/Walk/blend_position = Vector2( 0, 0 )
 current = true
 limit_left = 0
 limit_top = 0
-smoothing_enabled = true
