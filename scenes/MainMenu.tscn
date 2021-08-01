@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/MainMenu.gd" type="Script" id=2]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 1280.0
+margin_bottom = 554.0
+custom_constants/separation = 159
+
+[node name="GameTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 1280, 100 )
+theme = ExtResource( 1 )
+text = "MiniRPG"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 259.0
+margin_right = 1280.0
+margin_bottom = 330.0
+rect_min_size = Vector2( 0, 40 )
+theme = ExtResource( 1 )
+custom_constants/separation = 64
+alignment = 1
+
+[node name="New Game" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 308.0
+margin_right = 608.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 300, 0 )
+text = "New Game"
+
+[node name="Load Game" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 672.0
+margin_right = 972.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 300, 0 )
+text = "Load Game"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_top = 489.0
+margin_right = 1280.0
+margin_bottom = 554.0
+theme = ExtResource( 1 )
+text = "Made by jb"
+align = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/New Game" to="." method="_on_New_Game_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Load Game" to="." method="_on_Load_Game_pressed"]

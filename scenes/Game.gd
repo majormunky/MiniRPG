@@ -7,7 +7,8 @@ onready var dialog = $CanvasLayer/Dialog
 onready var player = $Player
 
 func _ready():
-	pass
+	print("Game Starting")
+	print("Player Name:", PlayerData.player_name)
 
 func _input(event):
 	if event.is_action_pressed("menu"):
