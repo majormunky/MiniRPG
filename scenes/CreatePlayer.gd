@@ -80,5 +80,6 @@ func _on_FinishButton_pressed():
 	player_type = char_types[player_type[0]]
 	create_save_game(player_name, player_type)
 	
-	
-	
+
+func _on_BackButton_pressed():
+	get_tree().change_scene("res://scenes/MainMenu.tscn")
