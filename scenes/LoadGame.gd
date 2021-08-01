@@ -7,14 +7,13 @@ var saved_game_file_list = null
 func _ready():
 	print("Load Game - Ready")
 	transition.fadeOut()
-	var saved_games = File.new()
-	saved_games.open("user://savedgames.save", File.READ)
-	var text = saved_games.get_as_text()
-	saved_games.close()
-	saved_game_file_list = text.split("\n")
+	
+	saved_game_file_list = get_save_game_list()
 	
 	for line in saved_game_file_list:
-		save_game_list.add_item(" " + line.split(":")[0])
+		var line_parts = line.split("-")
+		var save_game_name = line_parts[1].split(".")[0]
+		save_game_list.add_item(" " + save_game_name)
 
 
 func _on_LoadGameButton_pressed():
@@ -30,16 +29,13 @@ func _on_LoadGameButton_pressed():
 	# this gets us the real data
 	selected_save = saved_game_file_list[selected_save[0]]
 	
-	# our data is the user name and save game name with a colon between
-	var parts = selected_save.split(":")
-	
 	# prep a new save game 
 	var save_file = File.new()
 	
 	# check to see if we have a file to load
-	if save_file.file_exists("user://" + parts[1]):
+	if save_file.file_exists("user://" + selected_save):
 		# open the file
-		save_file.open("user://" + parts[1], File.READ)
+		save_file.open("user://" + selected_save, File.READ)
 		
 		# get the data from the file
 		var save_text = save_file.get_as_text()
@@ -66,3 +62,45 @@ func _on_BackButton_pressed():
 	transition.fadeIn()
 	yield(get_tree().create_timer(0.5), "timeout")
 	get_tree().change_scene("res://scenes/MainMenu.tscn")
+
+
+func _on_DeleteSaveButton_pressed():
+	var selected_save = save_game_list.get_selected_items()
+	var selected_save_index = null
+	
+	# check if user has hit the load button without selecting a game
+	if len(selected_save) == 0:
+		# if so, we can just bail out
+		return
+	
+	# our selected save is a list of indexes
+	# this gets us the real data
+	selected_save_index = selected_save[0]
+	selected_save = saved_game_file_list[selected_save_index]
+	
+	
+	var save_file = File.new()
+	var save_path = "user://" + selected_save
+	if save_file.file_exists(save_path):
+		var dir = Directory.new()
+		dir.open("user://")
+		dir.remove(save_path)
+		save_game_list.remove_item(selected_save_index)
+
+
+func get_save_game_list():
+	var path = "user://"
+	var dir = Directory.new()
+	var result = []
+	if dir.open(path) == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if not dir.current_is_dir() and file_name.begins_with("savegame-"):
+				result.append(file_name)
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.")
+	return result
+		
+		
