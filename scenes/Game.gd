@@ -4,6 +4,7 @@ extends Node2D
 onready var world_manager = $WorldManager
 onready var menu = $CanvasLayer/Menu
 onready var dialog = $CanvasLayer/Dialog
+onready var player = $Player
 
 func _ready():
 	pass
@@ -21,6 +22,8 @@ func _input(event):
 		if dialog.visible:
 			dialog.visible = false
 		else:
+			# set the dialog text to our player position to help debug
+			dialog.set_content("x: " + str(player.position.x) + "\ny: " + str(player.position.y))
 			dialog.visible = true
 		print("inspect")
 
