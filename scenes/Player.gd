@@ -6,14 +6,28 @@ onready var animation_player = $AnimationPlayer
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
 onready var camera = $Camera2D
+onready var sprite = $Sprite
 
-# These values will eventually come from a global map info object thing
-const map_max_width = 2976
-const map_max_height = 1696
 
 func _ready():
-	camera.limit_right = map_max_width
-	camera.limit_bottom = map_max_height
+	print("Character Type ", PlayerData.char_type)
+	if PlayerData.char_type == "Warrior":
+		sprite.region_rect.position.x = 48 * 4
+		sprite.region_rect.position.y = 48 * 4
+	elif PlayerData.char_type == "Mage":
+		sprite.region_rect.position.x = 0
+		sprite.region_rect.position.y = 48 * 5
+	elif PlayerData.char_type == "Thief":
+		sprite.region_rect.position.x = 48 * 2
+		sprite.region_rect.position.y = 48 * 6
+	update_map_limits()
+
+
+func update_map_limits():
+	print("Updating map limits")
+	camera.limit_right = MapData.map_width
+	camera.limit_bottom = MapData.map_height
+
 
 func _physics_process(delta):
 	var input = Vector2.ZERO

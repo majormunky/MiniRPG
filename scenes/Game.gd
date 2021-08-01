@@ -8,7 +8,7 @@ onready var player = $Player
 
 func _ready():
 	print("Game Starting")
-	print("Player Name:", PlayerData.player_name)
+	player.update_map_limits()
 
 func _input(event):
 	if event.is_action_pressed("menu"):

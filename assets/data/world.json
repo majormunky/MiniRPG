@@ -13,7 +13,7 @@
         "name": "First Town",
         "teleports": {
             "World": {
-                "from": {"x": 400, "y": 1010}
+                "from": {"x": 368, "y": 1010}
             }
         },
     },

@@ -34,3 +34,12 @@ func _on_ItemList_item_selected(index):
 		menu_items["Items"].visible = false
 		get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer/NameLabel").text = "Name: " + PlayerData.player_name
 		get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer/CharTypeLabel").text = "Class: " + PlayerData.char_type
+
+
+func save_game_complete():
+	print("Save game complete running")
+	menu_items["Save"].get_node("MarginContainer/VBoxContainer/SaveMessage").text = "Save game completed"
+
+
+func _on_SaveButton_pressed():
+	emit_signal("save_game")
