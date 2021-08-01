@@ -9,7 +9,7 @@ onready var transition_rect = $CanvasLayer/TransitionRect
 
 func _ready():
 	print("Game Starting")
-	print("Player Name:", PlayerData.player_name)
+	player.update_map_limits()
 
 func _input(event):
 	if event.is_action_pressed("menu"):
@@ -34,6 +34,7 @@ func _on_WorldManager_new_player_position(data):
 	print("in game.gd setting new player position")
 	get_node("Player").position.x = data.x
 	get_node("Player").position.y = data.y
+	# get_node("Player").update_map_limits()
 
 
 func _on_WorldManager_before_map_change():
@@ -42,5 +43,7 @@ func _on_WorldManager_before_map_change():
 
 
 func _on_WorldManager_after_map_change():
+	print("AFTER MAP CHANGE")
 	transition_rect.fadeOut()
 	get_tree().paused = false
+	player.update_map_limits()

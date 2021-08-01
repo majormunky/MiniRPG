@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 PlayerData="*res://scripts/PlayerData.gd"
+MapData="*res://scripts/MapData.gd"
 
 [display]
 

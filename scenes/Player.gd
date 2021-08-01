@@ -8,8 +8,17 @@ onready var animation_state = animation_tree.get("parameters/playback")
 onready var camera = $Camera2D
 
 # These values will eventually come from a global map info object thing
-const map_max_width = 2976
-const map_max_height = 1696
+var map_max_height = MapData.map_height
+var map_max_width = MapData.map_width
+
+func update_map_limits():
+	print("Updating map limits")
+	map_max_height = MapData.map_height
+	map_max_width = MapData.map_width
+	print("map_max_width", map_max_width)
+	print("map_max_height", map_max_height)
+	camera.limit_right = map_max_width
+	camera.limit_bottom = map_max_height
 
 func _ready():
 	camera.limit_right = map_max_width
