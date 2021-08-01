@@ -57,15 +57,28 @@ margin_right = 40.0
 margin_bottom = 40.0
 custom_constants/margin_left = 20
 
-[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/SaveMenu/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/SaveMenu/MarginContainer"]
 margin_left = 20.0
 margin_right = 246.0
+margin_bottom = 89.0
+
+[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/SaveMenu/MarginContainer/VBoxContainer"]
+margin_right = 226.0
 margin_bottom = 65.0
 custom_fonts/font = ExtResource( 2 )
 text = "Save Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SaveButton" type="Button" parent="MarginContainer/HBoxContainer/SaveMenu/MarginContainer/VBoxContainer"]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Save Game"
+
+[node name="SaveMessage" type="RichTextLabel" parent="MarginContainer/HBoxContainer/SaveMenu/MarginContainer/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
 
 [node name="ItemMenu" type="Panel" parent="MarginContainer/HBoxContainer"]
 visible = false
@@ -121,3 +134,4 @@ margin_bottom = 14.0
 theme = ExtResource( 3 )
 
 [connection signal="item_selected" from="MarginContainer/HBoxContainer/ItemList" to="." method="_on_ItemList_item_selected"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/SaveMenu/MarginContainer/VBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]

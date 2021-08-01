@@ -1,5 +1,7 @@
 extends PopupPanel
 
+signal save_game
+
 onready var item_list = $MarginContainer/HBoxContainer/ItemList
 onready var menu_items = {
 	"Status": get_node("MarginContainer/HBoxContainer/StatusMenu"),
@@ -24,6 +26,7 @@ func _on_ItemList_item_selected(index):
 		menu_items["Save"].visible = true
 		menu_items["Status"].visible = false
 		menu_items["Items"].visible = false
+		menu_items["Save"].get_node("MarginContainer/VBoxContainer/SaveMessage").text = ""
 	elif selectedItem == "Items":
 		menu_items["Items"].visible = true
 		menu_items["Status"].visible = false
@@ -34,3 +37,11 @@ func _on_ItemList_item_selected(index):
 		menu_items["Items"].visible = false
 		get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer/NameLabel").text = "Name: " + PlayerData.player_name
 		get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer/CharTypeLabel").text = "Class: " + PlayerData.char_type
+
+
+func save_game_complete():
+	menu_items["Save"].get_node("MarginContainer/VBoxContainer/SaveMessage").text = "Save game completed"
+
+
+func _on_SaveButton_pressed():
+	emit_signal("save_game")
