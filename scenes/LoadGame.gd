@@ -44,18 +44,12 @@ func _on_LoadGameButton_pressed():
 		save_file.close()
 		
 		# break up our save game into lines
-		var lines = save_text.split("\n")
+		# var lines = save_text.split("\n")
+		var data = parse_json(save_text)
 		
-		# go over each line
-		for line in lines:
-			# our line is a key value pair with a colon between
-			var line_parts = line.split(":")
-			
-			# depending on what our key is, load up data
-			if line_parts[0] == "name":
-				PlayerData.player_name = line_parts[1]
-			elif line_parts[0] == "type":
-				PlayerData.char_type = line_parts[1]
+		# load data
+		PlayerData.player_name = data.name
+		PlayerData.char_type = data.type
 		
 		# load the main game
 		get_tree().change_scene("res://scenes/Game.tscn")

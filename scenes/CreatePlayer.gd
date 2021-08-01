@@ -35,8 +35,11 @@ func create_save_game(user_name, char_type):
 		save_game.open("user://" + save_game_name, File.WRITE)
 		
 		# save the data to the file and close it
-		save_game.store_line("name:" + user_name)
-		save_game.store_line("type:" + char_type)
+		var save_data = {
+			"name": user_name,
+			"type": char_type
+		}
+		save_game.store_line(to_json(save_data))
 		save_game.close()
 		
 		# we need to register this save game in our text file
