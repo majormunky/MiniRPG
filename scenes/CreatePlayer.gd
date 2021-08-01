@@ -12,7 +12,7 @@ var char_types = [
 
 func _ready():
 	for item in char_types:
-		char_type_menu.add_item(item)
+		char_type_menu.add_item(" " + item)
 
 
 func _on_FinishButton_pressed():
