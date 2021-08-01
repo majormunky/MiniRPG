@@ -20,14 +20,6 @@ func _input(event):
 		else:
 			menu.visible = true
 			get_tree().paused = true
-	elif event.is_action_pressed("inspect"):
-		if dialog.visible:
-			dialog.visible = false
-		else:
-			# set the dialog text to our player position to help debug
-			dialog.set_content("x: " + str(player.position.x) + "\ny: " + str(player.position.y))
-			dialog.visible = true
-		print("inspect")
 
 
 func _on_WorldManager_new_player_position(data):
