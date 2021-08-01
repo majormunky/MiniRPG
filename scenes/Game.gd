@@ -5,6 +5,7 @@ onready var world_manager = $WorldManager
 onready var menu = $CanvasLayer/Menu
 onready var dialog = $CanvasLayer/Dialog
 onready var player = $Player
+onready var transition_rect = $CanvasLayer/TransitionRect
 
 func _ready():
 	print("Game Starting")
@@ -33,3 +34,13 @@ func _on_WorldManager_new_player_position(data):
 	print("in game.gd setting new player position")
 	get_node("Player").position.x = data.x
 	get_node("Player").position.y = data.y
+
+
+func _on_WorldManager_before_map_change():
+	transition_rect.fadeIn()
+	get_tree().paused = true
+
+
+func _on_WorldManager_after_map_change():
+	transition_rect.fadeOut()
+	get_tree().paused = false

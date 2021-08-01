@@ -1,4 +1,4 @@
 extends Node
 
-var player_name = null
-var char_type = null
+var player_name = "test"
+var char_type = "test"

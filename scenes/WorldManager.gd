@@ -6,6 +6,8 @@ var world = null
 var map_data: Dictionary
 var world_name = null
 
+signal before_map_change
+signal after_map_change
 signal new_player_position(data)
 
 func load_json_data(filepath):
@@ -33,7 +35,11 @@ func on_town_entered(name):
 
 func on_location_change(name):
 	print("LOCATION CHANGED ", name)
+	emit_signal("before_map_change")
+	yield(get_tree().create_timer(0.5), "timeout")
 	load_world(name)
+	yield(get_tree().create_timer(0.5), "timeout")
+	emit_signal("after_map_change")
 
 
 func on_set_player_position(data):
