@@ -1,0 +1,20 @@
+{
+    "World": {
+        "name": "World",
+        "filepath": "scenes/maps/World.tscn",
+        "teleports": {
+            "FirstTown": {
+                "from": {"x": 100, "y": 100}
+            }
+        },
+    },
+    "FirstTown": {
+        "filepath": "scenes/maps/FirstTown.tscn",
+        "name": "First Town",
+        "teleports": {
+            "World": {
+                "from": {"x": 400, "y": 1000}
+            }
+        },
+    },
+}

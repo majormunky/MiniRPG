@@ -1,0 +1,108 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Menu.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/MainFont.tres" type="DynamicFont" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+antialiased = false
+font_path = "res://assets/fonts/AtlantisInternational-jen0.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = SubResource( 1 )
+
+[node name="Menu" type="PopupPanel"]
+rect_min_size = Vector2( 1280, 800 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 1276.0
+margin_bottom = 796.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1252.0
+margin_bottom = 772.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="ItemList" parent="MarginContainer/HBoxContainer"]
+margin_left = 20.0
+margin_right = 200.0
+margin_bottom = 750.0
+rect_min_size = Vector2( 200, 750 )
+custom_fonts/font = SubResource( 2 )
+custom_constants/vseparation = 16
+custom_constants/hseparation = 10
+
+[node name="SaveMenu" type="Panel" parent="MarginContainer/HBoxContainer"]
+visible = false
+margin_left = 204.0
+margin_right = 204.0
+margin_bottom = 800.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/SaveMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_left = 20
+
+[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/SaveMenu/MarginContainer"]
+margin_left = 20.0
+margin_right = 246.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 2 )
+text = "Save Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemMenu" type="Panel" parent="MarginContainer/HBoxContainer"]
+visible = false
+margin_left = 204.0
+margin_right = 204.0
+margin_bottom = 800.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ItemMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_left = 20
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ItemMenu/MarginContainer"]
+margin_left = 20.0
+margin_right = 141.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 2 )
+text = "Items"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatusMenu" type="Panel" parent="MarginContainer/HBoxContainer"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/StatusMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_left = 20
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/StatusMenu/MarginContainer"]
+margin_left = 20.0
+margin_right = 169.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 2 )
+text = "Status"
+
+[connection signal="item_selected" from="MarginContainer/HBoxContainer/ItemList" to="." method="_on_ItemList_item_selected"]
