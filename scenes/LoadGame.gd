@@ -59,3 +59,7 @@ func _on_LoadGameButton_pressed():
 		
 		# load the main game
 		get_tree().change_scene("res://scenes/Game.tscn")
+
+
+func _on_BackButton_pressed():
+	get_tree().change_scene("res://scenes/MainMenu.tscn")
