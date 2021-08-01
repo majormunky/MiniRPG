@@ -93,9 +93,8 @@ func load_world(name):
 	
 	print("Calculating map size")
 	var map_size = calculate_bounds(new_map.get_node("TileMap"))
-	print(map_size)
 	MapData.map_height = map_size.size.y
 	MapData.map_width = map_size.size.x
 	
 	new_map.connect("location_change", self, "on_location_change")
-	new_map.connect("set_player_position", self, "on_set_player_position")
+	# new_map.connect("set_player_position", self, "on_set_player_position")

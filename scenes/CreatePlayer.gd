@@ -40,7 +40,12 @@ func create_save_game(user_name, char_type):
 		# save the data to the file and close it
 		var save_data = {
 			"name": user_name,
-			"type": char_type
+			"type": char_type,
+			"current_location": {
+				"map": "World",
+				"x": 350,
+				"y": 350
+			}
 		}
 		save_game.store_line(to_json(save_data))
 		save_game.close()
@@ -66,6 +71,9 @@ func create_save_game(user_name, char_type):
 		# set our global player data with what the user has selected
 		PlayerData.player_name = user_name
 		PlayerData.char_type = char_type
+		PlayerData.current_map = "World"
+		PlayerData.load_x = 350
+		PlayerData.load_y = 350
 		
 		# change to the game scene
 		get_tree().change_scene("res://scenes/Game.tscn")

@@ -6,9 +6,20 @@ onready var animation_player = $AnimationPlayer
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
 onready var camera = $Camera2D
+onready var sprite = $Sprite
 
 
 func _ready():
+	print("Character Type ", PlayerData.char_type)
+	if PlayerData.char_type == "Warrior":
+		sprite.region_rect.position.x = 48 * 4
+		sprite.region_rect.position.y = 48 * 4
+	elif PlayerData.char_type == "Mage":
+		sprite.region_rect.position.x = 0
+		sprite.region_rect.position.y = 48 * 5
+	elif PlayerData.char_type == "Thief":
+		sprite.region_rect.position.x = 48 * 2
+		sprite.region_rect.position.y = 48 * 6
 	update_map_limits()
 
 
