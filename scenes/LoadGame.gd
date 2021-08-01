@@ -51,6 +51,11 @@ func _on_LoadGameButton_pressed():
 		PlayerData.player_name = data.name
 		PlayerData.char_type = data.type
 		
+		# figure out what map to load
+		PlayerData.current_map = data.current_location.map
+		PlayerData.load_x = data.current_location.x
+		PlayerData.load_y = data.current_location.y
+		
 		# load the main game
 		get_tree().change_scene("res://scenes/Game.tscn")
 

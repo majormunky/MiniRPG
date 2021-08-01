@@ -19,14 +19,15 @@ func load_json_data(filepath):
 
 
 func _ready():
+	print("WorldManager Ready Starting")
 	map_data = load_json_data("res://assets/data/world.json")
 	
 	for world_key in map_data:
 		var map_path = "res://" + map_data[world_key].filepath
 		maps[world_key] = load(map_path)
 	
-	load_world("World")
-
+	load_world(PlayerData.current_map)
+	emit_signal("new_player_position", {"x": PlayerData.load_x, "y": PlayerData.load_y})
 
 func calculate_bounds(tilemap):
 	var cell_bounds = tilemap.get_used_rect()
