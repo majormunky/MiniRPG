@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://scenes/TransitionRect.tscn" type="PackedScene" id=3]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -63,6 +64,9 @@ margin_bottom = 554.0
 theme = ExtResource( 1 )
 text = "Made by jb"
 align = 1
+
+[node name="TransitionRect" parent="." instance=ExtResource( 3 )]
+color = Color( 0, 0, 0, 1 )
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/New Game" to="." method="_on_New_Game_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Load Game" to="." method="_on_Load_Game_pressed"]

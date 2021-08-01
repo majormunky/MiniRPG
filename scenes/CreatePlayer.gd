@@ -4,6 +4,7 @@ extends Control
 onready var char_type_menu = $MarginContainer/VBoxContainer/HBoxContainer/ItemList
 onready var name_input = $MarginContainer/VBoxContainer/NameInput/TextEdit
 onready var error_box = $MarginContainer/VBoxContainer/ErrorText
+onready var transition = $TransitionRect
 
 var char_types = [
 	"Warrior",
@@ -12,8 +13,10 @@ var char_types = [
 ]
 
 func _ready():
+	transition.fadeOut()
 	for item in char_types:
 		char_type_menu.add_item(" " + item)
+		
 
 
 func create_save_game(user_name, char_type):
@@ -85,4 +88,6 @@ func _on_FinishButton_pressed():
 	
 
 func _on_BackButton_pressed():
+	transition.fadeIn()
+	yield(get_tree().create_timer(0.5), "timeout")
 	get_tree().change_scene("res://scenes/MainMenu.tscn")
