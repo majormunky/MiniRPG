@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=24]
 resource_name = "IdleLeft"
 length = 0.1
 tracks/0/type = "value"
@@ -50,7 +50,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=25]
 resource_name = "IdleRight"
 length = 0.1
 tracks/0/type = "value"
@@ -78,7 +78,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=26]
 resource_name = "IdleUp"
 length = 0.1
 tracks/0/type = "value"
@@ -261,9 +261,9 @@ region_rect = Rect2( 144, 0, 48, 48 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/IdleDown = SubResource( 2 )
-anims/IdleLeft = SubResource( 3 )
-anims/IdleRight = SubResource( 4 )
-anims/IdleUp = SubResource( 5 )
+anims/IdleLeft = SubResource( 24 )
+anims/IdleRight = SubResource( 25 )
+anims/IdleUp = SubResource( 26 )
 anims/RunDown = SubResource( 6 )
 anims/RunLeft = SubResource( 7 )
 anims/RunRight = SubResource( 8 )
