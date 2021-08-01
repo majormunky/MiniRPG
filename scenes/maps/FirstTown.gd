@@ -6,5 +6,5 @@ signal location_change(name)
 func _ready():
 	pass
 
-func _on_TownExit_body_entered(body):
+func _on_TownExit_body_entered(_body):
 	emit_signal("location_change", "World")

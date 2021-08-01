@@ -7,6 +7,6 @@ func _ready():
 	pass
 
 
-func _on_Town_body_entered(body):
+func _on_Town_body_entered(_body):
 	print("town hit")
 	emit_signal("location_change", "FirstTown")
