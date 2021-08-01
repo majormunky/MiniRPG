@@ -38,9 +38,8 @@ __meta__ = {
 }
 
 [node name="ItemList" type="ItemList" parent="MarginContainer/HBoxContainer"]
-margin_left = 20.0
 margin_right = 200.0
-margin_bottom = 750.0
+margin_bottom = 752.0
 rect_min_size = Vector2( 200, 750 )
 custom_fonts/font = SubResource( 2 )
 custom_constants/vseparation = 16
