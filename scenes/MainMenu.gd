@@ -11,4 +11,5 @@ func _on_New_Game_pressed():
 
 
 func _on_Load_Game_pressed():
-	pass # Replace with function body.
+	print("Changing scenes")
+	get_tree().change_scene("res://scenes/LoadGame.tscn")

@@ -22,9 +22,19 @@ func create_save_game(user_name, char_type):
 		error_box.text = "Found existing character with that name"
 	else:
 		print("Unable to find save game, creating new one")
-		save_game.open("user://savegame-" + user_name + ".save", File.WRITE)
+		var save_game_name = "savegame-" + user_name + ".save"
+		save_game.open("user://" + save_game_name, File.WRITE)
 		save_game.store_line("name:" + user_name)
 		save_game.store_line("type:" + char_type)
+		save_game.close()
+		
+		if save_game.file_exists("user://savedgames.save"):
+			save_game.open("user://savedgames.save", File.READ_WRITE)
+			save_game.seek_end()
+		else:
+			save_game.open("user://savedgames.save", File.WRITE)
+
+		save_game.store_line(user_name + ":" + save_game_name)		
 		save_game.close()
 		
 		PlayerData.player_name = user_name
