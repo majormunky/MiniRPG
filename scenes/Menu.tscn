@@ -13,6 +13,7 @@ size = 48
 font_data = SubResource( 1 )
 
 [node name="Menu" type="PopupPanel"]
+visible = true
 rect_min_size = Vector2( 1280, 800 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -47,10 +48,9 @@ custom_constants/vseparation = 16
 custom_constants/hseparation = 10
 
 [node name="SaveMenu" type="Panel" parent="MarginContainer/HBoxContainer"]
-visible = false
 margin_left = 204.0
 margin_right = 204.0
-margin_bottom = 800.0
+margin_bottom = 752.0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/SaveMenu"]
 margin_right = 40.0
@@ -59,11 +59,11 @@ custom_constants/margin_left = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/SaveMenu/MarginContainer"]
 margin_left = 20.0
-margin_right = 246.0
-margin_bottom = 93.0
+margin_right = 620.0
+margin_bottom = 210.0
 
 [node name="Title" type="Label" parent="MarginContainer/HBoxContainer/SaveMenu/MarginContainer/VBoxContainer"]
-margin_right = 226.0
+margin_right = 600.0
 margin_bottom = 65.0
 custom_fonts/font = ExtResource( 2 )
 text = "Save Menu"
@@ -72,13 +72,19 @@ __meta__ = {
 }
 
 [node name="SaveButton" type="Button" parent="MarginContainer/HBoxContainer/SaveMenu/MarginContainer/VBoxContainer"]
-margin_right = 12.0
-margin_bottom = 20.0
+margin_top = 69.0
+margin_right = 300.0
+margin_bottom = 140.0
+theme = ExtResource( 3 )
 text = "Save Game"
 
 [node name="SaveMessage" type="RichTextLabel" parent="MarginContainer/HBoxContainer/SaveMenu/MarginContainer/VBoxContainer"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_top = 144.0
+margin_right = 600.0
+margin_bottom = 210.0
+rect_min_size = Vector2( 600, 0 )
+theme = ExtResource( 3 )
+fit_content_height = true
 
 [node name="ItemMenu" type="Panel" parent="MarginContainer/HBoxContainer"]
 visible = false

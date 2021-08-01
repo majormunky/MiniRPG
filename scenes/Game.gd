@@ -66,4 +66,4 @@ func _on_Menu_save_game():
 		save_game.open("user://" + save_game_name, File.WRITE)
 		save_game.store_line(to_json(save_data))
 		save_game.close()
-		
+	menu.save_game_complete()

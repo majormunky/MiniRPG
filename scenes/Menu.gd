@@ -40,6 +40,7 @@ func _on_ItemList_item_selected(index):
 
 
 func save_game_complete():
+	print("Save game complete running")
 	menu_items["Save"].get_node("MarginContainer/VBoxContainer/SaveMessage").text = "Save game completed"
 
 
