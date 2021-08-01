@@ -47,6 +47,7 @@ custom_constants/vseparation = 16
 custom_constants/hseparation = 10
 
 [node name="SaveMenu" type="Panel" parent="MarginContainer/HBoxContainer"]
+visible = false
 margin_left = 204.0
 margin_right = 204.0
 margin_bottom = 752.0
