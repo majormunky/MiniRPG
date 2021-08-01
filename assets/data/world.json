@@ -4,7 +4,7 @@
         "filepath": "scenes/maps/World.tscn",
         "teleports": {
             "FirstTown": {
-                "from": {"x": 100, "y": 100}
+                "from": {"x": 360, "y": 296}
             }
         },
     },
@@ -13,7 +13,7 @@
         "name": "First Town",
         "teleports": {
             "World": {
-                "from": {"x": 400, "y": 1000}
+                "from": {"x": 400, "y": 1010}
             }
         },
     },

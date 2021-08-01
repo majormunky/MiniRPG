@@ -1,6 +1,5 @@
 extends Node2D
 
-
 signal location_change(name)
 
 
