@@ -94,7 +94,7 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=24]
 resource_name = "RunDown"
 length = 0.3
 loop = true
@@ -266,7 +266,7 @@ anims/IdleDown = SubResource( 8 )
 anims/IdleLeft = SubResource( 7 )
 anims/IdleRight = SubResource( 6 )
 anims/IdleUp = SubResource( 9 )
-anims/RunDown = SubResource( 2 )
+anims/RunDown = SubResource( 24 )
 anims/RunLeft = SubResource( 5 )
 anims/RunRight = SubResource( 3 )
 anims/RunUp = SubResource( 4 )
