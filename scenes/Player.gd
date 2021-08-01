@@ -26,7 +26,6 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("inspect"):
-		print("in player - inspect")
 		inspect_area.get_node("CollisionShape2D").disabled = false
 		yield(get_tree().create_timer(0.1), "timeout")
 		inspect_area.get_node("CollisionShape2D").disabled = true
@@ -58,5 +57,6 @@ func _physics_process(delta):
 
 
 func _on_InspectArea_body_entered(body):
-	print("Inspect found something")
-	print(body)
+	if body.is_in_group("inspectable"):
+		print("Inspect found something")
+		

@@ -10,6 +10,8 @@ onready var transition_rect = $CanvasLayer/TransitionRect
 func _ready():
 	print("Game Starting")
 	player.update_map_limits()
+	# world_manager.connect()
+
 
 func _input(event):
 	if event.is_action_pressed("menu"):
@@ -59,3 +61,8 @@ func _on_Menu_save_game():
 		save_game.store_line(to_json(save_data))
 		save_game.close()
 	menu.save_game_complete()
+
+
+func _on_WorldManager_chest_opened(data):
+	print("Chest opened")
+	print(data)

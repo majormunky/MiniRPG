@@ -333,6 +333,8 @@ limit_left = 0
 limit_top = 0
 
 [node name="InspectArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InspectArea"]
 position = Vector2( -0.33371, 27.0305 )

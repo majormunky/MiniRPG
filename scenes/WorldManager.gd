@@ -9,6 +9,12 @@ var world_name = null
 signal before_map_change
 signal after_map_change
 signal new_player_position(data)
+signal chest_opened(data)
+
+
+func on_chest_opened(data):
+	emit_signal("chest_opened", data)
+
 
 func load_json_data(filepath):
 	var json_data
@@ -97,4 +103,5 @@ func load_world(name):
 	MapData.map_width = map_size.size.x
 	
 	new_map.connect("location_change", self, "on_location_change")
+	new_map.connect("chest_opened", self, "on_chest_opened")
 	# new_map.connect("set_player_position", self, "on_set_player_position")

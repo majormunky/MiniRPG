@@ -91,3 +91,4 @@ shape = SubResource( 2 )
 position = Vector2( 472.524, 265.533 )
 
 [connection signal="body_entered" from="locations/Town" to="." method="_on_Town_body_entered"]
+[connection signal="chest_opened" from="Node/Chest" to="." method="_on_Chest_chest_opened"]
