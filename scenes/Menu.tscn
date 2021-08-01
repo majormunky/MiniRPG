@@ -22,7 +22,7 @@ __meta__ = {
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 1276.0
-margin_bottom = 844.0
+margin_bottom = 796.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
@@ -32,17 +32,19 @@ custom_constants/margin_bottom = 20
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 1252.0
-margin_bottom = 820.0
+margin_bottom = 772.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ItemList" type="ItemList" parent="MarginContainer/HBoxContainer"]
+margin_left = 20.0
 margin_right = 200.0
 margin_bottom = 750.0
 rect_min_size = Vector2( 200, 750 )
 custom_fonts/font = SubResource( 2 )
 custom_constants/vseparation = 16
+custom_constants/hseparation = 10
 
 [node name="SaveMenu" type="Panel" parent="MarginContainer/HBoxContainer"]
 visible = false
@@ -57,9 +59,8 @@ custom_constants/margin_left = 20
 
 [node name="Title" type="Label" parent="MarginContainer/HBoxContainer/SaveMenu/MarginContainer"]
 margin_left = 20.0
-margin_top = -13.0
 margin_right = 246.0
-margin_bottom = 52.0
+margin_bottom = 65.0
 custom_fonts/font = ExtResource( 2 )
 text = "Save Menu"
 __meta__ = {
@@ -79,9 +80,8 @@ custom_constants/margin_left = 20
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ItemMenu/MarginContainer"]
 margin_left = 20.0
-margin_top = -13.0
 margin_right = 141.0
-margin_bottom = 52.0
+margin_bottom = 65.0
 custom_fonts/font = ExtResource( 2 )
 text = "Items"
 __meta__ = {
@@ -100,9 +100,8 @@ custom_constants/margin_left = 20
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/StatusMenu/MarginContainer"]
 margin_left = 20.0
-margin_top = -13.0
 margin_right = 169.0
-margin_bottom = 52.0
+margin_bottom = 65.0
 custom_fonts/font = ExtResource( 2 )
 text = "Status"
 

@@ -10,7 +10,7 @@ var selected = 0
 
 func _ready():
 	for item_key in menu_items:
-		item_list.add_item(item_key)
+		item_list.add_item(" " + item_key)
 	
 	_on_ItemList_item_selected(0)
 	item_list.select(0)
