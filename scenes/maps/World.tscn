@@ -85,10 +85,10 @@ region_rect = Rect2( 254.208, 50.437, 34.963, 38.8148 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="locations/Town"]
 shape = SubResource( 2 )
 
-[node name="Node" type="Node" parent="."]
+[node name="chests" type="Node" parent="."]
 
-[node name="Chest" parent="Node" instance=ExtResource( 3 )]
+[node name="Chest" parent="chests" instance=ExtResource( 3 )]
 position = Vector2( 472.524, 265.533 )
 
 [connection signal="body_entered" from="locations/Town" to="." method="_on_Town_body_entered"]
-[connection signal="chest_opened" from="Node/Chest" to="." method="_on_Chest_chest_opened"]
+[connection signal="chest_opened" from="chests/Chest" to="." method="_on_Chest_chest_opened"]
