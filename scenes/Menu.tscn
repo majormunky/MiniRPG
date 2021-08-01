@@ -101,7 +101,7 @@ custom_constants/margin_left = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/StatusMenu/MarginContainer"]
 margin_left = 20.0
 margin_right = 169.0
-margin_bottom = 83.0
+margin_bottom = 134.0
 
 [node name="PageLabel" type="Label" parent="MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer"]
 margin_right = 149.0
@@ -114,5 +114,10 @@ margin_right = 40.0
 margin_bottom = 14.0
 theme = ExtResource( 3 )
 text = "Name:"
+
+[node name="CharTypeLabel" type="Label" parent="MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 14.0
+theme = ExtResource( 3 )
 
 [connection signal="item_selected" from="MarginContainer/HBoxContainer/ItemList" to="." method="_on_ItemList_item_selected"]

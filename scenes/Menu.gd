@@ -33,3 +33,4 @@ func _on_ItemList_item_selected(index):
 		menu_items["Save"].visible = false
 		menu_items["Items"].visible = false
 		get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer/NameLabel").text = "Name: " + PlayerData.player_name
+		get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer/CharTypeLabel").text = "Class: " + PlayerData.char_type
