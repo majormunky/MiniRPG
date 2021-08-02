@@ -2,6 +2,7 @@ extends Node2D
 
 signal location_change(name)
 signal chest_opened(data)
+signal npc_dialog(lines)
 
 onready var Chest = preload("res://scenes/items/Chest.tscn")
 
@@ -19,6 +20,13 @@ func _ready():
 		add_chest(null, chest_pos2, 2, true)
 	else:
 		add_chest(test_item_data2, chest_pos2, 2, false)
+	
+	var npc = get_node("npcs/NPC")
+	npc.connect("npc_starts_talking", self, "on_npc_start_talking")
+
+
+func on_npc_start_talking(lines):
+	emit_signal("npc_dialog", lines)
 
 
 func add_chest(item, pos, chest_id, is_opened):

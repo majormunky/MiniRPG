@@ -82,8 +82,7 @@ func _on_WorldManager_chest_opened(data):
 	
 	# give the player the item in the chest
 	player.add_item(data)
-	
-	print(data)
+
 	# create a dialog with a message about the item we got
 	dialog.open_dialog("You received a " + data["item"][0]["item"])
 
@@ -100,3 +99,13 @@ func _on_Menu_use_inventory_item(item):
 func _on_Player_player_inspected():
 	if dialog.visible and dialog.keep_open == false:
 		dialog.close_dialog()
+
+
+func _on_WorldManager_npc_dialog(lines):
+	print("npc dialog")
+	print(lines)
+	if dialog.visible:
+		dialog.next()
+	else:
+		dialog.open_dialog(lines)
+

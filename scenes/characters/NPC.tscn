@@ -12,6 +12,7 @@ extents = Vector2( 7.89998, 7.99029 )
 [node name="NPC" type="StaticBody2D" groups=[
 "inspectable",
 ]]
+scale = Vector2( 2, 2 )
 collision_mask = 2
 script = ExtResource( 2 )
 

@@ -10,6 +10,7 @@ signal before_map_change
 signal after_map_change
 signal new_player_position(data)
 signal chest_opened(data)
+signal npc_dialog(lines)
 
 
 func on_chest_opened(data):
@@ -67,6 +68,10 @@ func on_set_player_position(data):
 	print(data)
 
 
+func on_npc_dialog(lines):
+	emit_signal("npc_dialog", lines)
+
+
 func load_world(name):
 	print("Loading Map: " + name)
 	# remove current world
@@ -109,4 +114,5 @@ func load_world(name):
 	
 	new_map.connect("location_change", self, "on_location_change")
 	new_map.connect("chest_opened", self, "on_chest_opened")
+	new_map.connect("npc_dialog", self, "on_npc_dialog")
 	# new_map.connect("set_player_position", self, "on_set_player_position")
