@@ -65,4 +65,4 @@ func _on_Menu_save_game():
 
 func _on_WorldManager_chest_opened(data):
 	print("Chest opened")
-	print(data)
+	player.add_item(data)

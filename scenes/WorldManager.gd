@@ -13,6 +13,7 @@ signal chest_opened(data)
 
 
 func on_chest_opened(data):
+	print("in worldmanager - chest opened")
 	emit_signal("chest_opened", data)
 
 

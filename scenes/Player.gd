@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var velocity = Vector2.ZERO
 var speed = 200
+var inventory = []
 onready var animation_player = $AnimationPlayer
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
@@ -56,7 +57,6 @@ func _physics_process(delta):
 	move_and_collide(velocity)
 
 
-func _on_InspectArea_body_entered(body):
-	if body.is_in_group("inspectable"):
-		print("Inspect found something")
-		
+func add_item(item_data):
+	print("add item - player")
+	print(item_data)

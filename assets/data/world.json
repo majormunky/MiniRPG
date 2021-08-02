@@ -8,7 +8,7 @@
             }
         },
         "chests": [
-            {"id": 1, "item": "Health Potion"}
+            {"id": 1, "item": "Health Potion", "quantity": 1}
         ]
     },
     "FirstTown": {

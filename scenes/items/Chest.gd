@@ -17,6 +17,7 @@ func _ready():
 	update_sprite()
 
 
+
 func update_sprite():
 	if state == OPEN:
 		open_sprite.visible = true
