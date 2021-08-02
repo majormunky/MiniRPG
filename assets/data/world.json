@@ -30,7 +30,7 @@
                     "Have you been to my village yet?"
                 ],
                 "map_image": "assets/characters/char1.png",
-                "position": {"x": 100, "y": 300},
+                "position": {"x": 300, "y": 300},
             }
         ]
     },

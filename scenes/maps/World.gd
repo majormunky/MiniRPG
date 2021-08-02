@@ -5,10 +5,13 @@ signal chest_opened(data)
 signal npc_dialog(lines)
 
 onready var Chest = preload("res://scenes/items/Chest.tscn")
+onready var NPC = preload("res://scenes/characters/NPC.tscn")
 
 func _ready():
 	var chest_list = MapData.data[PlayerData.current_map].chests
+	var npc_list = MapData.data[PlayerData.current_map].npcs
 	var chest_container = get_node("chests")
+	var npc_container = get_node("npcs")
 	
 	# remove any existing chests
 	for child in chest_container.get_children():
@@ -21,8 +24,15 @@ func _ready():
 		else:
 			add_chest(chest, 1, false)
 	
-	var npc = get_node("npcs/NPC")
-	npc.connect("npc_starts_talking", self, "on_npc_start_talking")
+	for child in npc_container.get_children():
+		child.queue_free()
+	
+	# load npcs
+	for npc in npc_list:
+		var new_npc = NPC.instance()
+		npc_container.add_child(new_npc)
+		new_npc.setup(npc)
+		new_npc.connect("npc_starts_talking", self, "on_npc_start_talking")
 
 
 func on_npc_start_talking(lines):
