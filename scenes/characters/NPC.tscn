@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/characters/char3.png" type="Texture" id=1]
+[ext_resource path="res://scenes/characters/NPC.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8.33395, 7.99029 )
 
-[node name="NPC" type="Area2D"]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7.89998, 7.99029 )
+
+[node name="NPC" type="StaticBody2D" groups=[
+"inspectable",
+]]
+collision_mask = 2
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -14,3 +22,11 @@ region_rect = Rect2( 16, 16, 16, 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="InspectBox" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InspectBox"]
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="InspectBox" to="." method="_on_InspectBox_area_entered"]
