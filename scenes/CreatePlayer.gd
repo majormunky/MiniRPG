@@ -59,7 +59,7 @@ func create_save_game(user_name, char_type):
 					"current_hp": 20, 
 					"max_hp": 20, 
 					"experience": 0,
-					"profile_image": "assets/characters/warrior.png"
+					"profile_image": "assets/characters/" + char_type.to_lower() + ".png"
 				}
 			]
 		}
