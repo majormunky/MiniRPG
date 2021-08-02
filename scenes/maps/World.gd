@@ -8,18 +8,19 @@ onready var Chest = preload("res://scenes/items/Chest.tscn")
 func _ready():
 	var test_item_data = {"id": 1, "item": "Health Potion", "quantity": 1}
 	var chest_pos = {"x": 472, "y": 265}
-	add_chest(test_item_data, chest_pos)
+	add_chest(test_item_data, chest_pos, 1)
 	
 	var test_item_data2 = {"id": 1, "item": "Health Potion", "quantity": 1}
 	var chest_pos2 = {"x": 512, "y": 265}
-	add_chest(test_item_data2, chest_pos2)
+	add_chest(test_item_data2, chest_pos2, 2)
 
 
-func add_chest(item, pos):
+func add_chest(item, pos, chest_id):
 	var chest = Chest.instance()
 	chest.position.x = pos["x"]
 	chest.position.y = pos["y"]
 	chest.items.append(item)
+	chest.id = chest_id
 	chest.connect("chest_opened", self, "on_chest_opened")
 	get_node("chests").add_child(chest)
 

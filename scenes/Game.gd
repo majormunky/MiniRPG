@@ -52,8 +52,13 @@ func _on_Menu_save_game():
 			"map": world_manager.world_name,
 			"x": player.position.x,
 			"y": player.position.y,
-		}
+		},
+		"chests": {}
 	}
+	
+	# hold info about what chests have been opened
+	for chest_key in GameData.chests:
+		save_data["chests"][chest_key] = GameData.chests[chest_key]
 	
 	var save_game_name = "savegame-" + PlayerData.player_name + ".save"
 	var save_game = File.new()
@@ -65,5 +70,6 @@ func _on_Menu_save_game():
 
 
 func _on_WorldManager_chest_opened(data):
-	print("Chest opened")
+	print("Game - Chest opened")
+	GameData.chests[data["chest_id"]] = true
 	player.add_item(data)
