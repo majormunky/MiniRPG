@@ -48,9 +48,6 @@ func _on_WorldManager_after_map_change():
 func _on_Menu_save_game():
 	var save_data = {
 		"name": PlayerData.player_name,
-		"type": PlayerData.char_type,
-		"current_hp": PlayerData.current_hp,
-		"max_hp": PlayerData.max_hp,
 		"gold": PlayerData.gold,
 		"current_location": {
 			"map": world_manager.world_name,
@@ -59,6 +56,7 @@ func _on_Menu_save_game():
 		},
 		"chests": {},
 		"inventory": [],
+		"characters": PlayerData.characters
 	}
 	
 	# hold info about what chests have been opened
