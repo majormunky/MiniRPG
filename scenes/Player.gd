@@ -55,7 +55,7 @@ func _physics_process(delta):
 		animation_state.travel("Idle")
 		velocity = Vector2.ZERO
 
-	move_and_collide(velocity)
+	velocity = move_and_collide(velocity)
 
 
 func add_item(item_data):
