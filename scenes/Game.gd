@@ -83,6 +83,8 @@ func _on_WorldManager_chest_opened(data):
 
 func _on_Menu_use_inventory_item(item):
 	print("Using inventory item:")
-	PlayerData.current_hp += item.add_health
-	if PlayerData.current_hp > PlayerData.max_hp:
-		PlayerData.current_hp = PlayerData.max_hp
+	if item.category == "Consumable":
+		if item.consumable_type == "health":
+			PlayerData.current_hp += item.add_health
+			if PlayerData.current_hp > PlayerData.max_hp:
+				PlayerData.current_hp = PlayerData.max_hp

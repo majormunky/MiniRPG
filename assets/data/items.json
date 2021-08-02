@@ -12,7 +12,8 @@
         "image_name": "HealthPotion.png",
         "add_health": 5,
         "stack_size": 99,
-        "description": "A potion to replenish health"
+        "description": "A potion to replenish health",
+        "consumable_type": "health",
     },
     "Leather Armor": {
         "category": "armor",

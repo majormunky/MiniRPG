@@ -69,8 +69,11 @@ func add_item(item_data):
 		"image_name": item_stats["image_name"],
 		"id": test_item["id"],
 		"item_name": test_item["item"],
-		"quantity": test_item["quantity"]
+		"quantity": test_item["quantity"],
+		"consumable_type": null,
 	}
+	if item_stats["category"] == "Consumable":
+		new_item["consumable_type"] = item_stats["consumable_type"]
 	
 	# flag to see if we have found an existing slot to put the item into
 	var found_spot = false
