@@ -34,6 +34,7 @@ func _ready():
 	for world_key in map_data:
 		var map_path = "res://" + map_data[world_key].filepath
 		maps[world_key] = load(map_path)
+		MapData.data[world_key] = map_data[world_key]
 	
 	ItemData.items = item_data
 	
@@ -111,6 +112,9 @@ func load_world(name):
 	var map_size = calculate_bounds(new_map.get_node("TileMap"))
 	MapData.map_height = map_size.size.y
 	MapData.map_width = map_size.size.x
+	
+	# load npcs
+	
 	
 	new_map.connect("location_change", self, "on_location_change")
 	new_map.connect("chest_opened", self, "on_chest_opened")

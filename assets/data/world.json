@@ -8,16 +8,41 @@
             }
         },
         "chests": [
-            {"id": 1, "item": "Health Potion", "quantity": 1}
+            {
+                "id": 1,
+                "item": "Health Potion",
+                "quantity": 1,
+                "position": {"x": 480, "y": 265}
+            },
+            {
+                "id": 2,
+                "item": "Health Potion",
+                "quantity": 1,
+                "position": {"x": 512, "y": 265}
+            }
+        ],
+        "npcs": [
+            {
+                "id": 1,
+                "name": "Bob",
+                "dialog": [
+                    "Hello, my name is Bob",
+                    "Have you been to my village yet?"
+                ],
+                "map_image": "assets/characters/char1.png",
+                "position": {"x": 100, "y": 300},
+            }
         ]
     },
     "FirstTown": {
-        "filepath": "scenes/maps/FirstTown.tscn",
         "name": "First Town",
+        "filepath": "scenes/maps/FirstTown.tscn",
         "teleports": {
             "World": {
                 "from": {"x": 368, "y": 1010}
             }
         },
+        "chests": [],
+        "npcs": [],
     },
 }
