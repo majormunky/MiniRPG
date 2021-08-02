@@ -73,11 +73,19 @@ func add_item(item_data):
 		"quantity": test_item["quantity"]
 	}
 	
+	
 	if len(inventory) == 0:
 		inventory.append(new_item)
 	else:
+		var found_spot = false
 		for existing_item in inventory:
-			if existing_item.item == new_item["item_name"]:
-				print("found existing item")
-	
+			if existing_item["item_name"] == new_item["item_name"]:
+				var new_amount = existing_item["quantity"] + new_item["quantity"]
+				if new_amount <= existing_item["stack_size"]:
+					existing_item["quantity"] += new_item["quantity"]
+					found_spot = true
+		
+		if found_spot == false:
+			inventory.append(new_item)
+
 	print(inventory)

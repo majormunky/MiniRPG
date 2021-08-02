@@ -6,13 +6,23 @@ signal chest_opened(data)
 onready var Chest = preload("res://scenes/items/Chest.tscn")
 
 func _ready():
-	var chest_pos = {"x": 472.524, "y": 265.533}
+	var test_item_data = {"id": 1, "item": "Health Potion", "quantity": 1}
+	var chest_pos = {"x": 472, "y": 265}
+	add_chest(test_item_data, chest_pos)
+	
+	var test_item_data2 = {"id": 1, "item": "Health Potion", "quantity": 1}
+	var chest_pos2 = {"x": 512, "y": 265}
+	add_chest(test_item_data2, chest_pos2)
+
+
+func add_chest(item, pos):
 	var chest = Chest.instance()
-	chest.position.x = chest_pos["x"]
-	chest.position.y = chest_pos["y"]
-	chest.items.append({"id": 1, "item": "Health Potion", "quantity": 1})
+	chest.position.x = pos["x"]
+	chest.position.y = pos["y"]
+	chest.items.append(item)
 	chest.connect("chest_opened", self, "on_chest_opened")
 	get_node("chests").add_child(chest)
+
 
 func _on_Town_body_entered(_body):
 	print("town hit")
