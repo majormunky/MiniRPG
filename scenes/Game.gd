@@ -10,6 +10,7 @@ onready var transition_rect = $CanvasLayer/TransitionRect
 func _ready():
 	print("Game Starting")
 	player.update_map_limits()
+	transition_rect.visible = true
 	# world_manager.connect()
 
 
