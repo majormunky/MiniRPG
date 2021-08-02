@@ -18,6 +18,7 @@ config/icon="res://icon.png"
 
 PlayerData="*res://scripts/PlayerData.gd"
 MapData="*res://scripts/MapData.gd"
+ItemData="*res://scripts/ItemData.gd"
 
 [display]
 
