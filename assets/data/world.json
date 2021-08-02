@@ -31,6 +31,16 @@
                 ],
                 "map_image": "assets/characters/char1.png",
                 "position": {"x": 300, "y": 300},
+            },
+            {
+                "id": 2,
+                "name": "Finn",
+                "dialog": [
+                    "Hello, my name is Finn",
+                    "Have you been to my village yet?"
+                ],
+                "map_image": "assets/characters/char2.png",
+                "position": {"x": 640, "y": 300},
             }
         ]
     },

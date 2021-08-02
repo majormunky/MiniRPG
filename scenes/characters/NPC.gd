@@ -8,8 +8,6 @@ signal npc_starts_talking(lines)
 
 
 func setup(data):
-	print("in npc")
-	print(data)
 	position.x = data["position"]["x"]
 	position.y = data["position"]["y"]
 	dialog_text.append_array(data["dialog"])
