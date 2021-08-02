@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 var velocity = Vector2.ZERO
 var speed = 200
-var inventory = []
 onready var animation_player = $AnimationPlayer
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
@@ -74,11 +73,11 @@ func add_item(item_data):
 	}
 	
 	
-	if len(inventory) == 0:
-		inventory.append(new_item)
+	if len(PlayerData.inventory) == 0:
+		PlayerData.inventory.append(new_item)
 	else:
 		var found_spot = false
-		for existing_item in inventory:
+		for existing_item in PlayerData.inventory:
 			if existing_item["item_name"] == new_item["item_name"]:
 				var new_amount = existing_item["quantity"] + new_item["quantity"]
 				if new_amount <= existing_item["stack_size"]:
@@ -86,6 +85,6 @@ func add_item(item_data):
 					found_spot = true
 		
 		if found_spot == false:
-			inventory.append(new_item)
+			PlayerData.inventory.append(new_item)
 
-	print(inventory)
+	print(PlayerData.inventory)

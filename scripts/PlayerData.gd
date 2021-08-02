@@ -5,3 +5,4 @@ var char_type = "test"
 var current_map = "World"
 var load_x = null
 var load_y = null
+var inventory = []
