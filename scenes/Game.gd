@@ -16,8 +16,9 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("menu"):
 		if menu.visible:
-			print("open menu")
+			print("close menu")
 			menu.visible = false
+			menu.selected = 0
 			get_tree().paused = false
 		else:
 			menu.visible = true

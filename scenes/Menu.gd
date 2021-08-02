@@ -8,6 +8,8 @@ onready var menu_items = {
 	"Items": get_node("MarginContainer/HBoxContainer/ItemMenu"),
 	"Save": get_node("MarginContainer/HBoxContainer/SaveMenu"),
 }
+onready var InventoryItem = preload("res://scenes/items/InventoryItem.tscn")
+
 var selected = 0
 
 func _ready():
@@ -31,12 +33,28 @@ func _on_ItemList_item_selected(index):
 		menu_items["Items"].visible = true
 		menu_items["Status"].visible = false
 		menu_items["Save"].visible = false
+		update_inventory_page()
 	elif selectedItem == "Status":
 		menu_items["Status"].visible = true
 		menu_items["Save"].visible = false
 		menu_items["Items"].visible = false
-		get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer/NameLabel").text = "Name: " + PlayerData.player_name
-		get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer/CharTypeLabel").text = "Class: " + PlayerData.char_type
+		update_status_page()
+
+
+func update_status_page():
+	get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer/NameLabel").text = "Name: " + PlayerData.player_name
+	get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer/CharTypeLabel").text = "Class: " + PlayerData.char_type
+
+
+func update_inventory_page():
+	var inventory_list = get_node("MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer/Inventory")
+	for child in inventory_list.get_children():
+		child.queue_free()
+	
+	for item in PlayerData.inventory:
+		var item_slot = InventoryItem.instance()
+		inventory_list.add_child(item_slot)
+		item_slot.set_data(item)
 
 
 func save_game_complete():

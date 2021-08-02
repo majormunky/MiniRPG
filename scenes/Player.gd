@@ -72,19 +72,27 @@ func add_item(item_data):
 		"quantity": test_item["quantity"]
 	}
 	
+	# flag to see if we have found an existing slot to put the item into
+	var found_spot = false
 	
-	if len(PlayerData.inventory) == 0:
-		PlayerData.inventory.append(new_item)
-	else:
-		var found_spot = false
-		for existing_item in PlayerData.inventory:
-			if existing_item["item_name"] == new_item["item_name"]:
-				var new_amount = existing_item["quantity"] + new_item["quantity"]
-				if new_amount <= existing_item["stack_size"]:
-					existing_item["quantity"] += new_item["quantity"]
-					found_spot = true
+	# go over the players inventory item by item
+	for existing_item in PlayerData.inventory:
+		# check if the existing items name matches our new item name
+		if existing_item["item_name"] == new_item["item_name"]:
+			# if so, we need to see if we can add this item to the slot
+			# we do this by first calculating what our new stack size would be
+			var new_amount = existing_item["quantity"] + new_item["quantity"]
+			
+			# and then we check that against the stack size
+			if new_amount <= existing_item["stack_size"]:
+				# if we can add it, we do
+				existing_item["quantity"] += new_item["quantity"]
+				# and set our flag to say we found a spot
+				found_spot = true
 		
-		if found_spot == false:
-			PlayerData.inventory.append(new_item)
+	# if we didn't find a spot
+	if found_spot == false:
+		# just add this as a new item
+		PlayerData.inventory.append(new_item)
 
 	print(PlayerData.inventory)
