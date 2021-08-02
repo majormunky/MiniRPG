@@ -1,6 +1,7 @@
 extends PopupPanel
 
 signal save_game
+signal use_inventory_item(item)
 
 onready var item_list = $MarginContainer/HBoxContainer/ItemList
 onready var menu_items = {
@@ -10,6 +11,7 @@ onready var menu_items = {
 }
 onready var InventoryItem = preload("res://scenes/items/InventoryItem.tscn")
 onready var inventory = $MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer/Inventory
+onready var use_button = $MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer/HBoxContainer/UseButton
 
 var selected = 0
 
@@ -75,3 +77,18 @@ func _on_SaveButton_pressed():
 
 func _on_Inventory_item_selected(index):
 	print("Inventory item selected: ", index)
+	var item_data = PlayerData.inventory[index]
+	if item_data.category == "Consumable":
+		use_button.visible = true
+
+
+func _on_UseButton_pressed():
+	var selected_item_index = inventory.get_selected_items()[0]
+	var selected_item = PlayerData.inventory[selected_item_index]
+	selected_item.quantity -= 1
+	if selected_item.quantity == 0:
+		PlayerData.inventory.remove(selected_item_index)
+		inventory.remove_item(selected_item_index)
+	else:
+		update_inventory_page()
+	emit_signal("use_inventory_item", selected_item)

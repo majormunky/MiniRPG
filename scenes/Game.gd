@@ -79,3 +79,10 @@ func _on_WorldManager_chest_opened(data):
 	print("Game - Chest opened")
 	GameData.chests[data["chest_id"]] = true
 	player.add_item(data)
+
+
+func _on_Menu_use_inventory_item(item):
+	print("Using inventory item:")
+	PlayerData.current_hp += item.add_health
+	if PlayerData.current_hp > PlayerData.max_hp:
+		PlayerData.current_hp = PlayerData.max_hp
