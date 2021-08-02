@@ -7,6 +7,7 @@ onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
 onready var camera = $Camera2D
 onready var sprite = $Sprite
+onready var inspect_area = $InspectArea
 
 
 func _ready():
@@ -21,6 +22,13 @@ func _ready():
 		sprite.region_rect.position.x = 48 * 2
 		sprite.region_rect.position.y = 48 * 6
 	update_map_limits()
+
+
+func _input(event):
+	if event.is_action_pressed("inspect"):
+		inspect_area.get_node("CollisionShape2D").disabled = false
+		yield(get_tree().create_timer(0.1), "timeout")
+		inspect_area.get_node("CollisionShape2D").disabled = true
 
 
 func update_map_limits():
@@ -46,3 +54,45 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 
 	move_and_collide(velocity)
+
+
+func add_item(item_data):
+	print("add item - player")
+	var test_item = item_data.item[0]
+	var item_stats = ItemData.items[test_item.item]
+	
+	var new_item = {
+		"stack_size": item_stats["stack_size"],
+		"category": item_stats["category"],
+		"add_health": item_stats["add_health"],
+		"description": item_stats["description"],
+		"image_name": item_stats["image_name"],
+		"id": test_item["id"],
+		"item_name": test_item["item"],
+		"quantity": test_item["quantity"]
+	}
+	
+	# flag to see if we have found an existing slot to put the item into
+	var found_spot = false
+	
+	# go over the players inventory item by item
+	for existing_item in PlayerData.inventory:
+		# check if the existing items name matches our new item name
+		if existing_item["item_name"] == new_item["item_name"]:
+			# if so, we need to see if we can add this item to the slot
+			# we do this by first calculating what our new stack size would be
+			var new_amount = existing_item["quantity"] + new_item["quantity"]
+			
+			# and then we check that against the stack size
+			if new_amount <= existing_item["stack_size"]:
+				# if we can add it, we do
+				existing_item["quantity"] += new_item["quantity"]
+				# and set our flag to say we found a spot
+				found_spot = true
+		
+	# if we didn't find a spot
+	if found_spot == false:
+		# just add this as a new item
+		PlayerData.inventory.append(new_item)
+
+	print(PlayerData.inventory)

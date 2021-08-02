@@ -64,8 +64,10 @@ custom_fonts/normal_font = SubResource( 2 )
 text = "This is a test of the godot dialog system.  This is just a test."
 
 [node name="TransitionRect" parent="CanvasLayer" instance=ExtResource( 6 )]
+visible = false
 
 [connection signal="after_map_change" from="WorldManager" to="." method="_on_WorldManager_after_map_change"]
 [connection signal="before_map_change" from="WorldManager" to="." method="_on_WorldManager_before_map_change"]
+[connection signal="chest_opened" from="WorldManager" to="." method="_on_WorldManager_chest_opened"]
 [connection signal="new_player_position" from="WorldManager" to="." method="_on_WorldManager_new_player_position"]
 [connection signal="save_game" from="CanvasLayer/Menu" to="." method="_on_Menu_save_game"]

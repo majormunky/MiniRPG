@@ -84,4 +84,6 @@ region_rect = Rect2( 254.208, 50.437, 34.963, 38.8148 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="locations/Town"]
 shape = SubResource( 2 )
 
+[node name="chests" type="Node" parent="."]
+
 [connection signal="body_entered" from="locations/Town" to="." method="_on_Town_body_entered"]

@@ -7,6 +7,9 @@
                 "from": {"x": 360, "y": 296}
             }
         },
+        "chests": [
+            {"id": 1, "item": "Health Potion", "quantity": 1}
+        ]
     },
     "FirstTown": {
         "filepath": "scenes/maps/FirstTown.tscn",
