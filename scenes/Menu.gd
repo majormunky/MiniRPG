@@ -13,6 +13,7 @@ onready var InventoryItem = preload("res://scenes/items/InventoryItem.tscn")
 var selected = 0
 
 func _ready():
+	print("menu ready")
 	for item_key in menu_items:
 		item_list.add_item(" " + item_key)
 	
@@ -22,6 +23,7 @@ func _ready():
 
 func _on_ItemList_item_selected(index):
 	selected = index
+	item_list.select(index)
 	var selectedItem = menu_items.keys()[selected]
 	
 	if selectedItem == "Save":

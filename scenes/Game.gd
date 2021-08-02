@@ -18,7 +18,7 @@ func _input(event):
 		if menu.visible:
 			print("close menu")
 			menu.visible = false
-			menu.selected = 0
+			menu._on_ItemList_item_selected(0)
 			get_tree().paused = false
 		else:
 			menu.visible = true
