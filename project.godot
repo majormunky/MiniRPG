@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "CharacterStats",
+"language": "GDScript",
+"path": "res://scripts/CharacterStats.gd"
+} ]
+_global_script_class_icons={
+"CharacterStats": ""
+}
+
 [application]
 
 config/name="RPG3"
