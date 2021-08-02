@@ -65,4 +65,8 @@ position = Vector2( 335.4, 1044.8 )
 position = Vector2( 32.0362, 2.66968 )
 shape = SubResource( 2 )
 
+[node name="npcs" type="Node" parent="."]
+
+[node name="chests" type="Node" parent="."]
+
 [connection signal="body_entered" from="locations/TownExit" to="." method="_on_TownExit_body_entered"]

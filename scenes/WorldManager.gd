@@ -6,8 +6,8 @@ var world = null
 var map_data: Dictionary
 var world_name = null
 
-signal before_map_change
-signal after_map_change
+signal before_map_change(map_name)
+signal after_map_change(map_name)
 signal new_player_position(data)
 signal chest_opened(data)
 signal npc_dialog(lines)
@@ -55,13 +55,13 @@ func on_town_entered(name):
 	load_world(name)
 
 
-func on_location_change(name):
-	print("LOCATION CHANGED ", name)
-	emit_signal("before_map_change")
+func on_location_change(map_name):
+	print("LOCATION CHANGED ", map_name)
+	emit_signal("before_map_change", map_name)
 	yield(get_tree().create_timer(0.5), "timeout")
-	load_world(name)
+	load_world(map_name)
 	yield(get_tree().create_timer(0.5), "timeout")
-	emit_signal("after_map_change")
+	emit_signal("after_map_change", map_name)
 
 
 func on_set_player_position(data):

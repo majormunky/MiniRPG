@@ -53,6 +53,17 @@
             }
         },
         "chests": [],
-        "npcs": [],
+        "npcs": [
+            {
+                "id": 3,
+                "name": "Jerry",
+                "dialog": [
+                    "Hello, my name is Jerry",
+                    "Welcome to green village!"
+                ],
+                "map_image": "assets/characters/char3.png",
+                "position": {"x": 300, "y": 300},
+            },
+        ],
     },
 }

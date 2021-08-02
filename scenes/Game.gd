@@ -33,13 +33,14 @@ func _on_WorldManager_new_player_position(data):
 	# get_node("Player").update_map_limits()
 
 
-func _on_WorldManager_before_map_change():
+func _on_WorldManager_before_map_change(map_name):
+	PlayerData.current_map = map_name
 	transition_rect.fadeIn()
 	get_tree().paused = true
 
 
-func _on_WorldManager_after_map_change():
-	print("AFTER MAP CHANGE")
+func _on_WorldManager_after_map_change(map_name):
+	print("AFTER MAP CHANGE -> ", map_name)
 	transition_rect.fadeOut()
 	get_tree().paused = false
 	player.update_map_limits()
