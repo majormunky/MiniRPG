@@ -77,8 +77,16 @@ func _on_Menu_save_game():
 
 func _on_WorldManager_chest_opened(data):
 	print("Game - Chest opened")
+	
+	# mark that we have opened this chest
 	GameData.chests[data["chest_id"]] = true
+	
+	# give the player the item in the chest
 	player.add_item(data)
+	
+	print(data)
+	# create a dialog with a message about the item we got
+	dialog.open_dialog("You received a " + data["item"][0]["item"])
 
 
 func _on_Menu_use_inventory_item(item):
@@ -88,3 +96,8 @@ func _on_Menu_use_inventory_item(item):
 			PlayerData.current_hp += item.add_health
 			if PlayerData.current_hp > PlayerData.max_hp:
 				PlayerData.current_hp = PlayerData.max_hp
+
+
+func _on_Player_player_inspected():
+	if dialog.visible and dialog.keep_open == false:
+		dialog.close_dialog()

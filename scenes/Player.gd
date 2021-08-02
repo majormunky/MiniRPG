@@ -9,6 +9,7 @@ onready var camera = $Camera2D
 onready var sprite = $Sprite
 onready var inspect_area = $InspectArea
 
+signal player_inspected
 
 func _ready():
 	print("Character Type ", PlayerData.char_type)
@@ -29,6 +30,7 @@ func _input(event):
 		inspect_area.get_node("CollisionShape2D").disabled = false
 		yield(get_tree().create_timer(0.1), "timeout")
 		inspect_area.get_node("CollisionShape2D").disabled = true
+		emit_signal("player_inspected")
 
 
 func update_map_limits():
