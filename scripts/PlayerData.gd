@@ -9,3 +9,4 @@ var inventory = []
 var max_hp = 0
 var current_hp = 0
 var gold = 0
+var characters = []
