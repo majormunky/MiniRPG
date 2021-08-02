@@ -9,6 +9,7 @@ onready var menu_items = {
 	"Save": get_node("MarginContainer/HBoxContainer/SaveMenu"),
 }
 onready var InventoryItem = preload("res://scenes/items/InventoryItem.tscn")
+onready var inventory = $MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer/Inventory
 
 var selected = 0
 
@@ -52,14 +53,15 @@ func update_status_page():
 
 
 func update_inventory_page():
-	var inventory_list = get_node("MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer/Inventory")
-	for child in inventory_list.get_children():
-		child.queue_free()
+	# for child in inventory_list.get_children():
+		# child.queue_free()
+	inventory.clear()
 	
 	for item in PlayerData.inventory:
-		var item_slot = InventoryItem.instance()
-		inventory_list.add_child(item_slot)
-		item_slot.set_data(item)
+		# var item_slot = InventoryItem.instance()
+		# inventory_list.add_child(item_slot)
+		# item_slot.set_data(item)
+		inventory.add_item(" " + item.item_name + ": " + str(item.quantity))
 
 
 func save_game_complete():
@@ -69,3 +71,7 @@ func save_game_complete():
 
 func _on_SaveButton_pressed():
 	emit_signal("save_game")
+
+
+func _on_Inventory_item_selected(index):
+	print("Inventory item selected: ", index)
