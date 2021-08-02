@@ -48,6 +48,8 @@ func _on_LoadGameButton_pressed():
 		# load data
 		PlayerData.player_name = data.name
 		PlayerData.char_type = data.type
+		PlayerData.current_hp = data.current_hp
+		PlayerData.max_hp = data.max_hp
 		
 		# figure out what map to load
 		PlayerData.current_map = data.current_location.map
@@ -56,6 +58,7 @@ func _on_LoadGameButton_pressed():
 		
 		# load inventory
 		PlayerData.inventory.append_array(data.inventory)
+		PlayerData.gold = data.gold
 		
 		# load up game state
 		GameData.chests = data.chests

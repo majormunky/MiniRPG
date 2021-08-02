@@ -152,5 +152,16 @@ margin_right = 40.0
 margin_bottom = 14.0
 theme = ExtResource( 3 )
 
+[node name="GoldLabel" type="Label" parent="MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 14.0
+theme = ExtResource( 3 )
+text = "Gold:"
+
+[node name="HPLabel" type="Label" parent="MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 14.0
+theme = ExtResource( 3 )
+
 [connection signal="item_selected" from="MarginContainer/HBoxContainer/ItemList" to="." method="_on_ItemList_item_selected"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/SaveMenu/MarginContainer/VBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]

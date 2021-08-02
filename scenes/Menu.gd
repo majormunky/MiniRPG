@@ -44,8 +44,11 @@ func _on_ItemList_item_selected(index):
 
 
 func update_status_page():
-	get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer/NameLabel").text = "Name: " + PlayerData.player_name
-	get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer/CharTypeLabel").text = "Class: " + PlayerData.char_type
+	var parent = get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer")
+	parent.get_node("NameLabel").text = "Name: " + PlayerData.player_name
+	parent.get_node("CharTypeLabel").text = "Class: " + PlayerData.char_type
+	parent.get_node("GoldLabel").text = "Gold: " + str(PlayerData.gold)
+	parent.get_node("HPLabel").text = "HP: " + str(PlayerData.current_hp) + "/" + str(PlayerData.max_hp)
 
 
 func update_inventory_page():
