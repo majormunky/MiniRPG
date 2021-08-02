@@ -9,7 +9,8 @@ onready var transition = $TransitionRect
 var char_types = [
 	"Warrior",
 	"Mage",
-	"Thief"
+	"Thief",
+	"Cleric",
 ]
 
 
