@@ -45,7 +45,12 @@ func create_save_game(user_name, char_type):
 				"map": "World",
 				"x": 350,
 				"y": 350
-			}
+			},
+			"inventory": [],
+			"gold": 10,
+			"current_hp": 20,
+			"max_hp": 20,
+			"chests": {}
 		}
 		save_game.store_line(to_json(save_data))
 		save_game.close()
@@ -56,6 +61,9 @@ func create_save_game(user_name, char_type):
 		PlayerData.current_map = save_data["current_location"]["map"]
 		PlayerData.load_x = save_data["current_location"]["x"]
 		PlayerData.load_y = save_data["current_location"]["y"]
+		PlayerData.gold = save_data["gold"]
+		PlayerData.current_hp = save_data["current_hp"]
+		PlayerData.max_hp = save_data["max_hp"]
 		
 		# change to the game scene
 		get_tree().change_scene("res://scenes/Game.tscn")

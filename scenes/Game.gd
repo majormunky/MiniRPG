@@ -48,6 +48,9 @@ func _on_Menu_save_game():
 	var save_data = {
 		"name": PlayerData.player_name,
 		"type": PlayerData.char_type,
+		"current_hp": PlayerData.current_hp,
+		"max_hp": PlayerData.max_hp,
+		"gold": PlayerData.gold,
 		"current_location": {
 			"map": world_manager.world_name,
 			"x": player.position.x,
@@ -76,3 +79,10 @@ func _on_WorldManager_chest_opened(data):
 	print("Game - Chest opened")
 	GameData.chests[data["chest_id"]] = true
 	player.add_item(data)
+
+
+func _on_Menu_use_inventory_item(item):
+	print("Using inventory item:")
+	PlayerData.current_hp += item.add_health
+	if PlayerData.current_hp > PlayerData.max_hp:
+		PlayerData.current_hp = PlayerData.max_hp

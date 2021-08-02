@@ -71,3 +71,4 @@ visible = false
 [connection signal="chest_opened" from="WorldManager" to="." method="_on_WorldManager_chest_opened"]
 [connection signal="new_player_position" from="WorldManager" to="." method="_on_WorldManager_new_player_position"]
 [connection signal="save_game" from="CanvasLayer/Menu" to="." method="_on_Menu_save_game"]
+[connection signal="use_inventory_item" from="CanvasLayer/Menu" to="." method="_on_Menu_use_inventory_item"]
