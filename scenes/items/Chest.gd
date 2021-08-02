@@ -28,10 +28,13 @@ func update_sprite():
 		closed_sprite.visible = true
 
 
+func open():
+	state = OPEN
+
 func _on_Area2D_area_entered(area):
 	print("Chest interacted with")
 	if state == CLOSED:
-		state = OPEN
+		open()
 		update_sprite()
 		var data = {
 			"item": items,

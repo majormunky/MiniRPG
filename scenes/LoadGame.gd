@@ -54,6 +54,12 @@ func _on_LoadGameButton_pressed():
 		PlayerData.load_x = data.current_location.x
 		PlayerData.load_y = data.current_location.y
 		
+		# load inventory
+		PlayerData.inventory.append_array(data.inventory)
+		
+		# load up game state
+		GameData.chests = data.chests
+		
 		# load the main game
 		get_tree().change_scene("res://scenes/Game.tscn")
 

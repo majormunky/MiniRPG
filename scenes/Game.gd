@@ -53,12 +53,15 @@ func _on_Menu_save_game():
 			"x": player.position.x,
 			"y": player.position.y,
 		},
-		"chests": {}
+		"chests": {},
+		"inventory": [],
 	}
 	
 	# hold info about what chests have been opened
 	for chest_key in GameData.chests:
 		save_data["chests"][chest_key] = GameData.chests[chest_key]
+	
+	save_data["inventory"].append_array(PlayerData.inventory)
 	
 	var save_game_name = "savegame-" + PlayerData.player_name + ".save"
 	var save_game = File.new()
