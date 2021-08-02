@@ -8,7 +8,13 @@ onready var Chest = preload("res://scenes/items/Chest.tscn")
 
 func _ready():
 	var chest_list = MapData.data[PlayerData.current_map].chests
+	var chest_container = get_node("chests")
 	
+	# remove any existing chests
+	for child in chest_container.get_children():
+		child.queue_free()
+	
+	# load in all of our chests
 	for chest in chest_list:
 		if GameData.chests.has(str(chest.id)):
 			add_chest(chest, 1, true)
