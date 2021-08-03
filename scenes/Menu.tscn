@@ -14,7 +14,9 @@ size = 48
 font_data = SubResource( 1 )
 
 [node name="Menu" type="PopupPanel"]
+visible = true
 rect_min_size = Vector2( 1280, 800 )
+mouse_filter = 1
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -25,6 +27,7 @@ margin_left = 4.0
 margin_top = 4.0
 margin_right = 1276.0
 margin_bottom = 796.0
+mouse_filter = 1
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
@@ -61,7 +64,7 @@ custom_constants/margin_left = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/SaveMenu/MarginContainer"]
 margin_left = 20.0
 margin_right = 620.0
-margin_bottom = 210.0
+margin_bottom = 188.0
 
 [node name="Title" type="Label" parent="MarginContainer/HBoxContainer/SaveMenu/MarginContainer/VBoxContainer"]
 margin_right = 600.0
@@ -88,6 +91,7 @@ theme = ExtResource( 3 )
 fit_content_height = true
 
 [node name="ItemMenu" type="Panel" parent="MarginContainer/HBoxContainer"]
+visible = false
 margin_left = 204.0
 margin_right = 204.0
 margin_bottom = 752.0
@@ -140,16 +144,18 @@ text = "Use Item"
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/StatusMenu"]
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 1
 custom_constants/margin_left = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/StatusMenu/MarginContainer"]
 margin_left = 20.0
 margin_right = 169.0
-margin_bottom = 73.0
+margin_bottom = 101.0
 
 [node name="PageLabel" type="Label" parent="MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer"]
 margin_right = 149.0
@@ -172,7 +178,283 @@ margin_right = 40.0
 margin_bottom = 40.0
 custom_constants/separation = 32
 
+[node name="CharacterInfoMenu" type="Panel" parent="MarginContainer/HBoxContainer"]
+margin_left = 204.0
+margin_right = 1232.0
+margin_bottom = 752.0
+size_flags_horizontal = 3
+theme = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu"]
+margin_right = 1024.0
+margin_bottom = 447.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 60.0
+
+[node name="InfoBackButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer"]
+margin_right = 109.0
+margin_bottom = 60.0
+text = "Back"
+align = 2
+
+[node name="PageTitle" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer"]
+margin_top = 64.0
+margin_right = 1024.0
+margin_bottom = 175.0
+size_flags_horizontal = 3
+text = "Chararacter Info
+"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer"]
+margin_top = 179.0
+margin_right = 1024.0
+margin_bottom = 601.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2"]
+margin_right = 502.0
+margin_bottom = 422.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer"]
+margin_left = 20.0
+margin_right = 482.0
+margin_bottom = 402.0
+size_flags_horizontal = 3
+
+[node name="Name" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+margin_right = 462.0
+margin_bottom = 54.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Name"]
+margin_right = 123.0
+margin_bottom = 54.0
+text = "Name:"
+
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Name"]
+margin_left = 127.0
+margin_right = 462.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+align = 2
+
+[node name="Job" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+margin_top = 58.0
+margin_right = 462.0
+margin_bottom = 112.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Job"]
+margin_right = 80.0
+margin_bottom = 54.0
+text = "Job:"
+
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Job"]
+margin_left = 84.0
+margin_right = 462.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+align = 2
+
+[node name="HP" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+margin_top = 116.0
+margin_right = 462.0
+margin_bottom = 170.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/HP"]
+margin_right = 56.0
+margin_bottom = 54.0
+text = "HP:"
+
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/HP"]
+margin_left = 60.0
+margin_right = 462.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+align = 2
+
+[node name="Exp" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+margin_top = 174.0
+margin_right = 462.0
+margin_bottom = 228.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Exp"]
+margin_right = 81.0
+margin_bottom = 54.0
+text = "Exp:"
+
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Exp"]
+margin_left = 85.0
+margin_right = 462.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+align = 2
+
+[node name="Strength" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+margin_top = 232.0
+margin_right = 462.0
+margin_bottom = 286.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Strength"]
+margin_right = 76.0
+margin_bottom = 54.0
+text = "Str:"
+
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Strength"]
+margin_left = 80.0
+margin_right = 462.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+align = 2
+
+[node name="Dexterity" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+margin_top = 290.0
+margin_right = 462.0
+margin_bottom = 344.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Dexterity"]
+margin_right = 80.0
+margin_bottom = 54.0
+text = "Dex:"
+
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Dexterity"]
+margin_left = 84.0
+margin_right = 462.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+align = 2
+
+[node name="Intelligence" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+margin_top = 348.0
+margin_right = 462.0
+margin_bottom = 402.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Intelligence"]
+margin_right = 72.0
+margin_bottom = 54.0
+text = "Int:"
+
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Intelligence"]
+margin_left = 76.0
+margin_right = 462.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+align = 2
+
+[node name="EquippedContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2"]
+margin_left = 522.0
+margin_right = 1024.0
+margin_bottom = 422.0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer"]
+margin_right = 502.0
+margin_bottom = 422.0
+
+[node name="Helmet" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_right = 502.0
+margin_bottom = 54.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Helmet"]
+margin_right = 149.0
+margin_bottom = 54.0
+text = "Helmet:"
+
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Helmet"]
+margin_left = 153.0
+margin_right = 502.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+text = "None"
+align = 2
+
+[node name="Chest" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_top = 58.0
+margin_right = 502.0
+margin_bottom = 112.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Chest"]
+margin_right = 128.0
+margin_bottom = 54.0
+text = "Chest:"
+
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Chest"]
+margin_left = 132.0
+margin_right = 502.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+text = "None"
+align = 2
+
+[node name="Arms" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_top = 116.0
+margin_right = 502.0
+margin_bottom = 170.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Arms"]
+margin_right = 109.0
+margin_bottom = 54.0
+text = "Arms:"
+
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Arms"]
+margin_left = 113.0
+margin_right = 502.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+text = "None"
+align = 2
+
+[node name="Legs" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_top = 174.0
+margin_right = 502.0
+margin_bottom = 228.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Legs"]
+margin_right = 105.0
+margin_bottom = 54.0
+text = "Legs:"
+
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Legs"]
+margin_left = 109.0
+margin_right = 502.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+text = "None"
+align = 2
+
+[node name="Boots" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_top = 232.0
+margin_right = 502.0
+margin_bottom = 286.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Boots"]
+margin_right = 120.0
+margin_bottom = 54.0
+text = "Boots"
+
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Boots"]
+margin_left = 124.0
+margin_right = 502.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+text = "None"
+align = 2
+
 [connection signal="item_selected" from="MarginContainer/HBoxContainer/ItemList" to="." method="_on_ItemList_item_selected"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/SaveMenu/MarginContainer/VBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="item_selected" from="MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer/Inventory" to="." method="_on_Inventory_item_selected"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer/HBoxContainer/UseButton" to="." method="_on_UseButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer/InfoBackButton" to="." method="_on_InfoBackButton_pressed"]
