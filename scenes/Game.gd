@@ -85,7 +85,9 @@ func _on_WorldManager_chest_opened(data):
 	player.add_item(data)
 
 	# create a dialog with a message about the item we got
-	dialog.open_dialog(["You received a " + data["item"][0]["item"]])
+	dialog.open_dialog([
+		{"text": "You received a " + data["item"][0]["item"]}
+	])
 
 
 func _on_Menu_use_inventory_item(item):

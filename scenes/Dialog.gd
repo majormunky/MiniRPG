@@ -13,7 +13,7 @@ func set_content(text):
 func open_dialog(text_lines):
 	lines = text_lines
 	current_line = 0
-	set_content(lines[current_line])
+	set_content(lines[current_line]["text"])
 	visible = true
 	keep_open()
 
@@ -26,7 +26,7 @@ func keep_open():
 func next():
 	current_line += 1
 	if len(lines) >= current_line + 1:
-		set_content(lines[current_line])
+		set_content(lines[current_line]["text"])
 		keep_open()
 	else:
 		close_dialog()
