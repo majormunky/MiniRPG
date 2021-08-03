@@ -81,6 +81,15 @@ func _on_SelectDialogButton_pressed():
 			current_line += 1
 			var answer_text = lines[current_line]["select_answer"][selected_response]["text"]
 			set_content(answer_text)
+			
+			if "action" in lines[current_line]["select_answer"][selected_response]:
+				print("Found dialog action!")
+				var action = lines[current_line]["select_answer"][selected_response]["action"]
+				print("Action: ", action)
+				emit_signal("question_response", {
+					"action": action,
+					"npc": npc_id,
+				})
 	
 #	var selected = question_list.get_selected_items()
 #	if selected:

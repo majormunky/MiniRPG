@@ -41,10 +41,20 @@
                 "name": "Finn",
                 "dialog": [
                     {"text": "Hello, my name is Finn", "select": false},
-                    {"text": "Have you been to my village yet?", "select": false}
+                    {"text": "Do you want me to join your party?", "select": ["Yes", "No"]},
+                    {"select_answer": {
+                        "Yes": {"text": "Sounds great, let me get my stuff!", "action": "join_party"},
+                        "No": {"text": "Ah that's ok, maybe next time!"}
+                    }}
                 ],
                 "map_image": "assets/characters/char2.png",
                 "position": {"x": 640, "y": 300},
+                "party_data": {
+                    "job": "Thief",
+                    "level": 1,
+                    "max_hp": 20,
+                    "current_hp": 20,
+                }
             }
         ]
     },
