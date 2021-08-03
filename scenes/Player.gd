@@ -22,6 +22,9 @@ func _ready():
 	elif main_char_type == "Thief":
 		sprite.region_rect.position.x = 48 * 2
 		sprite.region_rect.position.y = 48 * 6
+	elif main_char_type == "Cleric":
+		sprite.region_rect.position.x = 48 * 3
+		sprite.region_rect.position.y = 48 * 6
 	update_map_limits()
 
 
