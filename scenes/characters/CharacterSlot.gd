@@ -22,14 +22,6 @@ func update_data(character_data):
 	data = character_data
 
 
-func _gui_input(event):
-	if event is InputEventMouseButton:
-		print(event)
-		if event.button_index == BUTTON_LEFT and event.pressed:
-			print("I've been clicked D:")
-
-
 
 func _on_InfoButton_pressed():
-	pass # Replace with function body.
 	emit_signal("info_button_clicked", data)
