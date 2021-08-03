@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/MainFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=3]
 [ext_resource path="res://assets/48pt-theme.tres" type="Theme" id=4]
+[ext_resource path="res://scenes/EquipModal.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
@@ -194,26 +195,27 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer"]
 margin_right = 1024.0
-margin_bottom = 60.0
+margin_bottom = 29.0
 
 [node name="InfoBackButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer"]
-margin_right = 109.0
-margin_bottom = 60.0
+margin_right = 60.0
+margin_bottom = 29.0
+theme = ExtResource( 4 )
 text = "Back"
 align = 2
 
 [node name="PageTitle" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer"]
-margin_top = 64.0
+margin_top = 33.0
 margin_right = 1024.0
-margin_bottom = 175.0
+margin_bottom = 144.0
 size_flags_horizontal = 3
 text = "Chararacter Info
 "
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer"]
-margin_top = 179.0
+margin_top = 148.0
 margin_right = 1024.0
-margin_bottom = 601.0
+margin_bottom = 570.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
@@ -366,95 +368,160 @@ margin_bottom = 422.0
 
 [node name="Helmet" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
 margin_right = 502.0
-margin_bottom = 54.0
+margin_bottom = 60.0
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Helmet"]
+margin_top = 3.0
 margin_right = 149.0
-margin_bottom = 54.0
+margin_bottom = 57.0
 text = "Helmet:"
 
 [node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Helmet"]
 margin_left = 153.0
-margin_right = 502.0
-margin_bottom = 54.0
+margin_top = 3.0
+margin_right = 337.0
+margin_bottom = 57.0
 size_flags_horizontal = 3
 text = "None"
 align = 2
 
-[node name="Chest" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
-margin_top = 58.0
+[node name="HelmetChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Helmet"]
+margin_left = 341.0
 margin_right = 502.0
-margin_bottom = 112.0
+margin_bottom = 60.0
+text = "Change"
+
+[node name="Chest" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_top = 64.0
+margin_right = 502.0
+margin_bottom = 124.0
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Chest"]
+margin_top = 3.0
 margin_right = 128.0
-margin_bottom = 54.0
+margin_bottom = 57.0
 text = "Chest:"
 
 [node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Chest"]
 margin_left = 132.0
-margin_right = 502.0
-margin_bottom = 54.0
+margin_top = 3.0
+margin_right = 337.0
+margin_bottom = 57.0
 size_flags_horizontal = 3
 text = "None"
 align = 2
 
-[node name="Arms" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
-margin_top = 116.0
+[node name="ChestChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Chest"]
+margin_left = 341.0
 margin_right = 502.0
-margin_bottom = 170.0
+margin_bottom = 60.0
+text = "Change"
+
+[node name="Arms" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_top = 128.0
+margin_right = 502.0
+margin_bottom = 188.0
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Arms"]
+margin_top = 3.0
 margin_right = 109.0
-margin_bottom = 54.0
+margin_bottom = 57.0
 text = "Arms:"
 
 [node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Arms"]
 margin_left = 113.0
-margin_right = 502.0
-margin_bottom = 54.0
+margin_top = 3.0
+margin_right = 337.0
+margin_bottom = 57.0
 size_flags_horizontal = 3
 text = "None"
 align = 2
 
-[node name="Legs" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
-margin_top = 174.0
+[node name="ArmsChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Arms"]
+margin_left = 341.0
 margin_right = 502.0
-margin_bottom = 228.0
+margin_bottom = 60.0
+text = "Change"
+
+[node name="Legs" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_top = 192.0
+margin_right = 502.0
+margin_bottom = 252.0
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Legs"]
+margin_top = 3.0
 margin_right = 105.0
-margin_bottom = 54.0
+margin_bottom = 57.0
 text = "Legs:"
 
 [node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Legs"]
 margin_left = 109.0
-margin_right = 502.0
-margin_bottom = 54.0
+margin_top = 3.0
+margin_right = 337.0
+margin_bottom = 57.0
 size_flags_horizontal = 3
 text = "None"
 align = 2
 
-[node name="Boots" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
-margin_top = 232.0
+[node name="LegsChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Legs"]
+margin_left = 341.0
 margin_right = 502.0
-margin_bottom = 286.0
+margin_bottom = 60.0
+text = "Change"
+
+[node name="Boots" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_top = 256.0
+margin_right = 502.0
+margin_bottom = 316.0
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Boots"]
+margin_top = 3.0
 margin_right = 120.0
-margin_bottom = 54.0
+margin_bottom = 57.0
 text = "Boots"
 
 [node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Boots"]
 margin_left = 124.0
-margin_right = 502.0
-margin_bottom = 54.0
+margin_top = 3.0
+margin_right = 337.0
+margin_bottom = 57.0
 size_flags_horizontal = 3
 text = "None"
 align = 2
+
+[node name="BootsChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Boots"]
+margin_left = 341.0
+margin_right = 502.0
+margin_bottom = 60.0
+text = "Change"
+
+[node name="EquipModal" type="WindowDialog" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1252.0
+margin_bottom = 772.0
+script = ExtResource( 5 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EquipModal"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="EquipItemLabel" type="Label" parent="MarginContainer/EquipModal/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Equip Item"
+
+[node name="ItemList" type="ItemList" parent="MarginContainer/EquipModal/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
 
 [connection signal="item_selected" from="MarginContainer/HBoxContainer/ItemList" to="." method="_on_ItemList_item_selected"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/SaveMenu/MarginContainer/VBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="item_selected" from="MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer/Inventory" to="." method="_on_Inventory_item_selected"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer/HBoxContainer/UseButton" to="." method="_on_UseButton_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer/InfoBackButton" to="." method="_on_InfoBackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Helmet/HelmetChangeButton" to="." method="_on_HelmetChangeButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Chest/ChestChangeButton" to="." method="_on_ChestChangeButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Arms/ArmsChangeButton" to="." method="_on_ArmsChangeButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Legs/LegsChangeButton" to="." method="_on_LegsChangeButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Boots/BootsChangeButton" to="." method="_on_BootsChangeButton_pressed"]

@@ -34,6 +34,7 @@ func _on_ItemList_item_selected(index):
 	selectedItem = menu_items.keys()[selected]
 	update_panels()
 
+
 func update_panels():
 	var char_info_panel = get_node("MarginContainer/HBoxContainer/CharacterInfoMenu")
 	if selectedItem == "Save":
@@ -163,3 +164,27 @@ func _on_UseButton_pressed():
 func _on_InfoBackButton_pressed():
 	_on_ItemList_item_selected(0)
 	item_list.select(0)
+
+
+func equip_item(slot_name):
+	print("need to equip item in slot: ", slot_name)
+
+
+func _on_HelmetChangeButton_pressed():
+	equip_item("Helmet")
+
+
+func _on_ChestChangeButton_pressed():
+	equip_item("Chest")
+
+
+func _on_ArmsChangeButton_pressed():
+	equip_item("Arms")
+
+
+func _on_LegsChangeButton_pressed():
+	equip_item("Legs")
+
+
+func _on_BootsChangeButton_pressed():
+	equip_item("Boots")
