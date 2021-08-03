@@ -15,7 +15,6 @@ size = 48
 font_data = SubResource( 1 )
 
 [node name="Menu" type="PopupPanel"]
-visible = true
 rect_min_size = Vector2( 1280, 800 )
 mouse_filter = 1
 script = ExtResource( 1 )
