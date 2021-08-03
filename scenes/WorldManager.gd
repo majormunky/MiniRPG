@@ -73,6 +73,15 @@ func on_npc_dialog(lines, npc_id):
 	emit_signal("npc_dialog", lines, npc_id)
 
 
+func remove_npc(id: int):
+	if world:
+		for npc in world.get_node("npcs").get_children():
+			print(npc)
+			if npc.id == id:
+				print("Found npc to remove")
+				world.get_node("npcs").remove_child(npc)
+
+
 func load_world(name):
 	print("Loading Map: " + name)
 	# remove current world
@@ -107,6 +116,9 @@ func load_world(name):
 	
 	# Add map as a child
 	add_child(new_map)
+	
+	# set our world variable
+	world = new_map
 	
 	print("Calculating map size")
 	var map_size = calculate_bounds(new_map.get_node("TileMap"))

@@ -12,14 +12,14 @@ onready var inspect_area = $InspectArea
 signal player_inspected
 
 func _ready():
-	print("Character Type ", PlayerData.char_type)
-	if PlayerData.char_type == "Warrior":
+	var main_char_type = PlayerData.characters[0].type
+	if main_char_type == "Warrior":
 		sprite.region_rect.position.x = 48 * 4
 		sprite.region_rect.position.y = 48 * 4
-	elif PlayerData.char_type == "Mage":
+	elif main_char_type == "Mage":
 		sprite.region_rect.position.x = 0
 		sprite.region_rect.position.y = 48 * 5
-	elif PlayerData.char_type == "Thief":
+	elif main_char_type == "Thief":
 		sprite.region_rect.position.x = 48 * 2
 		sprite.region_rect.position.y = 48 * 6
 	update_map_limits()

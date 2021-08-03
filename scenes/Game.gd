@@ -6,6 +6,7 @@ onready var dialog = $CanvasLayer/Dialog
 onready var player = $Player
 onready var transition_rect = $CanvasLayer/TransitionRect
 
+var remove_npc = false
 
 func _ready():
 	print("Game Starting")
@@ -23,6 +24,7 @@ func _input(event):
 			get_tree().paused = false
 		else:
 			menu.visible = true
+			menu._on_ItemList_item_selected(0)
 			get_tree().paused = true
 
 
@@ -107,6 +109,18 @@ func _on_Player_player_inspected():
 
 func on_question_response(answer):
 	print("Answer: ", answer)
+	var char_type = "Warrior"
+	if answer["action"] == "join_party":
+		PlayerData.characters.append({
+			"type": char_type, 
+			"character_name": "test char", 
+			"level": 1, 
+			"current_hp": 20, 
+			"max_hp": 20, 
+			"experience": 0,
+			"profile_image": "assets/characters/" + char_type.to_lower() + ".png"
+		})
+		remove_npc = true
 
 
 func _on_WorldManager_npc_dialog(lines, npc_id):
@@ -114,6 +128,9 @@ func _on_WorldManager_npc_dialog(lines, npc_id):
 	print("NPC ID: ", npc_id)
 	if dialog.visible:
 		dialog.next()
+		if remove_npc:
+			remove_npc = false
+			world_manager.remove_npc(npc_id)
 	else:
 		dialog.open_dialog(lines, npc_id)
 

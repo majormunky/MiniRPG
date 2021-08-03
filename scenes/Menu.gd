@@ -26,6 +26,7 @@ func _ready():
 
 
 func _on_ItemList_item_selected(index):
+	print("Running item list selected")
 	selected = index
 	item_list.select(index)
 	var selectedItem = menu_items.keys()[selected]
