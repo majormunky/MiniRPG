@@ -107,20 +107,30 @@ func _on_Player_player_inspected():
 	#	dialog.close_dialog()
 
 
+func get_npc_info(id: int):
+	for npc in MapData.data[PlayerData.current_map]["npcs"]:
+		if npc["id"] == id:
+			print("found npc")
+			return npc
+	return null
+
+
 func on_question_response(answer):
 	print("Answer: ", answer)
-	var char_type = "Warrior"
-	if answer["action"] == "join_party":
-		PlayerData.characters.append({
-			"type": char_type, 
-			"character_name": "test char", 
-			"level": 1, 
-			"current_hp": 20, 
-			"max_hp": 20, 
-			"experience": 0,
-			"profile_image": "assets/characters/" + char_type.to_lower() + ".png"
-		})
-		remove_npc = true
+	var npc_data = get_npc_info(answer["npc"])
+	if npc_data:
+		if answer["action"] == "join_party":
+			var char_type = npc_data["party_data"]["job"]
+			PlayerData.characters.append({
+				"type": char_type, 
+				"character_name": npc_data["name"], 
+				"level": npc_data["party_data"]["level"], 
+				"current_hp": npc_data["party_data"]["current_hp"], 
+				"max_hp": npc_data["party_data"]["max_hp"], 
+				"experience": 0,
+				"profile_image": "assets/characters/" + char_type.to_lower() + ".png"
+			})
+			remove_npc = true
 
 
 func _on_WorldManager_npc_dialog(lines, npc_id):
