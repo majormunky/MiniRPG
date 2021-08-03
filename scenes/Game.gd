@@ -59,12 +59,16 @@ func _on_Menu_save_game():
 		},
 		"chests": {},
 		"inventory": [],
-		"characters": PlayerData.characters
+		"characters": PlayerData.characters,
+		"npcs": {}
 	}
 	
 	# hold info about what chests have been opened
 	for chest_key in GameData.chests:
 		save_data["chests"][chest_key] = GameData.chests[chest_key]
+	
+	for npc_key in GameData.npcs:
+		save_data["npcs"][npc_key] = GameData.npcs[npc_key]
 	
 	save_data["inventory"].append_array(PlayerData.inventory)
 	
@@ -130,6 +134,7 @@ func on_question_response(answer):
 				"experience": 0,
 				"profile_image": "assets/characters/" + char_type.to_lower() + ".png"
 			})
+			GameData.npcs[answer["npc"]] = {"state": "joined-party"}
 			remove_npc = true
 
 

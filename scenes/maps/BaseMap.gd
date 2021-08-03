@@ -29,7 +29,17 @@ func _ready():
 		child.queue_free()
 	
 	# load npcs
+	print("Loading NPCs")
 	for npc in npc_list:
+		# if an npc has joined our party
+		# then we don't want to load that npc when we load the game
+		# TODO: This may change if we decide to leave the npc?
+		if GameData.npcs.has(str(npc.id)):
+			# check to see if the state of the npc is joined party
+			# if so, we want to skip over this npc
+			if GameData.npcs[str(npc.id)].state == "joined-party":
+				continue
+		
 		var new_npc = NPC.instance()
 		npc_container.add_child(new_npc)
 		new_npc.setup(npc)
