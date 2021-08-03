@@ -50,8 +50,8 @@ func _on_ItemList_item_selected(index):
 
 func update_status_page():
 	var parent = get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer")
-	var character_row_1 = get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer/CharacterContainer/CharacterRow1")
-	var character_row_2 = get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer/CharacterContainer/CharacterRow2")
+	var character_row_1 = parent.get_node("CharacterContainer/CharacterRow1")
+	var character_row_2 = parent.get_node("CharacterContainer/CharacterRow2")
 	
 	for child in character_row_1.get_children():
 		child.queue_free()

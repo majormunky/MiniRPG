@@ -37,6 +37,10 @@ MapData="*res://scripts/MapData.gd"
 ItemData="*res://scripts/ItemData.gd"
 GameData="*res://scripts/GameData.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=false
+
 [display]
 
 window/size/width=1280

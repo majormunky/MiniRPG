@@ -75,7 +75,7 @@ func create_save_game(user_name, char_type):
 		PlayerData.characters.append_array(save_data["characters"])
 		
 		# change to the game scene
-		get_tree().change_scene("res://scenes/Game.tscn")
+		var _error = get_tree().change_scene("res://scenes/Game.tscn")
 
 
 func _on_FinishButton_pressed():
@@ -97,4 +97,4 @@ func _on_FinishButton_pressed():
 func _on_BackButton_pressed():
 	transition.fadeIn()
 	yield(get_tree().create_timer(0.5), "timeout")
-	get_tree().change_scene("res://scenes/MainMenu.tscn")
+	var _error = get_tree().change_scene("res://scenes/MainMenu.tscn")

@@ -28,7 +28,7 @@ func open_dialog(text_lines, maybe_npc_id = null):
 	set_content(lines[current_line]["text"])
 	check_for_select(lines[current_line])
 	visible = true
-	keep_open()
+	keep_window_open()
 
 
 func check_for_select(line_data):
@@ -41,7 +41,7 @@ func check_for_select(line_data):
 		question_container.visible = false
 
 
-func keep_open():
+func keep_window_open():
 	keep_open = true
 	yield(get_tree().create_timer(0.5), "timeout")
 	keep_open = false
@@ -57,7 +57,7 @@ func next():
 	if len(lines) >= current_line + 1:
 		set_content(lines[current_line]["text"])
 		check_for_select(lines[current_line])
-		keep_open()
+		keep_window_open()
 	else:
 		close_dialog()
 
@@ -90,14 +90,4 @@ func _on_SelectDialogButton_pressed():
 					"action": action,
 					"npc": npc_id,
 				})
-	
-#	var selected = question_list.get_selected_items()
-#	if selected:
-#		emit_signal(
-#			"question_response", 
-#			{
-#				"answer": lines[current_line]["select"][selected[0]], 
-#				"npc": npc_id, 
-#				"question": lines[current_line]
-#			}
-#		)
+
