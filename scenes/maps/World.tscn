@@ -86,4 +86,6 @@ shape = SubResource( 2 )
 
 [node name="chests" type="Node" parent="."]
 
+[node name="npcs" type="Node" parent="."]
+
 [connection signal="body_entered" from="locations/Town" to="." method="_on_Town_body_entered"]

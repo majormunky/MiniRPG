@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "BaseMap",
+"language": "GDScript",
+"path": "res://scenes/maps/BaseMap.gd"
+}, {
+"base": "Resource",
+"class": "CharacterStats",
+"language": "GDScript",
+"path": "res://scripts/CharacterStats.gd"
+} ]
+_global_script_class_icons={
+"BaseMap": "",
+"CharacterStats": ""
+}
+
 [application]
 
 config/name="RPG3"

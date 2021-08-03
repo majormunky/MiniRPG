@@ -31,7 +31,7 @@ func update_sprite():
 func open():
 	state = OPEN
 
-func _on_Area2D_area_entered(area):
+func _on_Area2D_area_entered(_area):
 	print("Chest interacted with")
 	if state == CLOSED:
 		open()

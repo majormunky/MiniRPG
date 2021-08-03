@@ -47,9 +47,12 @@ func _on_LoadGameButton_pressed():
 		
 		# load data
 		PlayerData.player_name = data.name
-		PlayerData.char_type = data.type
-		PlayerData.current_hp = data.current_hp
-		PlayerData.max_hp = data.max_hp
+		# PlayerData.char_type = data.type
+		# PlayerData.current_hp = data.current_hp
+		# PlayerData.max_hp = data.max_hp
+		
+		# Load characters
+		PlayerData.characters.append_array(data.characters)
 		
 		# figure out what map to load
 		PlayerData.current_map = data.current_location.map
@@ -62,6 +65,7 @@ func _on_LoadGameButton_pressed():
 		
 		# load up game state
 		GameData.chests = data.chests
+		GameData.npcs = data.npcs
 		
 		# load the main game
 		get_tree().change_scene("res://scenes/Game.tscn")

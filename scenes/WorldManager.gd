@@ -6,10 +6,11 @@ var world = null
 var map_data: Dictionary
 var world_name = null
 
-signal before_map_change
-signal after_map_change
+signal before_map_change(map_name)
+signal after_map_change(map_name)
 signal new_player_position(data)
 signal chest_opened(data)
+signal npc_dialog(lines, npc_id)
 
 
 func on_chest_opened(data):
@@ -33,6 +34,7 @@ func _ready():
 	for world_key in map_data:
 		var map_path = "res://" + map_data[world_key].filepath
 		maps[world_key] = load(map_path)
+		MapData.data[world_key] = map_data[world_key]
 	
 	ItemData.items = item_data
 	
@@ -53,18 +55,31 @@ func on_town_entered(name):
 	load_world(name)
 
 
-func on_location_change(name):
-	print("LOCATION CHANGED ", name)
-	emit_signal("before_map_change")
+func on_location_change(map_name):
+	print("LOCATION CHANGED ", map_name)
+	emit_signal("before_map_change", map_name)
 	yield(get_tree().create_timer(0.5), "timeout")
-	load_world(name)
+	load_world(map_name)
 	yield(get_tree().create_timer(0.5), "timeout")
-	emit_signal("after_map_change")
+	emit_signal("after_map_change", map_name)
 
 
 func on_set_player_position(data):
 	print("PLAYER POSITION CHANGE")
 	print(data)
+
+
+func on_npc_dialog(lines, npc_id):
+	emit_signal("npc_dialog", lines, npc_id)
+
+
+func remove_npc(id: int):
+	if world:
+		for npc in world.get_node("npcs").get_children():
+			print(npc)
+			if npc.id == id:
+				print("Found npc to remove")
+				world.get_node("npcs").remove_child(npc)
 
 
 func load_world(name):
@@ -102,11 +117,18 @@ func load_world(name):
 	# Add map as a child
 	add_child(new_map)
 	
+	# set our world variable
+	world = new_map
+	
 	print("Calculating map size")
 	var map_size = calculate_bounds(new_map.get_node("TileMap"))
 	MapData.map_height = map_size.size.y
 	MapData.map_width = map_size.size.x
 	
+	# load npcs
+	
+	
 	new_map.connect("location_change", self, "on_location_change")
 	new_map.connect("chest_opened", self, "on_chest_opened")
+	new_map.connect("npc_dialog", self, "on_npc_dialog")
 	# new_map.connect("set_player_position", self, "on_set_player_position")

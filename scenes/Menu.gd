@@ -9,6 +9,7 @@ onready var menu_items = {
 	"Items": get_node("MarginContainer/HBoxContainer/ItemMenu"),
 	"Save": get_node("MarginContainer/HBoxContainer/SaveMenu"),
 }
+onready var CharacterSlot = preload("res://scenes/characters/CharacterSlot.tscn")
 onready var InventoryItem = preload("res://scenes/items/InventoryItem.tscn")
 onready var inventory = $MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer/Inventory
 onready var use_button = $MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer/HBoxContainer/UseButton
@@ -25,6 +26,7 @@ func _ready():
 
 
 func _on_ItemList_item_selected(index):
+	print("Running item list selected")
 	selected = index
 	item_list.select(index)
 	var selectedItem = menu_items.keys()[selected]
@@ -47,11 +49,38 @@ func _on_ItemList_item_selected(index):
 
 func update_status_page():
 	var parent = get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer")
-	parent.get_node("NameLabel").text = "Name: " + PlayerData.player_name
-	parent.get_node("CharTypeLabel").text = "Class: " + PlayerData.char_type
-	parent.get_node("GoldLabel").text = "Gold: " + str(PlayerData.gold)
-	parent.get_node("HPLabel").text = "HP: " + str(PlayerData.current_hp) + "/" + str(PlayerData.max_hp)
-
+	var character_row_1 = get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer/CharacterContainer/CharacterRow1")
+	var character_row_2 = get_node("MarginContainer/HBoxContainer/StatusMenu/MarginContainer/VBoxContainer/CharacterContainer/CharacterRow2")
+	
+	for child in character_row_1.get_children():
+		child.queue_free()
+	
+	for child in character_row_2.get_children():
+		child.queue_free()
+	
+	# we always will have this character
+	var main_character = PlayerData.characters[0]
+	var slot1 = CharacterSlot.instance()
+	character_row_1.add_child(slot1)
+	slot1.update_data(main_character)
+	
+	if len(PlayerData.characters) > 1:
+		var char2 = PlayerData.characters[1]
+		var slot2 = CharacterSlot.instance()
+		character_row_1.add_child(slot2)
+		slot2.update_data(char2)
+	
+	if len(PlayerData.characters) > 2:
+		var char3 = PlayerData.characters[2]
+		var slot3 = CharacterSlot.instance()
+		character_row_2.add_child(slot3)
+		slot3.update_data(char3)
+	
+	if len(PlayerData.characters) > 3:
+		var char4 = PlayerData.characters[3]
+		var slot4 = CharacterSlot.instance()
+		character_row_2.add_child(slot4)
+		slot4.update_data(char4)
 
 func update_inventory_page():
 	# for child in inventory_list.get_children():

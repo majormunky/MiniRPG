@@ -9,8 +9,10 @@ onready var transition = $TransitionRect
 var char_types = [
 	"Warrior",
 	"Mage",
-	"Thief"
+	"Thief",
+	"Cleric",
 ]
+
 
 func _ready():
 	transition.fadeOut()
@@ -40,7 +42,6 @@ func create_save_game(user_name, char_type):
 		# save the data to the file and close it
 		var save_data = {
 			"name": user_name,
-			"type": char_type,
 			"current_location": {
 				"map": "World",
 				"x": 350,
@@ -48,22 +49,30 @@ func create_save_game(user_name, char_type):
 			},
 			"inventory": [],
 			"gold": 10,
-			"current_hp": 20,
-			"max_hp": 20,
-			"chests": {}
+			"chests": {},
+			"main_character": 0,
+			"characters": [
+				{
+					"type": char_type, 
+					"character_name": user_name, 
+					"level": 1, 
+					"current_hp": 20, 
+					"max_hp": 20, 
+					"experience": 0,
+					"profile_image": "assets/characters/" + char_type.to_lower() + ".png"
+				}
+			]
 		}
 		save_game.store_line(to_json(save_data))
 		save_game.close()
 
 		# set our global player data with what the user has selected
 		PlayerData.player_name = user_name
-		PlayerData.char_type = char_type
 		PlayerData.current_map = save_data["current_location"]["map"]
 		PlayerData.load_x = save_data["current_location"]["x"]
 		PlayerData.load_y = save_data["current_location"]["y"]
 		PlayerData.gold = save_data["gold"]
-		PlayerData.current_hp = save_data["current_hp"]
-		PlayerData.max_hp = save_data["max_hp"]
+		PlayerData.characters.append_array(save_data["characters"])
 		
 		# change to the game scene
 		get_tree().change_scene("res://scenes/Game.tscn")

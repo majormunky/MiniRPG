@@ -4,10 +4,10 @@
 [ext_resource path="res://scenes/items/Chest.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.15892, 7.16036 )
+extents = Vector2( 6.2112, 6.34803 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 7.29445, 7.83732 )
+extents = Vector2( 5.39887, 6.61881 )
 
 [node name="Chest" type="StaticBody2D" groups=[
 "inspectable",

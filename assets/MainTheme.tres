@@ -6,6 +6,7 @@ font_path = "res://assets/fonts/AtlantisInternational-jen0.ttf"
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
+extra_spacing_top = -11
 font_data = SubResource( 1 )
 
 [resource]
