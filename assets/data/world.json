@@ -26,8 +26,12 @@
                 "id": 1,
                 "name": "Bob",
                 "dialog": [
-                    {"text": "Hello, my name is Bob"},
-                    {"text": "Have you been to my village yet?"}
+                    {"text": "Hello, my name is Bob", "select": false},
+                    {"text": "Have you been to my village yet?", "select": ["Yes", "No"]},
+                    {"select_answer": {
+                        "Yes": {"text": "I'm so glad!"},
+                        "No": {"text": "You should go visit!"}}
+                    }
                 ],
                 "map_image": "assets/characters/char1.png",
                 "position": {"x": 300, "y": 300},
@@ -36,8 +40,8 @@
                 "id": 2,
                 "name": "Finn",
                 "dialog": [
-                    {"text": "Hello, my name is Finn"},
-                    {"text": "Have you been to my village yet?"}
+                    {"text": "Hello, my name is Finn", "select": false},
+                    {"text": "Have you been to my village yet?", "select": false}
                 ],
                 "map_image": "assets/characters/char2.png",
                 "position": {"x": 640, "y": 300},
@@ -58,8 +62,8 @@
                 "id": 3,
                 "name": "Jerry",
                 "dialog": [
-                    {"text": "Hello, my name is Jerry"},
-                    {"text": "Welcome to green village!"}
+                    {"text": "Hello, my name is Jerry", "select": false},
+                    {"text": "Welcome to green village!", "select": false}
                 ],
                 "map_image": "assets/characters/char3.png",
                 "position": {"x": 300, "y": 300},

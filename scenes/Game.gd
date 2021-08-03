@@ -11,7 +11,7 @@ func _ready():
 	print("Game Starting")
 	player.update_map_limits()
 	transition_rect.visible = true
-	# world_manager.connect()
+	dialog.connect("question_response", self, "on_question_response")
 
 
 func _input(event):
@@ -86,7 +86,7 @@ func _on_WorldManager_chest_opened(data):
 
 	# create a dialog with a message about the item we got
 	dialog.open_dialog([
-		{"text": "You received a " + data["item"][0]["item"]}
+		{"text": "You received a " + data["item"][0]["item"], "select": false}
 	])
 
 
@@ -100,15 +100,20 @@ func _on_Menu_use_inventory_item(item):
 
 
 func _on_Player_player_inspected():
-	if dialog.visible and dialog.keep_open == false:
-		dialog.close_dialog()
+	print("on_Player_player_inspected")
+	#if dialog.visible and dialog.keep_open == false:
+	#	dialog.close_dialog()
 
 
-func _on_WorldManager_npc_dialog(lines):
-	print("npc dialog")
-	print(lines)
+func on_question_response(answer):
+	print("Answer: ", answer)
+
+
+func _on_WorldManager_npc_dialog(lines, npc_id):
+	print("Game -> on_WorldManager_npc_dialog")
+	print("NPC ID: ", npc_id)
 	if dialog.visible:
 		dialog.next()
 	else:
-		dialog.open_dialog(lines)
+		dialog.open_dialog(lines, npc_id)
 

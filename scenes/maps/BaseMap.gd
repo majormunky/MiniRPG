@@ -3,7 +3,7 @@ class_name BaseMap
 
 signal location_change(name)
 signal chest_opened(data)
-signal npc_dialog(lines)
+signal npc_dialog(lines, npc_id)
 
 onready var Chest = preload("res://scenes/items/Chest.tscn")
 onready var NPC = preload("res://scenes/characters/NPC.tscn")
@@ -36,8 +36,8 @@ func _ready():
 		new_npc.connect("npc_starts_talking", self, "on_npc_start_talking")
 
 
-func on_npc_start_talking(lines):
-	emit_signal("npc_dialog", lines)
+func on_npc_start_talking(lines, npc_id):
+	emit_signal("npc_dialog", lines, npc_id)
 
 
 func add_chest(item, chest_id, is_opened):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Menu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://scenes/Game.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Dialog.gd" type="Script" id=5]
 [ext_resource path="res://scenes/TransitionRect.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=7]
+[ext_resource path="res://assets/48pt-theme.tres" type="Theme" id=8]
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
@@ -42,26 +44,56 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Dialog"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Dialog"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_right = 1278.0
+margin_bottom = 254.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Dialog/HBoxContainer"]
+margin_right = 1000.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 1000, 250 )
+size_flags_vertical = 3
 custom_constants/margin_top = 10
 custom_constants/margin_left = 30
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="content" type="RichTextLabel" parent="CanvasLayer/Dialog/MarginContainer"]
+[node name="content" type="RichTextLabel" parent="CanvasLayer/Dialog/HBoxContainer/MarginContainer"]
 margin_left = 30.0
 margin_top = 10.0
-margin_right = 1272.0
-margin_bottom = 242.0
+margin_right = 1000.0
+margin_bottom = 250.0
 custom_fonts/normal_font = SubResource( 2 )
 text = "This is a test of the godot dialog system.  This is just a test."
+
+[node name="QuestionContainer" type="MarginContainer" parent="CanvasLayer/Dialog/HBoxContainer"]
+margin_left = 1004.0
+margin_right = 1274.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 270, 250 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Dialog/HBoxContainer/QuestionContainer"]
+margin_right = 270.0
+margin_bottom = 250.0
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer/Dialog/HBoxContainer/QuestionContainer/VBoxContainer"]
+margin_right = 270.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
+theme = ExtResource( 7 )
+
+[node name="SelectDialogButton" type="Button" parent="CanvasLayer/Dialog/HBoxContainer/QuestionContainer/VBoxContainer"]
+margin_top = 204.0
+margin_right = 270.0
+margin_bottom = 233.0
+theme = ExtResource( 8 )
+text = "Choose"
 
 [node name="TransitionRect" parent="CanvasLayer" instance=ExtResource( 6 )]
 visible = false
@@ -74,3 +106,4 @@ visible = false
 [connection signal="player_inspected" from="Player" to="." method="_on_Player_player_inspected"]
 [connection signal="save_game" from="CanvasLayer/Menu" to="." method="_on_Menu_save_game"]
 [connection signal="use_inventory_item" from="CanvasLayer/Menu" to="." method="_on_Menu_use_inventory_item"]
+[connection signal="pressed" from="CanvasLayer/Dialog/HBoxContainer/QuestionContainer/VBoxContainer/SelectDialogButton" to="CanvasLayer/Dialog" method="_on_SelectDialogButton_pressed"]

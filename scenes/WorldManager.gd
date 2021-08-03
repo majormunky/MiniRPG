@@ -10,7 +10,7 @@ signal before_map_change(map_name)
 signal after_map_change(map_name)
 signal new_player_position(data)
 signal chest_opened(data)
-signal npc_dialog(lines)
+signal npc_dialog(lines, npc_id)
 
 
 func on_chest_opened(data):
@@ -69,8 +69,8 @@ func on_set_player_position(data):
 	print(data)
 
 
-func on_npc_dialog(lines):
-	emit_signal("npc_dialog", lines)
+func on_npc_dialog(lines, npc_id):
+	emit_signal("npc_dialog", lines, npc_id)
 
 
 func load_world(name):
