@@ -14,6 +14,7 @@ onready var CharacterSlot = preload("res://scenes/characters/CharacterSlot.tscn"
 onready var InventoryItem = preload("res://scenes/items/InventoryItem.tscn")
 onready var inventory = $MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer/Inventory
 onready var use_button = $MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer/HBoxContainer/UseButton
+onready var equip_modal = $MarginContainer/EquipModal
 
 var selected = 0
 var selectedItem = null
@@ -168,6 +169,8 @@ func _on_InfoBackButton_pressed():
 
 func equip_item(slot_name):
 	print("need to equip item in slot: ", slot_name)
+	equip_modal.setup(slot_name)
+	equip_modal.popup()
 
 
 func _on_HelmetChangeButton_pressed():
