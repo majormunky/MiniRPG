@@ -68,11 +68,14 @@ func add_item(item_data):
 	print("add item - player")
 	var test_item = item_data.item[0]
 	var item_stats = ItemData.items[test_item.item]
+	var add_health = null
+	if item_stats.has("add_health"):
+		add_health = item_stats["add_health"]
 	
 	var new_item = {
 		"stack_size": item_stats["stack_size"],
 		"category": item_stats["category"],
-		"add_health": item_stats["add_health"],
+		"add_health": add_health,
 		"description": item_stats["description"],
 		"image_name": item_stats["image_name"],
 		"id": test_item["id"],
