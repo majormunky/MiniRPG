@@ -156,3 +156,8 @@ func _on_WorldManager_npc_dialog(lines, npc_id):
 
 func _on_WorldManager_chest_already_opened():
 	dialog.close_dialog()
+
+
+func _on_WorldManager_enemy_spawn(data):
+	print("enemy spawned", data)
+	get_tree().change_scene("res://scenes/BattleScene.tscn")

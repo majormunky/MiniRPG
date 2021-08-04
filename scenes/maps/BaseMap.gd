@@ -5,6 +5,7 @@ signal location_change(name)
 signal chest_opened(data)
 signal npc_dialog(lines, npc_id)
 signal chest_already_opened
+signal enemy_spawn(data)
 
 onready var Chest = preload("res://scenes/items/Chest.tscn")
 onready var NPC = preload("res://scenes/characters/NPC.tscn")

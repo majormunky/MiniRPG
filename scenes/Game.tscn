@@ -102,6 +102,7 @@ visible = false
 [connection signal="before_map_change" from="WorldManager" to="." method="_on_WorldManager_before_map_change"]
 [connection signal="chest_already_opened" from="WorldManager" to="." method="_on_WorldManager_chest_already_opened"]
 [connection signal="chest_opened" from="WorldManager" to="." method="_on_WorldManager_chest_opened"]
+[connection signal="enemy_spawn" from="WorldManager" to="." method="_on_WorldManager_enemy_spawn"]
 [connection signal="new_player_position" from="WorldManager" to="." method="_on_WorldManager_new_player_position"]
 [connection signal="npc_dialog" from="WorldManager" to="." method="_on_WorldManager_npc_dialog"]
 [connection signal="player_inspected" from="Player" to="." method="_on_Player_player_inspected"]
