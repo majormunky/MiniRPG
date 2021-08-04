@@ -73,6 +73,16 @@ func update_character_info(data):
 	parent.get_node("MarginContainer/VBoxContainer/Strength/Data").text = str(data["str"])
 	parent.get_node("MarginContainer/VBoxContainer/Dexterity/Data").text = str(data["dex"])
 	parent.get_node("MarginContainer/VBoxContainer/Intelligence/Data").text = str(data["int"])
+	parent.get_node("MarginContainer/VBoxContainer/Attack/Data").text = calculate_attack(data)
+	parent.get_node("MarginContainer/VBoxContainer/Defense/Data").text = calculate_defense(data)
+
+
+func calculate_defense(char_data):
+	return str(int(char_data["dex"] * 0.5 + char_data["str"] * 0.5))
+
+
+func calculate_attack(char_data):
+	return str(int(char_data["str"] * 1.25))
 
 
 func update_status_page():

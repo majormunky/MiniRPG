@@ -57,7 +57,8 @@ func create_save_game(user_name, char_type):
 					"int": char_type_info["int"],
 					"profile_image": "assets/characters/" + char_type.to_lower() + ".png"
 				}
-			]
+			],
+			"npcs": {}
 		}
 		save_game.store_line(to_json(save_data))
 		save_game.close()

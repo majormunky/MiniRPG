@@ -66,9 +66,7 @@ func _on_LoadGameButton_pressed():
 		# load up game state
 		GameData.chests = data.chests
 		GameData.npcs = data.npcs
-		
-		# Load character data
-		
+
 		
 		# load the main game
 		var _error = get_tree().change_scene("res://scenes/Game.tscn")
