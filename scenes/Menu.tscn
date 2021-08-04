@@ -355,6 +355,42 @@ margin_bottom = 54.0
 size_flags_horizontal = 3
 align = 2
 
+[node name="Defense" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+margin_top = 348.0
+margin_right = 462.0
+margin_bottom = 402.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Defense"]
+margin_right = 72.0
+margin_bottom = 54.0
+text = "Defense:"
+
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Defense"]
+margin_left = 76.0
+margin_right = 462.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+text = "0"
+align = 2
+
+[node name="Attack" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+margin_top = 348.0
+margin_right = 462.0
+margin_bottom = 402.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Attack"]
+margin_right = 72.0
+margin_bottom = 54.0
+text = "Attack:"
+
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Attack"]
+margin_left = 76.0
+margin_right = 462.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+text = "0"
+align = 2
+
 [node name="EquippedContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2"]
 margin_left = 522.0
 margin_right = 1024.0
