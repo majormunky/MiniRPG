@@ -34,6 +34,61 @@ margin_right = 600.0
 margin_bottom = 500.0
 rect_min_size = Vector2( 600, 400 )
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/BattleArea/LeftSide"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/BattleArea/LeftSide/HBoxContainer3"]
+margin_right = 300.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/BattleArea/LeftSide/HBoxContainer3/HBoxContainer"]
+margin_right = 200.0
+margin_bottom = 500.0
+
+[node name="Slot1" type="Panel" parent="Panel/MarginContainer/VBoxContainer/BattleArea/LeftSide/HBoxContainer3/HBoxContainer/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 200, 200 )
+
+[node name="Slot3" type="Panel" parent="Panel/MarginContainer/VBoxContainer/BattleArea/LeftSide/HBoxContainer3/HBoxContainer/VBoxContainer"]
+margin_top = 204.0
+margin_right = 300.0
+margin_bottom = 454.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/BattleArea/LeftSide/HBoxContainer3"]
+margin_left = 304.0
+margin_right = 604.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/BattleArea/LeftSide/HBoxContainer3/HBoxContainer2"]
+margin_right = 300.0
+margin_bottom = 500.0
+custom_constants/separation = 0
+
+[node name="Slot2" type="Panel" parent="Panel/MarginContainer/VBoxContainer/BattleArea/LeftSide/HBoxContainer3/HBoxContainer2/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 300, 250 )
+
+[node name="Slot4" type="Panel" parent="Panel/MarginContainer/VBoxContainer/BattleArea/LeftSide/HBoxContainer3/HBoxContainer2/VBoxContainer"]
+margin_top = 250.0
+margin_right = 300.0
+margin_bottom = 500.0
+
 [node name="RightSide" type="Panel" parent="Panel/MarginContainer/VBoxContainer/BattleArea"]
 margin_left = 680.0
 margin_right = 1280.0
