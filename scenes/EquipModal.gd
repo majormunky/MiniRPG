@@ -21,3 +21,7 @@ func setup(item_type):
 
 func _on_CloseButton_pressed():
 	visible = false
+
+
+func _on_EquipButton_pressed():
+	pass # Replace with function body.

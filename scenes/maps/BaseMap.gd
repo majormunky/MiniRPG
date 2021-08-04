@@ -4,6 +4,7 @@ class_name BaseMap
 signal location_change(name)
 signal chest_opened(data)
 signal npc_dialog(lines, npc_id)
+signal chest_already_opened
 
 onready var Chest = preload("res://scenes/items/Chest.tscn")
 onready var NPC = preload("res://scenes/characters/NPC.tscn")
@@ -64,8 +65,13 @@ func add_chest(item, chest_id, is_opened):
 		# and setup a listener for when it does get opened
 		chest.items.append(item)
 		chest.connect("chest_opened", self, "on_chest_opened")
+		chest.connect("chest_already_opened", self, "on_chest_already_opened")
 	chest.id = chest_id
 	get_node("chests").add_child(chest)
+
+
+func on_chest_already_opened():
+	emit_signal("chest_already_opened")
 
 
 func on_chest_opened(data):

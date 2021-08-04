@@ -15,7 +15,6 @@ size = 48
 font_data = SubResource( 1 )
 
 [node name="Menu" type="PopupPanel"]
-visible = true
 rect_min_size = Vector2( 1280, 800 )
 mouse_filter = 1
 script = ExtResource( 1 )
@@ -496,7 +495,6 @@ margin_bottom = 60.0
 text = "Change"
 
 [node name="EquipModal" type="Popup" parent="MarginContainer"]
-visible = true
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 1252.0
@@ -560,4 +558,5 @@ text = "Close"
 [connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Arms/ArmsChangeButton" to="." method="_on_ArmsChangeButton_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Legs/LegsChangeButton" to="." method="_on_LegsChangeButton_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Boots/BootsChangeButton" to="." method="_on_BootsChangeButton_pressed"]
+[connection signal="pressed" from="MarginContainer/EquipModal/VBoxContainer/HBoxContainer/EquipButton" to="MarginContainer/EquipModal" method="_on_EquipButton_pressed"]
 [connection signal="pressed" from="MarginContainer/EquipModal/VBoxContainer/HBoxContainer/CloseButton" to="MarginContainer/EquipModal" method="_on_CloseButton_pressed"]

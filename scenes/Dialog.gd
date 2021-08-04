@@ -28,6 +28,7 @@ func open_dialog(text_lines, maybe_npc_id = null):
 	set_content(lines[current_line]["text"])
 	check_for_select(lines[current_line])
 	visible = true
+	GameData.dialog_open = true
 	keep_window_open()
 
 
@@ -69,6 +70,7 @@ func close_dialog():
 	npc_id = null
 	question_list.clear()
 	visible = false
+	GameData.dialog_open = false
 
 
 func _on_SelectDialogButton_pressed():

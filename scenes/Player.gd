@@ -43,6 +43,9 @@ func update_map_limits():
 
 
 func _physics_process(delta):
+	if GameData.dialog_open:
+		return
+
 	var input = Vector2.ZERO
 	
 	input.x = Input.get_action_strength("walk_right") - Input.get_action_strength("walk_left")

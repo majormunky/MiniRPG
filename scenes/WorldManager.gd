@@ -10,6 +10,7 @@ signal before_map_change(map_name)
 signal after_map_change(map_name)
 signal new_player_position(data)
 signal chest_opened(data)
+signal chest_already_opened
 signal npc_dialog(lines, npc_id)
 
 
@@ -73,6 +74,10 @@ func on_npc_dialog(lines, npc_id):
 	emit_signal("npc_dialog", lines, npc_id)
 
 
+func on_chest_already_opened():
+	emit_signal("chest_already_opened")
+
+
 func remove_npc(id: int):
 	if world:
 		for npc in world.get_node("npcs").get_children():
@@ -130,5 +135,7 @@ func load_world(name):
 	
 	new_map.connect("location_change", self, "on_location_change")
 	new_map.connect("chest_opened", self, "on_chest_opened")
+	new_map.connect("chest_already_opened", self, "on_chest_already_opened")
 	new_map.connect("npc_dialog", self, "on_npc_dialog")
+	
 	# new_map.connect("set_player_position", self, "on_set_player_position")

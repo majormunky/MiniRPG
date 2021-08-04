@@ -107,6 +107,9 @@ func _on_Menu_use_inventory_item(item):
 
 func _on_Player_player_inspected():
 	print("on_Player_player_inspected")
+#	if dialog.visible:
+#		dialog.close_dialog()
+#		GameData.dialog_open = false
 	#if dialog.visible and dialog.keep_open == false:
 	#	dialog.close_dialog()
 
@@ -149,3 +152,7 @@ func _on_WorldManager_npc_dialog(lines, npc_id):
 	else:
 		dialog.open_dialog(lines, npc_id)
 
+
+
+func _on_WorldManager_chest_already_opened():
+	dialog.close_dialog()

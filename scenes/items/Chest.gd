@@ -6,6 +6,7 @@ enum {
 }
 
 signal chest_opened(data)
+signal chest_already_opened()
 
 var state = CLOSED
 var items = []
@@ -41,3 +42,5 @@ func _on_Area2D_area_entered(_area):
 			"chest_id": id
 		}
 		emit_signal("chest_opened", data)
+	elif state == OPEN:
+		emit_signal("chest_already_opened")

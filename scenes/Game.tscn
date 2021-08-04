@@ -100,6 +100,7 @@ visible = false
 
 [connection signal="after_map_change" from="WorldManager" to="." method="_on_WorldManager_after_map_change"]
 [connection signal="before_map_change" from="WorldManager" to="." method="_on_WorldManager_before_map_change"]
+[connection signal="chest_already_opened" from="WorldManager" to="." method="_on_WorldManager_chest_already_opened"]
 [connection signal="chest_opened" from="WorldManager" to="." method="_on_WorldManager_chest_opened"]
 [connection signal="new_player_position" from="WorldManager" to="." method="_on_WorldManager_new_player_position"]
 [connection signal="npc_dialog" from="WorldManager" to="." method="_on_WorldManager_npc_dialog"]
