@@ -70,9 +70,9 @@ func update_character_info(data):
 	parent.get_node("MarginContainer/VBoxContainer/Exp/Data").text = str(data["experience"])
 	parent.get_node("MarginContainer/VBoxContainer/HP/Data").text = str(data["current_hp"]) + "/" + str(data["max_hp"])
 	parent.get_node("MarginContainer/VBoxContainer/Job/Data").text = data["type"]
-	parent.get_node("MarginContainer/VBoxContainer/Strength/Data").text = "0"
-	parent.get_node("MarginContainer/VBoxContainer/Dexterity/Data").text = "0"
-	parent.get_node("MarginContainer/VBoxContainer/Intelligence/Data").text = "0"
+	parent.get_node("MarginContainer/VBoxContainer/Strength/Data").text = str(data["str"])
+	parent.get_node("MarginContainer/VBoxContainer/Dexterity/Data").text = str(data["dex"])
+	parent.get_node("MarginContainer/VBoxContainer/Intelligence/Data").text = str(data["int"])
 
 
 func update_status_page():
