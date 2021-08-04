@@ -24,6 +24,7 @@ func _ready():
 func create_save_game(user_name, char_type):
 	# prep a file object
 	var save_game = File.new()
+	var char_type_info = ""
 	
 	# check to see if we already have a save with this name
 	if save_game.file_exists("user://savegame-" + user_name + ".save"):

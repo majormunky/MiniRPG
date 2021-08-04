@@ -1,0 +1,46 @@
+{
+    "Warrior": {
+        "map_image_offset": {
+            "x": 192,
+            "y": 192
+        },
+        "profile_image": "assets/characters/warrior.png",
+        "max_hp": 25,
+        "str": 20,
+        "dex": 15,
+        "int": 5
+    },
+    "Mage": {
+        "map_image_offset": {
+            "x": 0,
+            "y": 240
+        },
+        "profile_image": "assets/characters/mage.png",
+        "max_hp": 20,
+        "str": 10,
+        "dex": 15,
+        "int": 15
+    },
+    "Thief": {
+        "map_image_offset": {
+            "x": 96,
+            "y": 288
+        },
+        "profile_image": "assets/characters/thief.png",
+        "max_hp": 25,
+        "str": 10,
+        "dex": 20,
+        "int": 10
+    },
+    "Cleric": {
+        "map_image_offset": {
+            "x": 144,
+            "y": 288
+        },
+        "profile_image": "assets/characters/cleric.png",
+        "max_hp": 25,
+        "str": 10,
+        "dex": 15,
+        "int": 15
+    },
+}

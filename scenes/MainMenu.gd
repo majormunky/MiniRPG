@@ -3,7 +3,20 @@ extends Control
 onready var new_game_scene = preload("res://scenes/CreatePlayer.tscn")
 onready var transition = $TransitionRect
 
+
+func load_json_data(filepath):
+	var json_data
+	var file_data = File.new()
+	file_data.open(filepath, File.READ)
+	json_data = JSON.parse(file_data.get_as_text())
+	return json_data.result
+
+
 func _ready():
+	var character_data = load_json_data("assets/data/characters.json")
+	for char_key in character_data:
+		CharacterData.characters[char_key] = character_data[char_key]
+
 	transition.fadeOut()
 
 
