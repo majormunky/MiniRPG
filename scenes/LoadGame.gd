@@ -69,7 +69,8 @@ func _on_LoadGameButton_pressed():
 
 		
 		# load the main game
-		var _error = get_tree().change_scene("res://scenes/Game.tscn")
+		var error = get_tree().change_scene("res://scenes/Game.tscn")
+		print(error)
 
 
 func _on_BackButton_pressed():

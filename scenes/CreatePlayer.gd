@@ -72,7 +72,8 @@ func create_save_game(user_name, char_type):
 		PlayerData.characters.append_array(save_data["characters"])
 		
 		# change to the game scene
-		var _error = get_tree().change_scene("res://scenes/Game.tscn")
+		var error = get_tree().change_scene("res://scenes/Game.tscn")
+		print(error)
 
 
 func _on_FinishButton_pressed():
