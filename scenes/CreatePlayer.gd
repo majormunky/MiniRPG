@@ -72,6 +72,7 @@ func create_save_game(user_name, char_type):
 		PlayerData.characters.append_array(save_data["characters"])
 		
 		# change to the game scene
+		print("about to run get_tree()")
 		var tree = get_tree()
 		print(tree)
 		var error = tree.change_scene("res://scenes/Game.tscn")
@@ -92,6 +93,7 @@ func _on_FinishButton_pressed():
 	
 	var char_list = CharacterData.characters.keys()
 	player_type = char_list[player_type[0]]
+	print("About to run create save game")
 	create_save_game(player_name, player_type)
 	
 
