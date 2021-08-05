@@ -81,6 +81,7 @@ func create_save_game(user_name, char_type):
 		print("after map y")
 		PlayerData.gold = save_data["gold"]
 		print("after gold")
+		PlayerData.characters = []
 		PlayerData.characters.append_array(save_data["characters"])
 		print("Finished setting up player data")
 		# change to the game scene
