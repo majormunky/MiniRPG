@@ -15,20 +15,25 @@ func _ready():
 
 func create_save_game(user_name, char_type):
 	# prep a file object
+	print("Starting create save game")
 	var save_game = File.new()
 	var char_type_info = CharacterData.characters[char_type]
 	
+	print("Have char type info", char_type_info)
 	# check to see if we already have a save with this name
 	if save_game.file_exists("user://savegame-" + user_name + ".save"):
+		print("save game already exists")
 		# we do, so we need to show an error
 		error_box.text = "Found existing character with that name"
 		
 		# and then bail out
 		return
 	else:
+		print("save game does not exist")
 		# build our save game string
 		var save_game_name = "savegame-" + user_name + ".save"
 		
+		print("creating save game with name: ", save_game_name)
 		# open the new file for saving
 		save_game.open("user://" + save_game_name, File.WRITE)
 		
@@ -62,6 +67,8 @@ func create_save_game(user_name, char_type):
 		}
 		save_game.store_line(to_json(save_data))
 		save_game.close()
+		
+		print("Saved game data to file")
 
 		# set our global player data with what the user has selected
 		PlayerData.player_name = user_name
@@ -70,7 +77,7 @@ func create_save_game(user_name, char_type):
 		PlayerData.load_y = save_data["current_location"]["y"]
 		PlayerData.gold = save_data["gold"]
 		PlayerData.characters.append_array(save_data["characters"])
-		
+		print("Finished setting up player data")
 		# change to the game scene
 		print("about to run get_tree()")
 		var tree = get_tree()
