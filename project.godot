@@ -47,6 +47,7 @@ gdscript/warnings/unused_signal=false
 window/size/width=1280
 window/size/height=800
 window/size/resizable=false
+window/dpi/allow_hidpi=true
 
 [input]
 
