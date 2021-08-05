@@ -69,13 +69,18 @@ func create_save_game(user_name, char_type):
 		save_game.close()
 		
 		print("Saved game data to file")
-
+		print(save_data)
 		# set our global player data with what the user has selected
 		PlayerData.player_name = user_name
+		print("after player name")
 		PlayerData.current_map = save_data["current_location"]["map"]
+		print("after current map")
 		PlayerData.load_x = save_data["current_location"]["x"]
+		print("after map x")
 		PlayerData.load_y = save_data["current_location"]["y"]
+		print("after map y")
 		PlayerData.gold = save_data["gold"]
+		print("after gold")
 		PlayerData.characters.append_array(save_data["characters"])
 		print("Finished setting up player data")
 		# change to the game scene
