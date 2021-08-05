@@ -13,7 +13,7 @@ signal player_inspected
 
 func _ready():
 	var main_char_type = PlayerData.characters[0].type
-	var char_type_data = ""
+	# var char_type_data = ""
 	if main_char_type == "Warrior":
 		sprite.region_rect.position.x = 48 * 4
 		sprite.region_rect.position.y = 48 * 4
