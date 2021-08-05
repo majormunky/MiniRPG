@@ -32,6 +32,7 @@ func _ready():
 	
 	# load npcs
 	print("Loading NPCs")
+	print(GameData.npcs)
 	for npc in npc_list:
 		# if an npc has joined our party
 		# then we don't want to load that npc when we load the game
