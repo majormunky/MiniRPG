@@ -5,6 +5,7 @@
         "attack": "3",
         "speed": 1,
         "stack_size": 1,
+        "slot": "weapon",
         "description": "A basic wooden sword, or maybe its a stick?"
     },
     "Health Potion": {
@@ -21,6 +22,7 @@
         "attack": "3",
         "speed": 1,
         "stack_size": 1,
+        "slot": "chest",
         "description": "A square of leather and some string"
     }
 }

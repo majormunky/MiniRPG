@@ -13,6 +13,7 @@ signal player_inspected
 
 func _ready():
 	var main_char_type = PlayerData.characters[0].type
+	# var char_type_data = ""
 	if main_char_type == "Warrior":
 		sprite.region_rect.position.x = 48 * 4
 		sprite.region_rect.position.y = 48 * 4
@@ -21,6 +22,9 @@ func _ready():
 		sprite.region_rect.position.y = 48 * 5
 	elif main_char_type == "Thief":
 		sprite.region_rect.position.x = 48 * 2
+		sprite.region_rect.position.y = 48 * 6
+	elif main_char_type == "Cleric":
+		sprite.region_rect.position.x = 48 * 3
 		sprite.region_rect.position.y = 48 * 6
 	update_map_limits()
 
@@ -40,6 +44,9 @@ func update_map_limits():
 
 
 func _physics_process(delta):
+	if GameData.dialog_open:
+		return
+
 	var input = Vector2.ZERO
 	
 	input.x = Input.get_action_strength("walk_right") - Input.get_action_strength("walk_left")
@@ -62,11 +69,14 @@ func add_item(item_data):
 	print("add item - player")
 	var test_item = item_data.item[0]
 	var item_stats = ItemData.items[test_item.item]
+	var add_health = null
+	if item_stats.has("add_health"):
+		add_health = item_stats["add_health"]
 	
 	var new_item = {
 		"stack_size": item_stats["stack_size"],
 		"category": item_stats["category"],
-		"add_health": item_stats["add_health"],
+		"add_health": add_health,
 		"description": item_stats["description"],
 		"image_name": item_stats["image_name"],
 		"id": test_item["id"],

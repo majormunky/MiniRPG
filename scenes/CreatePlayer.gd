@@ -6,24 +6,17 @@ onready var name_input = $MarginContainer/VBoxContainer/NameInput/TextEdit
 onready var error_box = $MarginContainer/VBoxContainer/ErrorText
 onready var transition = $TransitionRect
 
-var char_types = [
-	"Warrior",
-	"Mage",
-	"Thief",
-	"Cleric",
-]
-
 
 func _ready():
 	transition.fadeOut()
-	for item in char_types:
+	for item in CharacterData.characters:
 		char_type_menu.add_item(" " + item)
 		
-
 
 func create_save_game(user_name, char_type):
 	# prep a file object
 	var save_game = File.new()
+	var char_type_info = CharacterData.characters[char_type]
 	
 	# check to see if we already have a save with this name
 	if save_game.file_exists("user://savegame-" + user_name + ".save"):
@@ -56,12 +49,16 @@ func create_save_game(user_name, char_type):
 					"type": char_type, 
 					"character_name": user_name, 
 					"level": 1, 
-					"current_hp": 20, 
-					"max_hp": 20, 
+					"current_hp": char_type_info["max_hp"], 
+					"max_hp": char_type_info["max_hp"], 
 					"experience": 0,
+					"str": char_type_info["str"],
+					"dex": char_type_info["dex"],
+					"int": char_type_info["int"],
 					"profile_image": "assets/characters/" + char_type.to_lower() + ".png"
 				}
-			]
+			],
+			"npcs": {}
 		}
 		save_game.store_line(to_json(save_data))
 		save_game.close()
@@ -75,7 +72,7 @@ func create_save_game(user_name, char_type):
 		PlayerData.characters.append_array(save_data["characters"])
 		
 		# change to the game scene
-		get_tree().change_scene("res://scenes/Game.tscn")
+		var _error = get_tree().change_scene("res://scenes/Game.tscn")
 
 
 func _on_FinishButton_pressed():
@@ -90,11 +87,12 @@ func _on_FinishButton_pressed():
 		print("missing info")
 		return
 	
-	player_type = char_types[player_type[0]]
+	var char_list = CharacterData.characters.keys()
+	player_type = char_list[player_type[0]]
 	create_save_game(player_name, player_type)
 	
 
 func _on_BackButton_pressed():
 	transition.fadeIn()
 	yield(get_tree().create_timer(0.5), "timeout")
-	get_tree().change_scene("res://scenes/MainMenu.tscn")
+	var _error = get_tree().change_scene("res://scenes/MainMenu.tscn")
