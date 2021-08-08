@@ -56,7 +56,12 @@
                     "current_hp": 20,
                 }
             }
-        ]
+        ],
+        "monsters": {
+            "desert": [
+                {"name": "Slime"}
+            ]
+        }
     },
     "FirstTown": {
         "name": "First Town",
