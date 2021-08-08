@@ -160,4 +160,5 @@ func _on_WorldManager_chest_already_opened():
 
 func _on_WorldManager_enemy_spawn(data):
 	print("enemy spawned", data)
+	GameData.battle_data = data
 	var _error = get_tree().change_scene("res://scenes/BattleScene.tscn")
