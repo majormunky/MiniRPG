@@ -24,5 +24,5 @@ func _ready():
 	for cname in character_names:
 		player_list.add_item(" " + cname)
 
-	print("Battle Data", GameData.battle_type)
+	print("Battle Data", GameData.battle_data)
 

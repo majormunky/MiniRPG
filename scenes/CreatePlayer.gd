@@ -81,7 +81,7 @@ func create_save_game(user_name, char_type):
 		print("Finished setting up player data")
 		# change to the game scene
 		var tree = get_tree()
-		var error = tree.change_scene("res://scenes/Game.tscn")
+		var _error = tree.change_scene("res://scenes/Game.tscn")
 
 
 func _on_FinishButton_pressed():

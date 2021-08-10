@@ -123,7 +123,7 @@ func load_world(name):
 		print("LAST MAP", last_map)
 		var new_player_pos = data["teleports"][last_map]["from"]
 		emit_signal("new_player_position", new_player_pos)
-	
+
 	# Add map as a child
 	add_child(new_map)
 	
@@ -135,7 +135,9 @@ func load_world(name):
 	MapData.map_height = map_size.size.y
 	MapData.map_width = map_size.size.x
 	
-	# load npcs
+	# print("Loading enemies")
+	# print(data)
+	# MapData.dataenemies = data["monsters"]
 	
 	
 	new_map.connect("location_change", self, "on_location_change")
