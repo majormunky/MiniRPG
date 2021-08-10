@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var action_list = $Panel/MarginContainer/VBoxContainer/BattleInfo/CommandPanel/ActionList
+onready var action_list = $Panel/MarginContainer/VBoxContainer/BattleInfo/CommandPanel/VBoxContainer/ActionList
 onready var player_list = $Panel/MarginContainer/VBoxContainer/BattleInfo/PlayerListPanel/PlayerList
 onready var enemy_list = $Panel/MarginContainer/VBoxContainer/BattleInfo/EnemyList/VBoxContainer
 onready var right_arena = $Panel/MarginContainer/VBoxContainer/Arena/RightArena
@@ -38,7 +38,10 @@ func load_monsters(monster_list):
 	var rng = RandomNumberGenerator.new()
 
 	var test_monster = monster_list[0]
-	var monster_count = rng.randi_range(test_monster["spawn_count"]["min"], test_monster["spawn_count"]["max"])
+	var monster_count = rng.randi_range(
+		test_monster["spawn_count"]["min"],
+		test_monster["spawn_count"]["max"]
+	)
 	for i in range(monster_count):
 		var new_slime = Slime.instance()
 		monsters.append(new_slime)

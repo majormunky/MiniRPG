@@ -100,12 +100,30 @@ margin_right = 424.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
-[node name="ActionList" type="ItemList" parent="Panel/MarginContainer/VBoxContainer/BattleInfo/CommandPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/BattleInfo/CommandPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ActionList" type="ItemList" parent="Panel/MarginContainer/VBoxContainer/BattleInfo/CommandPanel/VBoxContainer"]
+margin_right = 424.0
+margin_bottom = 9.0
+auto_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/BattleInfo/CommandPanel/VBoxContainer"]
+margin_top = 13.0
+margin_right = 424.0
+margin_bottom = 42.0
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/BattleInfo/CommandPanel/VBoxContainer/HBoxContainer"]
+margin_right = 36.0
+margin_bottom = 29.0
+text = "Go"
 
 [node name="PlayerListPanel" type="Panel" parent="Panel/MarginContainer/VBoxContainer/BattleInfo"]
 margin_left = 428.0
