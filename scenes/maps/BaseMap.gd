@@ -13,6 +13,7 @@ onready var NPC = preload("res://scenes/characters/NPC.tscn")
 func _ready():
 	var chest_list = MapData.data[PlayerData.current_map].chests
 	var npc_list = MapData.data[PlayerData.current_map].npcs
+	var enemy_list = MapData.data[PlayerData.current_map].enemies
 	var chest_container = get_node("chests")
 	var npc_container = get_node("npcs")
 	
@@ -47,6 +48,9 @@ func _ready():
 		new_npc.setup(npc)
 		new_npc.connect("npc_starts_talking", self, "on_npc_start_talking")
 	print("Finished loading npcs")
+	
+	print("Loading enemies")
+	MapData.enemies = enemy_list
 
 
 func on_npc_start_talking(lines, npc_id):
