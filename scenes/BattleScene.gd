@@ -34,14 +34,15 @@ func _ready():
 	load_monsters(GameData.battle_data["extra"])
 
 func load_monsters(monster_list):
-	
 	var rng = RandomNumberGenerator.new()
+	rng.randomize()
 
 	var test_monster = monster_list[0]
 	var monster_count = rng.randi_range(
 		test_monster["spawn_count"]["min"],
 		test_monster["spawn_count"]["max"]
 	)
+
 	for i in range(monster_count):
 		var new_slime = Slime.instance()
 		monsters.append(new_slime)

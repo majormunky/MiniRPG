@@ -1,8 +1,8 @@
 extends Node2D
 
 onready var world_manager = $WorldManager
-onready var menu = $CanvasLayer/Menu
 onready var dialog = $CanvasLayer/Dialog
+onready var menu = $CanvasLayer/Menu
 onready var player = $Player
 onready var transition_rect = $CanvasLayer/TransitionRect
 
