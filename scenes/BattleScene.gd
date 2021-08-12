@@ -38,8 +38,22 @@ func _ready():
 func load_characters():
 	var slot1 = $Panel/MarginContainer/VBoxContainer/Arena/LeftArena/GridContainer/Slot1
 	var char1 = PlayerData.characters[0]
-
 	slot1.get_node("TextureRect").texture = load("res://" + char1.profile_image)
+	
+	if len(PlayerData.characters) > 1:
+		var slot2 = $Panel/MarginContainer/VBoxContainer/Arena/LeftArena/GridContainer/Slot2
+		var char2 = PlayerData.characters[1]
+		slot2.get_node("TextureRect").texture = load("res://" + char2.profile_image)
+	
+	if len(PlayerData.characters) > 2:
+		var slot3 = $Panel/MarginContainer/VBoxContainer/Arena/LeftArena/GridContainer/Slot3
+		var char3 = PlayerData.characters[2]
+		slot3.get_node("TextureRect").texture = load("res://" + char3.profile_image)
+	
+	if len(PlayerData.characters) > 3:
+		var slot4 = $Panel/MarginContainer/VBoxContainer/Arena/LeftArena/GridContainer/Slot4
+		var char4 = PlayerData.characters[3]
+		slot4.get_node("TextureRect").texture = load("res://" + char4.profile_image)
 
 func load_monsters(monster_list):
 	var rng = RandomNumberGenerator.new()
@@ -63,3 +77,4 @@ func load_monsters(monster_list):
 		enemy_list.add_child(new_battle_item)
 		new_battle_item.setup({"monster_name": "Slime"})
 
+ 
