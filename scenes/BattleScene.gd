@@ -32,6 +32,14 @@ func _ready():
 		player_list.add_item(" " + cname)
 	
 	load_monsters(GameData.battle_data["extra"])
+	load_characters()
+
+
+func load_characters():
+	var slot1 = $Panel/MarginContainer/VBoxContainer/Arena/LeftArena/GridContainer/Slot1
+	var char1 = PlayerData.characters[0]
+
+	slot1.get_node("TextureRect").texture = load("res://" + char1.profile_image)
 
 func load_monsters(monster_list):
 	var rng = RandomNumberGenerator.new()
@@ -54,3 +62,4 @@ func load_monsters(monster_list):
 
 		enemy_list.add_child(new_battle_item)
 		new_battle_item.setup({"monster_name": "Slime"})
+
