@@ -13,6 +13,11 @@ func _ready():
 	player.update_map_limits()
 	transition_rect.visible = true
 	dialog.connect("question_response", self, "on_question_response")
+	if GameData.player_position_before_battle:
+		print("Found position for player")
+		player.position = GameData.player_position_before_battle
+		player.position.y += 32
+		GameData.player_position_before_battle = null
 
 
 func _input(event):
@@ -161,6 +166,9 @@ func _on_WorldManager_chest_already_opened():
 func _on_WorldManager_enemy_spawn(data):
 	print("enemy spawned", data)
 	print("Enemy Data from Map", MapData.data["World"].monsters)
+	# save the current user location on the map so we can go back to it after the battle
+	GameData.player_position_before_battle = player.position
+	
 	data["extra"] = MapData.data["World"].monsters[data["ground_type"]]
 	GameData.battle_data = data
 	var _error = get_tree().change_scene("res://scenes/BattleScene.tscn")
