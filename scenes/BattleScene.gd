@@ -82,6 +82,18 @@ func load_monsters(monster_list):
 func on_action_flee():
 	get_tree().change_scene("res://scenes/Game.tscn")
 
+
+func on_action_fight():
+	print("Fight!")
+
+
+func on_action_items():
+	print("Items!")
+
+
+func on_action_magic():
+	print("Magic!")
+
  
 func _on_ActionButton_pressed():
 	var selected_action = action_list.get_selected_items()
@@ -92,4 +104,10 @@ func _on_ActionButton_pressed():
 	
 	if selected_action == "Flee":
 		on_action_flee()
+	elif selected_action == "Fight":
+		on_action_fight()
+	elif selected_action == "Magic":
+		on_action_magic()
+	elif selected_action == "Items":
+		on_action_items()
 
