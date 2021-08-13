@@ -8,17 +8,17 @@ onready var right_arena = $Panel/MarginContainer/VBoxContainer/Arena/RightArena
 onready var Slime = preload("res://scenes/enemies/Slime.tscn")
 onready var BattleItem = preload("res://scenes/BattleItem.tscn")
 var monsters = []
-
+var player_actions = [
+	"Fight",
+	"Items",
+	"Magic",
+	"Flee"
+]
 
 func _ready():
-	var test_actions = [
-		"Fight",
-		"Items",
-		"Magic",
-		"Flee"
-	]
 	
-	for action in test_actions:
+	
+	for action in player_actions:
 		action_list.add_item(" " + action)
 	
 	var character_data = {}
@@ -39,6 +39,7 @@ func load_characters():
 	var slot1 = $Panel/MarginContainer/VBoxContainer/Arena/LeftArena/GridContainer/Slot1
 	var char1 = PlayerData.characters[0]
 	slot1.get_node("TextureRect").texture = load("res://" + char1.profile_image)
+	slot1.get_node("HighlightTexture").visible = true
 	
 	if len(PlayerData.characters) > 1:
 		var slot2 = $Panel/MarginContainer/VBoxContainer/Arena/LeftArena/GridContainer/Slot2
@@ -77,4 +78,18 @@ func load_monsters(monster_list):
 		enemy_list.add_child(new_battle_item)
 		new_battle_item.setup({"monster_name": "Slime"})
 
+
+func on_action_flee():
+	get_tree().change_scene("res://scenes/Game.tscn")
+
  
+func _on_ActionButton_pressed():
+	var selected_action = action_list.get_selected_items()
+	if selected_action:
+		selected_action = player_actions[selected_action[0]]
+	else:
+		return
+	
+	if selected_action == "Flee":
+		on_action_flee()
+
