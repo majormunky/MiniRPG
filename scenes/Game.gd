@@ -24,8 +24,7 @@ func _input(event):
 	if event.is_action_pressed("menu"):
 		if menu.visible:
 			print("close menu")
-			menu.visible = false
-			menu._on_ItemList_item_selected(0)
+			menu.close_menu()
 			get_tree().paused = false
 		else:
 			menu.visible = true

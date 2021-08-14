@@ -28,6 +28,12 @@ func _ready():
 	item_list.select(0)
 
 
+func close_menu():
+	visible = false
+	equip_modal.visible = false
+	_on_ItemList_item_selected(0)
+
+
 func _on_ItemList_item_selected(index):
 	print("Running item list selected")
 	selected = index
