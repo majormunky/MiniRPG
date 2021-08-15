@@ -24,7 +24,6 @@
         "slot": "chest",
         "description": "A square of leather and some string"
     },
-
     "Cloth Armor": {
         "category": "armor",
         "image_name": "armor_06.png",
@@ -32,5 +31,13 @@
         "stack_size": 1,
         "slot": "chest",
         "description": "Just some thread"
+    },
+    "Iron Armor": {
+        "category": "armor",
+        "image_name": "armor_06.png",
+        "defense": 5,
+        "stack_size": 1,
+        "slot": "chest",
+        "description": "Some basic armor made with iron"
     }
 }
