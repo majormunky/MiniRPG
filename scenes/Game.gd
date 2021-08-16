@@ -5,6 +5,7 @@ onready var dialog = $CanvasLayer/Dialog
 onready var menu = $CanvasLayer/Menu
 onready var player = $Player
 onready var transition_rect = $CanvasLayer/TransitionRect
+onready var area_label = $CanvasLayer/AreaLabelPanel
 
 var remove_npc = false
 
@@ -18,6 +19,14 @@ func _ready():
 		player.position = GameData.player_position_before_battle
 		player.position.y += 32
 		GameData.player_position_before_battle = null
+	show_area_label(PlayerData.current_map)
+
+
+func show_area_label(map_name):
+	area_label.get_node("Label").text = map_name
+	area_label.visible = true
+	yield(get_tree().create_timer(2.0), "timeout")
+	area_label.visible = false
 
 
 func _input(event):
@@ -50,6 +59,7 @@ func _on_WorldManager_after_map_change(map_name):
 	transition_rect.fadeOut()
 	get_tree().paused = false
 	player.update_map_limits()
+	show_area_label(map_name)
 
 
 func _on_Menu_save_game():
