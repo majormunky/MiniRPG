@@ -37,6 +37,7 @@ MapData="*res://scripts/MapData.gd"
 ItemData="*res://scripts/ItemData.gd"
 GameData="*res://scripts/GameData.gd"
 CharacterData="*res://scripts/CharacterData.gd"
+MonsterData="*res://scripts/MonsterData.gd"
 
 [debug]
 
