@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/48pt-theme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/BattleScene.gd" type="Script" id=2]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=3]
-[ext_resource path="res://scenes/BattleItem.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/battle-highlight.png" type="Texture" id=5]
 [ext_resource path="res://assets/characters/cleric.png" type="Texture" id=6]
 
@@ -245,9 +244,20 @@ margin_right = 852.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
 
-[node name="PlayerList" type="ItemList" parent="Panel/MarginContainer/VBoxContainer/BattleInfo/PlayerListPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/BattleInfo/PlayerListPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/margin_right = 32
+custom_constants/margin_left = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerList" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/BattleInfo/PlayerListPanel/MarginContainer"]
+margin_left = 32.0
+margin_right = 392.0
+margin_bottom = 200.0
+custom_constants/separation = 40
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -259,14 +269,12 @@ margin_bottom = 200.0
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/BattleInfo/EnemyList"]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_constants/separation = 32
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="BattleItem" parent="Panel/MarginContainer/VBoxContainer/BattleInfo/EnemyList/VBoxContainer" instance=ExtResource( 4 )]
 
 [node name="BattleOverPanel" type="PopupPanel" parent="."]
 anchor_right = 1.0
@@ -278,6 +286,10 @@ size_flags_vertical = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="BattleOverPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

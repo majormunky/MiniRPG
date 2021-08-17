@@ -1,11 +1,12 @@
 extends Node2D
 
 onready var action_list = $Panel/MarginContainer/VBoxContainer/BattleInfo/CommandPanel/VBoxContainer/ActionList
-onready var player_list = $Panel/MarginContainer/VBoxContainer/BattleInfo/PlayerListPanel/PlayerList
+onready var player_list = $Panel/MarginContainer/VBoxContainer/BattleInfo/PlayerListPanel/MarginContainer/PlayerList
 onready var enemy_list = $Panel/MarginContainer/VBoxContainer/BattleInfo/EnemyList/VBoxContainer
 onready var right_arena = $Panel/MarginContainer/VBoxContainer/Arena/RightArena
 onready var battle_over_panel = $BattleOverPanel
 
+onready var PlayerBattleItem = preload("res://scenes/battle/PlayerBattleItem.tscn")
 onready var Slime = preload("res://scenes/enemies/Slime.tscn")
 onready var BattleItem = preload("res://scenes/BattleItem.tscn")
 var monsters = []
@@ -32,7 +33,10 @@ func _ready():
 	var character_names = character_data.keys()
 	
 	for cname in character_names:
-		player_list.add_item(" " + cname)
+		# player_list.add_item(" " + cname)
+		var player_item = PlayerBattleItem.instance()
+		player_list.add_child(player_item)
+		player_item.setup({"character_name": cname})
 	
 	load_monsters()
 	load_characters()
