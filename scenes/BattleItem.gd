@@ -13,5 +13,10 @@ func setup(mon_name, data):
 	update_label()
 
 
+func health_changed(new_value):
+	current_health = new_value
+	update_label()
+
+
 func update_label():
 	monster_name_label.text = monster_name + " - " + str(current_health) + "/" + str(max_health)

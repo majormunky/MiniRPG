@@ -8,6 +8,8 @@ onready var right_arena = $Panel/MarginContainer/VBoxContainer/Arena/RightArena
 onready var Slime = preload("res://scenes/enemies/Slime.tscn")
 onready var BattleItem = preload("res://scenes/BattleItem.tscn")
 var monsters = []
+var battle_items = []
+
 var player_actions = [
 	"Fight",
 	"Items",
@@ -56,6 +58,7 @@ func load_characters():
 		var char4 = PlayerData.characters[3]
 		slot4.get_node("TextureRect").texture = load("res://" + char4.profile_image)
 
+
 func load_monsters():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -64,6 +67,7 @@ func load_monsters():
 	
 	var test_monster = monster_list[0]
 	var monster_name = test_monster["name"]
+	var monster_data = MonsterData.monsters[monster_name]
 	var monster_count = rng.randi_range(
 		test_monster["spawn_count"]["min"],
 		test_monster["spawn_count"]["max"]
@@ -73,16 +77,20 @@ func load_monsters():
 		
 		var new_monster = Slime.instance()
 		monsters.append(new_monster)
+		new_monster.health = monster_data["max_hp"]
+		new_monster.monster_id = i
+		
+		new_monster.connect("monster_died", self, "on_monster_died")
+		new_monster.connect("monster_health_changed", self, "on_monster_health_changed")
 		
 		right_arena.add_child(new_monster)
 		new_monster.position.y = i * 50
-		
-		var monster_data = MonsterData.monsters[monster_name]
 		
 		var new_battle_item = BattleItem.instance()
 
 		enemy_list.add_child(new_battle_item)
 		new_battle_item.setup(monster_name, monster_data)
+		battle_items.append(new_battle_item)
 
 
 func on_action_flee():
@@ -91,7 +99,17 @@ func on_action_flee():
 
 func on_action_fight():
 	print("Fight!")
-
+	# for now lets just grab the first monster in our list
+	var target_monster = monsters.front()
+	if target_monster:
+		var dmg = 6
+		target_monster.take_damage(dmg)
+	else:
+		print("Unable to find monster")
+		print(monsters)
+		print(monsters.front())
+		print(monsters[0])
+	
 
 func on_action_items():
 	print("Items!")
@@ -117,3 +135,17 @@ func _on_ActionButton_pressed():
 	elif selected_action == "Items":
 		on_action_items()
 
+
+func on_monster_died(monster_id):
+	print("monster died!", monster_id)
+	battle_items[monster_id].visible = false
+	
+	for monster in monsters:
+		if monster.monster_id == monster_id:
+			monsters.erase(monster)
+
+
+
+func on_monster_health_changed(monster_id, new_amount):
+	battle_items[monster_id].health_changed(new_amount)
+	print("monster " + str(monster_id) + " health: ", new_amount)
