@@ -4,6 +4,7 @@ onready var action_list = $Panel/MarginContainer/VBoxContainer/BattleInfo/Comman
 onready var player_list = $Panel/MarginContainer/VBoxContainer/BattleInfo/PlayerListPanel/PlayerList
 onready var enemy_list = $Panel/MarginContainer/VBoxContainer/BattleInfo/EnemyList/VBoxContainer
 onready var right_arena = $Panel/MarginContainer/VBoxContainer/Arena/RightArena
+onready var battle_over_panel = $BattleOverPanel
 
 onready var Slime = preload("res://scenes/enemies/Slime.tscn")
 onready var BattleItem = preload("res://scenes/BattleItem.tscn")
@@ -143,9 +144,15 @@ func on_monster_died(monster_id):
 	for monster in monsters:
 		if monster.monster_id == monster_id:
 			monsters.erase(monster)
-
+	
+	if len(monsters) == 0:
+		battle_over_panel.popup()
 
 
 func on_monster_health_changed(monster_id, new_amount):
 	battle_items[monster_id].health_changed(new_amount)
 	print("monster " + str(monster_id) + " health: ", new_amount)
+
+
+func _on_BackToGameButton_pressed():
+	get_tree().change_scene("res://scenes/Game.tscn")

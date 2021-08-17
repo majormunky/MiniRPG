@@ -268,4 +268,47 @@ __meta__ = {
 
 [node name="BattleItem" parent="Panel/MarginContainer/VBoxContainer/BattleInfo/EnemyList/VBoxContainer" instance=ExtResource( 4 )]
 
+[node name="BattleOverPanel" type="PopupPanel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1280, 800 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BattleOverPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="BattleOverPanel/VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 54.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="BattleOverPanel/VBoxContainer/CenterContainer"]
+margin_left = 553.0
+margin_right = 726.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+theme = ExtResource( 3 )
+text = "You Won"
+align = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="BattleOverPanel/VBoxContainer"]
+margin_top = 58.0
+margin_right = 1280.0
+margin_bottom = 87.0
+
+[node name="BackToGameButton" type="Button" parent="BattleOverPanel/VBoxContainer/CenterContainer2"]
+margin_left = 561.0
+margin_right = 719.0
+margin_bottom = 29.0
+theme = ExtResource( 1 )
+text = "Back to Game"
+
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/BattleInfo/CommandPanel/VBoxContainer/HBoxContainer/ActionButton" to="." method="_on_ActionButton_pressed"]
+[connection signal="pressed" from="BattleOverPanel/VBoxContainer/CenterContainer2/BackToGameButton" to="." method="_on_BackToGameButton_pressed"]
