@@ -31,7 +31,7 @@ func _ready():
 	for cname in character_names:
 		player_list.add_item(" " + cname)
 	
-	load_monsters(GameData.battle_data["extra"])
+	load_monsters()
 	load_characters()
 
 
@@ -56,27 +56,33 @@ func load_characters():
 		var char4 = PlayerData.characters[3]
 		slot4.get_node("TextureRect").texture = load("res://" + char4.profile_image)
 
-func load_monsters(monster_list):
+func load_monsters():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-
+	
+	var monster_list = GameData.battle_data["extra"]
+	
 	var test_monster = monster_list[0]
+	var monster_name = test_monster["name"]
 	var monster_count = rng.randi_range(
 		test_monster["spawn_count"]["min"],
 		test_monster["spawn_count"]["max"]
 	)
 
 	for i in range(monster_count):
-		var new_slime = Slime.instance()
-		monsters.append(new_slime)
 		
-		right_arena.add_child(new_slime)
-		new_slime.position.y = i * 50
+		var new_monster = Slime.instance()
+		monsters.append(new_monster)
+		
+		right_arena.add_child(new_monster)
+		new_monster.position.y = i * 50
+		
+		var monster_data = MonsterData.monsters[monster_name]
 		
 		var new_battle_item = BattleItem.instance()
 
 		enemy_list.add_child(new_battle_item)
-		new_battle_item.setup({"monster_name": "Slime"})
+		new_battle_item.setup(monster_name, monster_data)
 
 
 func on_action_flee():
