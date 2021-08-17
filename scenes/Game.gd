@@ -178,6 +178,9 @@ func _on_WorldManager_enemy_spawn(data):
 	# save the current user location on the map so we can go back to it after the battle
 	GameData.player_position_before_battle = player.position
 	
+	# a bunch of nonsense i need to clean up
+	# BUG: When we load the map initially, this works
+	# but if we go to another map, and come back, we get an error
 	var ground_type = data["ground_type"]
 	var monster_name = MapData.data["World"].monsters[ground_type][0]["name"]
 	var monster_data = MonsterData.monsters[monster_name]
