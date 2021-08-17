@@ -36,7 +36,8 @@ func _ready():
 		# player_list.add_item(" " + cname)
 		var player_item = PlayerBattleItem.instance()
 		player_list.add_child(player_item)
-		player_item.setup({"character_name": cname})
+		# print(character_data[cname])
+		player_item.setup(character_data[cname])
 	
 	load_monsters()
 	load_characters()

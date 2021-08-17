@@ -28,7 +28,7 @@ rect_min_size = Vector2( 150, 0 )
 text = "Player Name"
 valign = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer"]
+[node name="HealthBar" type="ProgressBar" parent="HBoxContainer"]
 margin_left = 154.0
 margin_right = 360.0
 margin_bottom = 23.0
