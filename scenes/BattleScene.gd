@@ -2,7 +2,7 @@ extends Node2D
 
 onready var action_list = $Panel/MarginContainer/VBoxContainer/BattleInfo/CommandPanel/VBoxContainer/ActionList
 onready var player_list = $Panel/MarginContainer/VBoxContainer/BattleInfo/PlayerListPanel/MarginContainer/PlayerList
-onready var enemy_list = $Panel/MarginContainer/VBoxContainer/BattleInfo/EnemyList/VBoxContainer
+onready var enemy_list = $Panel/MarginContainer/VBoxContainer/BattleInfo/EnemyList/MarginContainer/VBoxContainer
 onready var right_arena = $Panel/MarginContainer/VBoxContainer/Arena/RightArena
 onready var battle_over_panel = $BattleOverPanel
 

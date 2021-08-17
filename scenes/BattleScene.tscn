@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/48pt-theme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/BattleScene.gd" type="Script" id=2]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=3]
 [ext_resource path="res://assets/battle-highlight.png" type="Texture" id=5]
 [ext_resource path="res://assets/characters/cleric.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.172549, 0.164706, 0.196078, 1 )
 
 [node name="BattleScene" type="Node2D"]
 script = ExtResource( 2 )
@@ -248,6 +251,7 @@ size_flags_horizontal = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/margin_right = 32
+custom_constants/margin_top = 32
 custom_constants/margin_left = 32
 __meta__ = {
 "_edit_use_anchors_": false
@@ -255,6 +259,7 @@ __meta__ = {
 
 [node name="PlayerList" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/BattleInfo/PlayerListPanel/MarginContainer"]
 margin_left = 32.0
+margin_top = 32.0
 margin_right = 392.0
 margin_bottom = 200.0
 custom_constants/separation = 40
@@ -267,10 +272,23 @@ margin_left = 856.0
 margin_right = 1280.0
 margin_bottom = 200.0
 size_flags_horizontal = 3
+custom_styles/panel = SubResource( 1 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/BattleInfo/EnemyList"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/BattleInfo/EnemyList"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/BattleInfo/EnemyList/MarginContainer"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 392.0
+margin_bottom = 200.0
 custom_constants/separation = 32
 __meta__ = {
 "_edit_use_anchors_": false

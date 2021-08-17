@@ -5,15 +5,30 @@
 
 [node name="BattleItem" type="Control"]
 margin_right = 40.0
+rect_min_size = Vector2( 360, 0 )
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MonsterName" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 23.0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MonsterName" type="Label" parent="HBoxContainer"]
+margin_right = 150.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 150, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="ProgressBar" parent="HBoxContainer"]
+margin_left = 154.0
+margin_right = 360.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
