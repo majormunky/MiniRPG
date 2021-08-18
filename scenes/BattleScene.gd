@@ -109,6 +109,8 @@ func on_action_fight():
 	# for now lets just grab the first monster in our list
 	var target_monster = monsters.front()
 	if target_monster:
+		var current_char_data = character_data[current_turn]
+		# we need to use the current char data to calculate damage
 		var dmg = 6
 		target_monster.take_damage(dmg)
 	else:
@@ -154,6 +156,7 @@ func select_next_character():
 	current_turn = character_names[current_index]
 	update_highlight()
 
+
 func update_highlight():
 	var slot1 = get_node("Panel/MarginContainer/VBoxContainer/Arena/LeftArena/GridContainer/Slot1")
 	var slot2 = get_node("Panel/MarginContainer/VBoxContainer/Arena/LeftArena/GridContainer/Slot2")
@@ -175,6 +178,7 @@ func update_highlight():
 		slot3.get_node("HighlightTexture").visible = true
 	elif current_index == 3:
 		slot4.get_node("HighlightTexture").visible = true
+
 
 func on_monster_died(monster_id):
 	print("monster died!", monster_id)

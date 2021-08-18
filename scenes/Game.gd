@@ -142,6 +142,7 @@ func on_question_response(answer):
 	if npc_data:
 		if answer["action"] == "join_party":
 			var char_type = npc_data["party_data"]["job"]
+			var char_data = CharacterData.characters[char_type]
 			PlayerData.characters.append({
 				"type": char_type, 
 				"character_name": npc_data["name"], 
@@ -149,7 +150,10 @@ func on_question_response(answer):
 				"current_hp": npc_data["party_data"]["current_hp"], 
 				"max_hp": npc_data["party_data"]["max_hp"], 
 				"experience": 0,
-				"profile_image": "assets/characters/" + char_type.to_lower() + ".png"
+				"profile_image": "assets/characters/" + char_type.to_lower() + ".png",
+				"dex": char_data["dex"],
+				"str": char_data["str"],
+				"int": char_data["int"],
 			})
 			GameData.npcs[answer["npc"]] = {"state": "joined-party"}
 			remove_npc = true
