@@ -11,6 +11,7 @@ onready var Slime = preload("res://scenes/enemies/Slime.tscn")
 onready var BattleItem = preload("res://scenes/BattleItem.tscn")
 var monsters = []
 var battle_items = []
+var current_turn = null
 
 var player_actions = [
 	"Fight",
@@ -18,19 +19,19 @@ var player_actions = [
 	"Magic",
 	"Flee"
 ]
+var character_data = {}
 
 func _ready():
-	
-	
 	for action in player_actions:
 		action_list.add_item(" " + action)
-	
-	var character_data = {}
+
 	for character in PlayerData.characters:
 		var char_name = character["character_name"]
 		character_data[char_name] = character
 	
 	var character_names = character_data.keys()
+
+	current_turn = character_names.front()
 	
 	for cname in character_names:
 		# player_list.add_item(" " + cname)
@@ -141,6 +142,39 @@ func _on_ActionButton_pressed():
 	elif selected_action == "Items":
 		on_action_items()
 
+	select_next_character()
+
+
+func select_next_character():
+	var character_names = character_data.keys()
+	var current_index = character_names.find(current_turn)
+	current_index += 1
+	if current_index >= len(character_names):
+		current_index = 0
+	current_turn = character_names[current_index]
+	update_highlight()
+
+func update_highlight():
+	var slot1 = get_node("Panel/MarginContainer/VBoxContainer/Arena/LeftArena/GridContainer/Slot1")
+	var slot2 = get_node("Panel/MarginContainer/VBoxContainer/Arena/LeftArena/GridContainer/Slot2")
+	var slot3 = get_node("Panel/MarginContainer/VBoxContainer/Arena/LeftArena/GridContainer/Slot3")
+	var slot4 = get_node("Panel/MarginContainer/VBoxContainer/Arena/LeftArena/GridContainer/Slot4")
+	
+	slot1.get_node("HighlightTexture").visible = false
+	slot2.get_node("HighlightTexture").visible = false
+	slot3.get_node("HighlightTexture").visible = false
+	slot4.get_node("HighlightTexture").visible = false
+	
+	var character_names = character_data.keys()
+	var current_index = character_names.find(current_turn)
+	if current_index == 0:
+		slot1.get_node("HighlightTexture").visible = true
+	elif current_index == 1:
+		slot2.get_node("HighlightTexture").visible = true
+	elif current_index == 2:
+		slot3.get_node("HighlightTexture").visible = true
+	elif current_index == 3:
+		slot4.get_node("HighlightTexture").visible = true
 
 func on_monster_died(monster_id):
 	print("monster died!", monster_id)
