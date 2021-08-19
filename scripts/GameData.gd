@@ -8,3 +8,4 @@ var player_position_before_battle = null
 
 var character_data = {}
 var monster_data = {}
+var item_data = {}

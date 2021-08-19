@@ -38,7 +38,7 @@ func _ready():
 		maps[world_key] = load(map_path)
 		MapData.data[world_key] = map_data[world_key]
 	
-	ItemData.items = item_data
+	GameData.item_data = item_data
 	
 	load_world(PlayerData.current_map)
 	emit_signal("new_player_position", {"x": PlayerData.load_x, "y": PlayerData.load_y})
