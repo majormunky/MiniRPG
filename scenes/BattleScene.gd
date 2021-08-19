@@ -74,7 +74,7 @@ func load_monsters():
 	
 	var test_monster = monster_list[0]
 	var monster_name = test_monster["name"]
-	var monster_data = MonsterData.monsters[monster_name]
+	var monster_data = GameData.monster_data[monster_name]
 	var monster_count = rng.randi_range(
 		test_monster["spawn_count"]["min"],
 		test_monster["spawn_count"]["max"]

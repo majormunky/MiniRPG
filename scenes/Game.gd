@@ -187,7 +187,7 @@ func _on_WorldManager_enemy_spawn(data):
 	# but if we go to another map, and come back, we get an error
 	var ground_type = data["ground_type"]
 	var monster_name = MapData.data["World"].monsters[ground_type][0]["name"]
-	var monster_data = MonsterData.monsters[monster_name]
+	var monster_data = GameData.monster_data[monster_name]
 	
 	data["monster_info"] = monster_data
 	data["extra"] = MapData.data["World"].monsters[data["ground_type"]]

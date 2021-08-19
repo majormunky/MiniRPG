@@ -20,7 +20,7 @@ func _ready():
 	
 	var monster_data = load_json_data("res://assets/data/monsters.json")
 	for monster_key in monster_data:
-		MonsterData.monsters[monster_key] = monster_data[monster_key]
+		GameData.monster_data[monster_key] = monster_data[monster_key]
 
 	transition.fadeOut()
 
