@@ -9,7 +9,7 @@ onready var transition = $TransitionRect
 
 func _ready():
 	transition.fadeOut()
-	for item in CharacterData.characters:
+	for item in GameData.character_data:
 		char_type_menu.add_item(" " + item)
 		
 
@@ -17,7 +17,7 @@ func create_save_game(user_name, char_type):
 	# prep a file object
 	print("Starting create save game")
 	var save_game = File.new()
-	var char_type_info = CharacterData.characters[char_type]
+	var char_type_info = GameData.character_data[char_type]
 	
 	print("Have char type info", char_type_info)
 	# check to see if we already have a save with this name
@@ -96,7 +96,7 @@ func _on_FinishButton_pressed():
 		print("missing info")
 		return
 	
-	var char_list = CharacterData.characters.keys()
+	var char_list = GameData.character_data.keys()
 	player_type = char_list[player_type[0]]
 	print("About to run create save game")
 	create_save_game(player_name, player_type)

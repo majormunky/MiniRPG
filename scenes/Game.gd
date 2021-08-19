@@ -142,7 +142,7 @@ func on_question_response(answer):
 	if npc_data:
 		if answer["action"] == "join_party":
 			var char_type = npc_data["party_data"]["job"]
-			var char_data = CharacterData.characters[char_type]
+			var char_data = GameData.character_data[char_type]
 			PlayerData.characters.append({
 				"type": char_type, 
 				"character_name": npc_data["name"], 

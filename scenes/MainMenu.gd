@@ -16,7 +16,7 @@ func _ready():
 	print("Main Menu Ready")
 	var character_data = load_json_data("res://assets/data/characters.json")
 	for char_key in character_data:
-		CharacterData.characters[char_key] = character_data[char_key]
+		GameData.character_data[char_key] = character_data[char_key]
 	
 	var monster_data = load_json_data("res://assets/data/monsters.json")
 	for monster_key in monster_data:
