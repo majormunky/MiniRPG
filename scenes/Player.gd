@@ -83,6 +83,7 @@ func add_item(item_data):
 		"item_name": test_item["item"],
 		"quantity": test_item["quantity"],
 		"consumable_type": null,
+		"slot": item_stats["slot"],
 	}
 	if item_stats["category"] == "Consumable":
 		new_item["consumable_type"] = item_stats["consumable_type"]

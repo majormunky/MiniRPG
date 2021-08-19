@@ -594,5 +594,6 @@ text = "Close"
 [connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Arms/ArmsChangeButton" to="." method="_on_ArmsChangeButton_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Legs/LegsChangeButton" to="." method="_on_LegsChangeButton_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Boots/BootsChangeButton" to="." method="_on_BootsChangeButton_pressed"]
+[connection signal="character_equipped_item" from="MarginContainer/EquipModal" to="." method="_on_EquipModal_character_equipped_item"]
 [connection signal="pressed" from="MarginContainer/EquipModal/VBoxContainer/HBoxContainer/EquipButton" to="MarginContainer/EquipModal" method="_on_EquipButton_pressed"]
 [connection signal="pressed" from="MarginContainer/EquipModal/VBoxContainer/HBoxContainer/CloseButton" to="MarginContainer/EquipModal" method="_on_CloseButton_pressed"]

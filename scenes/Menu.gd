@@ -207,3 +207,10 @@ func _on_LegsChangeButton_pressed():
 
 func _on_BootsChangeButton_pressed():
 	equip_item("Boots")
+
+
+func _on_EquipModal_character_equipped_item(item_name, slot_name):
+	print("In Menu, Character Equipped Item", item_name, slot_name)
+	equip_modal.visible = false
+	var equipped_container = $MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer
+	equipped_container.find_node(slot_name).get_node("Data").text = item_name
