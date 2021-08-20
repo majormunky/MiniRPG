@@ -48,9 +48,6 @@ func _ready():
 		new_npc.setup(npc)
 		new_npc.connect("npc_starts_talking", self, "on_npc_start_talking")
 	print("Finished loading npcs")
-	
-	print("Loading enemies")
-	MapData.data["World"].monsters = enemy_list
 
 
 func on_npc_start_talking(lines, npc_id):

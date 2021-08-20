@@ -15,6 +15,8 @@ func _ready():
 	transition_rect.visible = true
 	dialog.connect("question_response", self, "on_question_response")
 	if GameData.player_position_before_battle:
+		# if this is set, it means we went into battle and have a position
+		# ready to go back to when we are done with the battle
 		print("Found position for player")
 		player.position = GameData.player_position_before_battle
 		player.position.y += 32
@@ -171,7 +173,6 @@ func _on_WorldManager_npc_dialog(lines, npc_id):
 		dialog.open_dialog(lines, npc_id)
 
 
-
 func _on_WorldManager_chest_already_opened():
 	dialog.close_dialog()
 
@@ -183,9 +184,8 @@ func _on_WorldManager_enemy_spawn(data):
 	GameData.player_position_before_battle = player.position
 	
 	# a bunch of nonsense i need to clean up
-	# BUG: When we load the map initially, this works
-	# but if we go to another map, and come back, we get an error
 	var ground_type = data["ground_type"]
+
 	var monster_name = MapData.data["World"].monsters[ground_type][0]["name"]
 	var monster_data = GameData.monster_data[monster_name]
 	

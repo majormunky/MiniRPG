@@ -134,17 +134,9 @@ func load_world(name):
 	var map_size = calculate_bounds(new_map.get_node("TileMap"))
 	MapData.map_height = map_size.size.y
 	MapData.map_width = map_size.size.x
-	
-	# print("Loading enemies")
-	# print(data)
-	# MapData.dataenemies = data["monsters"]
-	
-	
+
 	new_map.connect("location_change", self, "on_location_change")
 	new_map.connect("chest_opened", self, "on_chest_opened")
 	new_map.connect("chest_already_opened", self, "on_chest_already_opened")
 	new_map.connect("npc_dialog", self, "on_npc_dialog")
 	new_map.connect("enemy_spawn", self, "on_enemy_spawn")
-	
-	
-	# new_map.connect("set_player_position", self, "on_set_player_position")
