@@ -15,6 +15,7 @@
         "stack_size": 99,
         "description": "A potion to replenish health",
         "consumable_type": "health",
+        "slot": null
     },
     "Leather Armor": {
         "category": "armor",
