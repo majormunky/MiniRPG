@@ -35,6 +35,9 @@ func open():
 func _on_Area2D_area_entered(_area):
 	print("Chest interacted with")
 	if state == CLOSED:
+		if GameData.dialog_open:
+			print("A dialog is open, bail out here and not open the chest")
+			return
 		open()
 		update_sprite()
 		var data = {
@@ -43,4 +46,5 @@ func _on_Area2D_area_entered(_area):
 		}
 		emit_signal("chest_opened", data)
 	elif state == OPEN:
+		print("Emitting signal - chest_already_opened")
 		emit_signal("chest_already_opened")

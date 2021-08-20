@@ -110,5 +110,3 @@ func add_item(item_data):
 	if found_spot == false:
 		# just add this as a new item
 		PlayerData.inventory.append(new_item)
-
-	print(PlayerData.inventory)
