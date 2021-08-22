@@ -237,4 +237,5 @@ func _on_EquipModal_character_equipped_item(item_name, slot_name):
 	for character in PlayerData.characters:
 		if character["character_name"] == selectedCharacter:
 			character["equipment"][slot_name.to_lower()] = item_name
+			PlayerData.remove_item_from_inventory(item_name)
 	
