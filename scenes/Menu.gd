@@ -18,6 +18,7 @@ onready var equip_modal = $MarginContainer/EquipModal
 
 var selected = 0
 var selectedItem = null
+var selectedCharacter = null
 
 func _ready():
 	print("menu ready")
@@ -72,6 +73,8 @@ func update_panels():
 func update_character_info(data):
 	print(data)
 	var parent = get_node("MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2")
+	var equip_parent = get_node("MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer")
+	
 	parent.get_node("MarginContainer/VBoxContainer/Name/Data").text = data["character_name"]
 	parent.get_node("MarginContainer/VBoxContainer/Exp/Data").text = str(data["experience"])
 	parent.get_node("MarginContainer/VBoxContainer/HP/Data").text = str(data["current_hp"]) + "/" + str(data["max_hp"])
@@ -81,6 +84,21 @@ func update_character_info(data):
 	parent.get_node("MarginContainer/VBoxContainer/Intelligence/Data").text = str(data["int"])
 	parent.get_node("MarginContainer/VBoxContainer/Attack/Data").text = calculate_attack(data)
 	parent.get_node("MarginContainer/VBoxContainer/Defense/Data").text = calculate_defense(data)
+	
+	if data["equipment"]["helmet"]:
+		equip_parent.get_node("Helmet/Data").text = data["equipment"]["helmet"]
+	
+	if data["equipment"]["chest"]:
+		equip_parent.get_node("Chest/Data").text = data["equipment"]["chest"]
+	
+	if data["equipment"]["arms"]:
+		equip_parent.get_node("Arms/Data").text = data["equipment"]["arms"]
+	
+	if data["equipment"]["legs"]:
+		equip_parent.get_node("Legs/Data").text = data["equipment"]["legs"]
+	
+	if data["equipment"]["boots"]:
+		equip_parent.get_node("Boots/Data").text = data["equipment"]["boots"]
 
 
 func calculate_defense(char_data):
@@ -134,6 +152,7 @@ func update_status_page():
 
 func on_info_button_clicked(data):
 	selectedItem = "CharacterInfo"
+	selectedCharacter = data["character_name"]
 	update_character_info(data)
 	update_panels()
 
@@ -210,7 +229,12 @@ func _on_BootsChangeButton_pressed():
 
 
 func _on_EquipModal_character_equipped_item(item_name, slot_name):
-	print("In Menu, Character Equipped Item", item_name, slot_name)
+	print("In Menu, Character Equipped Item", item_name, slot_name, selectedCharacter)
 	equip_modal.visible = false
 	var equipped_container = $MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer
 	equipped_container.find_node(slot_name).get_node("Data").text = item_name
+	
+	for character in PlayerData.characters:
+		if character["character_name"] == selectedCharacter:
+			character["equipment"][slot_name.to_lower()] = item_name
+	
