@@ -156,6 +156,13 @@ func on_question_response(answer):
 				"dex": char_data["dex"],
 				"str": char_data["str"],
 				"int": char_data["int"],
+				"equipment": {
+					"helmet": null,
+					"chest": null,
+					"arms": null,
+					"legs": null,
+					"boots": null
+				}
 			})
 			GameData.npcs[answer["npc"]] = {"state": "joined-party"}
 			remove_npc = true
