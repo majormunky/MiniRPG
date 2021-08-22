@@ -102,7 +102,25 @@ func update_character_info(data):
 
 
 func calculate_defense(char_data):
-	return str(int(char_data["dex"] * 0.5 + char_data["str"] * 0.5))
+	var def_value = 0
+	print("Calculating Defense")
+	if char_data["equipment"]["helmet"]:
+		var item_data = GameData.item_data[char_data["equipment"]["helmet"]]
+		def_value += item_data["defense"]
+	if char_data["equipment"]["chest"]:
+		var item_data = GameData.item_data[char_data["equipment"]["chest"]]
+		def_value += item_data["defense"]
+	if char_data["equipment"]["arms"]:
+		var item_data = GameData.item_data[char_data["equipment"]["arms"]]
+		def_value += item_data["defense"]
+	if char_data["equipment"]["legs"]:
+		var item_data = GameData.item_data[char_data["equipment"]["legs"]]
+		def_value += item_data["defense"]
+	if char_data["equipment"]["boots"]:
+		var item_data = GameData.item_data[char_data["equipment"]["boots"]]
+		def_value += item_data["defense"]
+	
+	return str(int(char_data["dex"] * 0.5 + char_data["str"] * 0.5) + def_value)
 
 
 func calculate_attack(char_data):
@@ -236,3 +254,8 @@ func _on_EquipModal_character_equipped_item(item_name, slot_name):
 	
 	PlayerData.equip_item(selected_character, slot_name, item_name)
 	PlayerData.remove_item_from_inventory(item_name)
+	
+	var char_data = PlayerData.get_character_data(selected_character)
+	#print("trying to update defense")
+	#print(char_data)
+	update_character_info(char_data)

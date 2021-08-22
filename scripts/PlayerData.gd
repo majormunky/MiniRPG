@@ -12,6 +12,13 @@ var characters = []
 var main_character = 0
 
 
+func get_character_data(char_name):
+	for character in characters:
+		if character["character_name"] == char_name:
+			return character
+	return null
+
+
 func equip_item(character_name, slot, item_name):
 	for character in characters:
 		if character["character_name"] == character_name:
