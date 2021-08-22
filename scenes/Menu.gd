@@ -17,8 +17,8 @@ onready var use_button = $MarginContainer/HBoxContainer/ItemMenu/MarginContainer
 onready var equip_modal = $MarginContainer/EquipModal
 
 var selected = 0
-var selectedItem = null
-var selectedCharacter = null
+var selected_item = null
+var selected_character = null
 
 func _ready():
 	print("menu ready")
@@ -39,31 +39,31 @@ func _on_ItemList_item_selected(index):
 	print("Running item list selected")
 	selected = index
 	item_list.select(index)
-	selectedItem = menu_items.keys()[selected]
+	selected_item = menu_items.keys()[selected]
 	update_panels()
 
 
 func update_panels():
 	var char_info_panel = get_node("MarginContainer/HBoxContainer/CharacterInfoMenu")
-	if selectedItem == "Save":
+	if selected_item == "Save":
 		menu_items["Save"].visible = true
 		menu_items["Status"].visible = false
 		menu_items["Items"].visible = false
 		char_info_panel.visible = false
 		menu_items["Save"].get_node("MarginContainer/VBoxContainer/SaveMessage").text = ""
-	elif selectedItem == "Items":
+	elif selected_item == "Items":
 		menu_items["Items"].visible = true
 		menu_items["Status"].visible = false
 		menu_items["Save"].visible = false
 		char_info_panel.visible = false
 		update_inventory_page()
-	elif selectedItem == "Status":
+	elif selected_item == "Status":
 		menu_items["Status"].visible = true
 		menu_items["Save"].visible = false
 		menu_items["Items"].visible = false
 		char_info_panel.visible = false
 		update_status_page()
-	elif selectedItem == "CharacterInfo":
+	elif selected_item == "CharacterInfo":
 		menu_items["Status"].visible = false
 		menu_items["Save"].visible = false
 		menu_items["Items"].visible = false
@@ -151,8 +151,8 @@ func update_status_page():
 
 
 func on_info_button_clicked(data):
-	selectedItem = "CharacterInfo"
-	selectedCharacter = data["character_name"]
+	selected_item = "CharacterInfo"
+	selected_character = data["character_name"]
 	update_character_info(data)
 	update_panels()
 
@@ -229,13 +229,10 @@ func _on_BootsChangeButton_pressed():
 
 
 func _on_EquipModal_character_equipped_item(item_name, slot_name):
-	print("In Menu, Character Equipped Item", item_name, slot_name, selectedCharacter)
+	print("In Menu, Character Equipped Item", item_name, slot_name, selected_character)
 	equip_modal.visible = false
 	var equipped_container = $MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer
 	equipped_container.find_node(slot_name).get_node("Data").text = item_name
 	
-	for character in PlayerData.characters:
-		if character["character_name"] == selectedCharacter:
-			character["equipment"][slot_name.to_lower()] = item_name
-			PlayerData.remove_item_from_inventory(item_name)
-	
+	PlayerData.equip_item(selected_character, slot_name, item_name)
+	PlayerData.remove_item_from_inventory(item_name)

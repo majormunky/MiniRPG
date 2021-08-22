@@ -11,6 +11,13 @@ var gold = 0
 var characters = []
 var main_character = 0
 
+
+func equip_item(character_name, slot, item_name):
+	for character in characters:
+		if character["character_name"] == character_name:
+			character["equipment"][slot.to_lower()] = item_name
+
+
 func remove_item_from_inventory(item_name):
 	for item in inventory:
 		if item["item_name"] == item_name:
