@@ -124,7 +124,13 @@ func calculate_defense(char_data):
 
 
 func calculate_attack(char_data):
-	return str(int(char_data["str"] * 1.25))
+	var atk_value = 0
+	print("Calculating Attack")
+	if char_data["equipment"]["main_hand"]:
+		atk_value += char_data["equipment"]["main_hand"]["attack"]
+	if char_data["equipment"]["off_hand"]:
+		atk_value += char_data["equipment"]["off_hand"]["attack"]
+	return str(int(char_data["str"] * 1.25) + atk_value)
 
 
 func update_status_page():
