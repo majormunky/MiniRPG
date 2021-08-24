@@ -66,7 +66,9 @@ func create_save_game(user_name, char_type):
 						"chest": null,
 						"arms": null,
 						"legs": null,
-						"boots": null
+						"boots": null,
+						"main_hand": null,
+						"off_hand": null,
 					}
 				}
 			],

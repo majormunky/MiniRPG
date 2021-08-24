@@ -161,7 +161,9 @@ func on_question_response(answer):
 					"chest": null,
 					"arms": null,
 					"legs": null,
-					"boots": null
+					"boots": null,
+					"main_hand": null,
+					"off_hand": null,
 				}
 			})
 			GameData.npcs[answer["npc"]] = {"state": "joined-party"}
