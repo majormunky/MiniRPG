@@ -265,3 +265,11 @@ func _on_EquipModal_character_equipped_item(item_name, slot_name):
 	#print("trying to update defense")
 	#print(char_data)
 	update_character_info(char_data)
+
+
+func _on_MainHandChangeButton_pressed():
+	equip_item("MainHand")
+
+
+func _on_OffHandChangeButton_pressed():
+	equip_item("OffHand")

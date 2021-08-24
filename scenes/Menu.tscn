@@ -401,6 +401,56 @@ size_flags_horizontal = 3
 margin_right = 502.0
 margin_bottom = 538.0
 
+[node name="MainHand" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_right = 502.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/MainHand"]
+margin_top = 3.0
+margin_right = 149.0
+margin_bottom = 57.0
+text = "Main Hand:"
+
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/MainHand"]
+margin_left = 153.0
+margin_top = 3.0
+margin_right = 337.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+text = "None"
+align = 2
+
+[node name="MainHandChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/MainHand"]
+margin_left = 341.0
+margin_right = 502.0
+margin_bottom = 60.0
+text = "Change"
+
+[node name="OffHand" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_right = 502.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/OffHand"]
+margin_top = 3.0
+margin_right = 149.0
+margin_bottom = 57.0
+text = "Off Hand:"
+
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/OffHand"]
+margin_left = 153.0
+margin_top = 3.0
+margin_right = 337.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+text = "None"
+align = 2
+
+[node name="OffHandChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/OffHand"]
+margin_left = 341.0
+margin_right = 502.0
+margin_bottom = 60.0
+text = "Change"
+
 [node name="Helmet" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
 margin_right = 502.0
 margin_bottom = 60.0
@@ -589,6 +639,8 @@ text = "Close"
 [connection signal="item_selected" from="MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer/Inventory" to="." method="_on_Inventory_item_selected"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer/HBoxContainer/UseButton" to="." method="_on_UseButton_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer/InfoBackButton" to="." method="_on_InfoBackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/MainHand/MainHandChangeButton" to="." method="_on_MainHandChangeButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/OffHand/OffHandChangeButton" to="." method="_on_OffHandChangeButton_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Helmet/HelmetChangeButton" to="." method="_on_HelmetChangeButton_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Chest/ChestChangeButton" to="." method="_on_ChestChangeButton_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Arms/ArmsChangeButton" to="." method="_on_ArmsChangeButton_pressed"]
