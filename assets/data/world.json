@@ -19,6 +19,12 @@
                 "item": "Leather Armor",
                 "quantity": 1,
                 "position": {"x": 512, "y": 265}
+            },
+            {
+                "id": 3,
+                "item": "Wooden Sword",
+                "quantity": 1,
+                "position": {"x": 548, "y": 265}
             }
         ],
         "npcs": [
