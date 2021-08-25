@@ -99,7 +99,12 @@ func update_character_info(data):
 	
 	if data["equipment"]["boots"]:
 		equip_parent.get_node("Boots/Data").text = data["equipment"]["boots"]
-
+	
+	if data["equipment"]["main_hand"]:
+		equip_parent.get_node("Main_Hand/Data").text = data["equipment"]["main_hand"]
+	
+	if data["equipment"]["off_hand"]:
+		equip_parent.get_node("Main_Hand/Data").text = data["equipment"]["off_hand"]
 
 func calculate_defense(char_data):
 	var def_value = 0
@@ -126,10 +131,13 @@ func calculate_defense(char_data):
 func calculate_attack(char_data):
 	var atk_value = 0
 	print("Calculating Attack")
+	var item_data = null
 	if char_data["equipment"]["main_hand"]:
-		atk_value += char_data["equipment"]["main_hand"]["attack"]
+		item_data = GameData.item_data[char_data["equipment"]["main_hand"]]
+		atk_value += int(item_data["attack"])
 	if char_data["equipment"]["off_hand"]:
-		atk_value += char_data["equipment"]["off_hand"]["attack"]
+		item_data = GameData.item_data[char_data["equipment"]["off_hand"]]
+		atk_value += int(item_data["attack"])
 	return str(int(char_data["str"] * 1.25) + atk_value)
 
 
@@ -268,8 +276,8 @@ func _on_EquipModal_character_equipped_item(item_name, slot_name):
 
 
 func _on_MainHandChangeButton_pressed():
-	equip_item("MainHand")
+	equip_item("Main_Hand")
 
 
 func _on_OffHandChangeButton_pressed():
-	equip_item("OffHand")
+	equip_item("Off_Hand")
