@@ -72,8 +72,8 @@ func update_panels():
 
 func update_character_info(data):
 	print(data)
-	var parent = get_node("MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2")
-	var equip_parent = get_node("MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer")
+	var parent = get_node("MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2")
+	var equip_parent = get_node("MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer")
 	
 	parent.get_node("MarginContainer/VBoxContainer/Name/Data").text = data["character_name"]
 	parent.get_node("MarginContainer/VBoxContainer/Exp/Data").text = str(data["experience"])

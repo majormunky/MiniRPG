@@ -93,12 +93,13 @@ fit_content_height = true
 [node name="ItemMenu" type="Panel" parent="MarginContainer/HBoxContainer"]
 visible = false
 margin_left = 204.0
-margin_right = 204.0
+margin_right = 1228.0
 margin_bottom = 752.0
+rect_min_size = Vector2( 1024, 0 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ItemMenu"]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_constants/margin_left = 20
 __meta__ = {
 "_edit_use_anchors_": false
@@ -106,12 +107,12 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ItemMenu/MarginContainer"]
 margin_left = 20.0
-margin_right = 820.0
-margin_bottom = 745.0
+margin_right = 1024.0
+margin_bottom = 752.0
 custom_constants/separation = 20
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer"]
-margin_right = 800.0
+margin_right = 1004.0
 margin_bottom = 65.0
 custom_fonts/font = ExtResource( 2 )
 text = "Items"
@@ -121,7 +122,7 @@ __meta__ = {
 
 [node name="Inventory" type="ItemList" parent="MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer"]
 margin_top = 85.0
-margin_right = 800.0
+margin_right = 1004.0
 margin_bottom = 685.0
 rect_min_size = Vector2( 800, 600 )
 theme = ExtResource( 3 )
@@ -129,7 +130,7 @@ auto_height = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer"]
 margin_top = 705.0
-margin_right = 800.0
+margin_right = 1004.0
 margin_bottom = 745.0
 rect_min_size = Vector2( 0, 40 )
 
@@ -179,49 +180,56 @@ margin_bottom = 40.0
 custom_constants/separation = 32
 
 [node name="CharacterInfoMenu" type="Panel" parent="MarginContainer/HBoxContainer"]
-margin_left = 204.0
+visible = false
+margin_left = 208.0
 margin_right = 1232.0
 margin_bottom = 752.0
 size_flags_horizontal = 3
 theme = ExtResource( 3 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu"]
-margin_right = 1024.0
-margin_bottom = 447.0
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_left = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer"]
+margin_left = 16.0
+margin_right = 778.0
+margin_bottom = 686.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer"]
-margin_right = 1024.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer"]
+margin_right = 762.0
 margin_bottom = 29.0
 
-[node name="InfoBackButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer"]
+[node name="InfoBackButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 60.0
 margin_bottom = 29.0
 theme = ExtResource( 4 )
 text = "Back"
 align = 2
 
-[node name="PageTitle" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer"]
+[node name="PageTitle" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer"]
 margin_top = 33.0
-margin_right = 1024.0
+margin_right = 762.0
 margin_bottom = 144.0
 size_flags_horizontal = 3
 text = "Chararacter Info
 "
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer"]
 margin_top = 148.0
-margin_right = 1024.0
+margin_right = 762.0
 margin_bottom = 686.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2"]
-margin_right = 502.0
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 241.0
 margin_bottom = 538.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 20
@@ -231,352 +239,354 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer"]
 margin_left = 20.0
-margin_right = 482.0
+margin_right = 221.0
 margin_bottom = 518.0
 size_flags_horizontal = 3
 
-[node name="Name" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
-margin_right = 462.0
+[node name="Name" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+margin_right = 201.0
 margin_bottom = 54.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Name"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Name"]
 margin_right = 123.0
 margin_bottom = 54.0
 text = "Name:"
 
-[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Name"]
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Name"]
 margin_left = 127.0
-margin_right = 462.0
+margin_right = 201.0
 margin_bottom = 54.0
 size_flags_horizontal = 3
 align = 2
 
-[node name="Job" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+[node name="Job" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
 margin_top = 58.0
-margin_right = 462.0
+margin_right = 201.0
 margin_bottom = 112.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Job"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Job"]
 margin_right = 80.0
 margin_bottom = 54.0
 text = "Job:"
 
-[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Job"]
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Job"]
 margin_left = 84.0
-margin_right = 462.0
+margin_right = 201.0
 margin_bottom = 54.0
 size_flags_horizontal = 3
 align = 2
 
-[node name="HP" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+[node name="HP" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
 margin_top = 116.0
-margin_right = 462.0
+margin_right = 201.0
 margin_bottom = 170.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/HP"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/HP"]
 margin_right = 56.0
 margin_bottom = 54.0
 text = "HP:"
 
-[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/HP"]
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/HP"]
 margin_left = 60.0
-margin_right = 462.0
+margin_right = 201.0
 margin_bottom = 54.0
 size_flags_horizontal = 3
 align = 2
 
-[node name="Exp" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+[node name="Exp" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
 margin_top = 174.0
-margin_right = 462.0
+margin_right = 201.0
 margin_bottom = 228.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Exp"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Exp"]
 margin_right = 81.0
 margin_bottom = 54.0
 text = "Exp:"
 
-[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Exp"]
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Exp"]
 margin_left = 85.0
-margin_right = 462.0
+margin_right = 201.0
 margin_bottom = 54.0
 size_flags_horizontal = 3
 align = 2
 
-[node name="Strength" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+[node name="Strength" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
 margin_top = 232.0
-margin_right = 462.0
+margin_right = 201.0
 margin_bottom = 286.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Strength"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Strength"]
 margin_right = 76.0
 margin_bottom = 54.0
 text = "Str:"
 
-[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Strength"]
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Strength"]
 margin_left = 80.0
-margin_right = 462.0
+margin_right = 201.0
 margin_bottom = 54.0
 size_flags_horizontal = 3
 align = 2
 
-[node name="Dexterity" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+[node name="Dexterity" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
 margin_top = 290.0
-margin_right = 462.0
+margin_right = 201.0
 margin_bottom = 344.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Dexterity"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Dexterity"]
 margin_right = 80.0
 margin_bottom = 54.0
 text = "Dex:"
 
-[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Dexterity"]
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Dexterity"]
 margin_left = 84.0
-margin_right = 462.0
+margin_right = 201.0
 margin_bottom = 54.0
 size_flags_horizontal = 3
 align = 2
 
-[node name="Intelligence" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+[node name="Intelligence" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
 margin_top = 348.0
-margin_right = 462.0
+margin_right = 201.0
 margin_bottom = 402.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Intelligence"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Intelligence"]
 margin_right = 72.0
 margin_bottom = 54.0
 text = "Int:"
 
-[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Intelligence"]
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Intelligence"]
 margin_left = 76.0
-margin_right = 462.0
+margin_right = 201.0
 margin_bottom = 54.0
 size_flags_horizontal = 3
 align = 2
 
-[node name="Defense" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+[node name="Defense" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
 margin_top = 406.0
-margin_right = 462.0
+margin_right = 201.0
 margin_bottom = 460.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Defense"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Defense"]
 margin_right = 172.0
 margin_bottom = 54.0
 text = "Defense:"
 
-[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Defense"]
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Defense"]
 margin_left = 176.0
-margin_right = 462.0
+margin_right = 201.0
 margin_bottom = 54.0
 size_flags_horizontal = 3
 text = "0"
 align = 2
 
-[node name="Attack" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+[node name="Attack" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
 margin_top = 464.0
-margin_right = 462.0
+margin_right = 201.0
 margin_bottom = 518.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Attack"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Attack"]
 margin_right = 153.0
 margin_bottom = 54.0
 text = "Attack:"
 
-[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Attack"]
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/Attack"]
 margin_left = 157.0
-margin_right = 462.0
+margin_right = 201.0
 margin_bottom = 54.0
 size_flags_horizontal = 3
 text = "0"
 align = 2
 
-[node name="EquippedContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2"]
-margin_left = 522.0
-margin_right = 1024.0
+[node name="EquippedContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 261.0
+margin_right = 762.0
 margin_bottom = 538.0
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer"]
-margin_right = 502.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer"]
+margin_right = 501.0
 margin_bottom = 538.0
 
-[node name="Main_Hand" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
-margin_right = 502.0
+[node name="Main_Hand" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_right = 501.0
 margin_bottom = 60.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Main_Hand"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Main_Hand"]
 margin_top = 3.0
-margin_right = 149.0
+margin_right = 231.0
 margin_bottom = 57.0
 text = "Main Hand:"
 
-[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Main_Hand"]
-margin_left = 153.0
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Main_Hand"]
+margin_left = 235.0
 margin_top = 3.0
-margin_right = 337.0
+margin_right = 336.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 text = "None"
 align = 2
 
-[node name="MainHandChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Main_Hand"]
-margin_left = 341.0
-margin_right = 502.0
+[node name="MainHandChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Main_Hand"]
+margin_left = 340.0
+margin_right = 501.0
 margin_bottom = 60.0
 text = "Change"
 
-[node name="Off_Hand" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
-margin_right = 502.0
-margin_bottom = 60.0
+[node name="Off_Hand" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_top = 64.0
+margin_right = 501.0
+margin_bottom = 124.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Off_Hand"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Off_Hand"]
 margin_top = 3.0
-margin_right = 149.0
+margin_right = 193.0
 margin_bottom = 57.0
 text = "Off Hand:"
 
-[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Off_Hand"]
-margin_left = 153.0
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Off_Hand"]
+margin_left = 197.0
 margin_top = 3.0
-margin_right = 337.0
+margin_right = 336.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 text = "None"
 align = 2
 
-[node name="OffHandChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Off_Hand"]
-margin_left = 341.0
-margin_right = 502.0
+[node name="OffHandChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Off_Hand"]
+margin_left = 340.0
+margin_right = 501.0
 margin_bottom = 60.0
 text = "Change"
 
-[node name="Helmet" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
-margin_right = 502.0
-margin_bottom = 60.0
+[node name="Helmet" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_top = 128.0
+margin_right = 501.0
+margin_bottom = 188.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Helmet"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Helmet"]
 margin_top = 3.0
 margin_right = 149.0
 margin_bottom = 57.0
 text = "Helmet:"
 
-[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Helmet"]
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Helmet"]
 margin_left = 153.0
 margin_top = 3.0
-margin_right = 337.0
+margin_right = 336.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 text = "None"
 align = 2
 
-[node name="HelmetChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Helmet"]
-margin_left = 341.0
-margin_right = 502.0
+[node name="HelmetChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Helmet"]
+margin_left = 340.0
+margin_right = 501.0
 margin_bottom = 60.0
 text = "Change"
 
-[node name="Chest" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
-margin_top = 64.0
-margin_right = 502.0
-margin_bottom = 124.0
+[node name="Chest" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_top = 192.0
+margin_right = 501.0
+margin_bottom = 252.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Chest"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Chest"]
 margin_top = 3.0
 margin_right = 128.0
 margin_bottom = 57.0
 text = "Chest:"
 
-[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Chest"]
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Chest"]
 margin_left = 132.0
 margin_top = 3.0
-margin_right = 337.0
+margin_right = 336.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 text = "None"
 align = 2
 
-[node name="ChestChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Chest"]
-margin_left = 341.0
-margin_right = 502.0
+[node name="ChestChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Chest"]
+margin_left = 340.0
+margin_right = 501.0
 margin_bottom = 60.0
 text = "Change"
 
-[node name="Arms" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
-margin_top = 128.0
-margin_right = 502.0
-margin_bottom = 188.0
+[node name="Arms" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_top = 256.0
+margin_right = 501.0
+margin_bottom = 316.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Arms"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Arms"]
 margin_top = 3.0
 margin_right = 109.0
 margin_bottom = 57.0
 text = "Arms:"
 
-[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Arms"]
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Arms"]
 margin_left = 113.0
 margin_top = 3.0
-margin_right = 337.0
+margin_right = 336.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 text = "None"
 align = 2
 
-[node name="ArmsChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Arms"]
-margin_left = 341.0
-margin_right = 502.0
+[node name="ArmsChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Arms"]
+margin_left = 340.0
+margin_right = 501.0
 margin_bottom = 60.0
 text = "Change"
 
-[node name="Legs" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
-margin_top = 192.0
-margin_right = 502.0
-margin_bottom = 252.0
+[node name="Legs" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_top = 320.0
+margin_right = 501.0
+margin_bottom = 380.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Legs"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Legs"]
 margin_top = 3.0
 margin_right = 105.0
 margin_bottom = 57.0
 text = "Legs:"
 
-[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Legs"]
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Legs"]
 margin_left = 109.0
 margin_top = 3.0
-margin_right = 337.0
+margin_right = 336.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 text = "None"
 align = 2
 
-[node name="LegsChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Legs"]
-margin_left = 341.0
-margin_right = 502.0
+[node name="LegsChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Legs"]
+margin_left = 340.0
+margin_right = 501.0
 margin_bottom = 60.0
 text = "Change"
 
-[node name="Boots" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
-margin_top = 256.0
-margin_right = 502.0
-margin_bottom = 316.0
+[node name="Boots" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer"]
+margin_top = 384.0
+margin_right = 501.0
+margin_bottom = 444.0
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Boots"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Boots"]
 margin_top = 3.0
 margin_right = 120.0
 margin_bottom = 57.0
 text = "Boots"
 
-[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Boots"]
+[node name="Data" type="Label" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Boots"]
 margin_left = 124.0
 margin_top = 3.0
-margin_right = 337.0
+margin_right = 336.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 text = "None"
 align = 2
 
-[node name="BootsChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Boots"]
-margin_left = 341.0
-margin_right = 502.0
+[node name="BootsChangeButton" type="Button" parent="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Boots"]
+margin_left = 340.0
+margin_right = 501.0
 margin_bottom = 60.0
 text = "Change"
 
@@ -638,14 +648,14 @@ text = "Close"
 [connection signal="pressed" from="MarginContainer/HBoxContainer/SaveMenu/MarginContainer/VBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="item_selected" from="MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer/Inventory" to="." method="_on_Inventory_item_selected"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ItemMenu/MarginContainer/VBoxContainer/HBoxContainer/UseButton" to="." method="_on_UseButton_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer/InfoBackButton" to="." method="_on_InfoBackButton_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Main_Hand/MainHandChangeButton" to="." method="_on_MainHandChangeButton_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Off_Hand/OffHandChangeButton" to="." method="_on_OffHandChangeButton_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Helmet/HelmetChangeButton" to="." method="_on_HelmetChangeButton_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Chest/ChestChangeButton" to="." method="_on_ChestChangeButton_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Arms/ArmsChangeButton" to="." method="_on_ArmsChangeButton_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Legs/LegsChangeButton" to="." method="_on_LegsChangeButton_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Boots/BootsChangeButton" to="." method="_on_BootsChangeButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer/InfoBackButton" to="." method="_on_InfoBackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Main_Hand/MainHandChangeButton" to="." method="_on_MainHandChangeButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Off_Hand/OffHandChangeButton" to="." method="_on_OffHandChangeButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Helmet/HelmetChangeButton" to="." method="_on_HelmetChangeButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Chest/ChestChangeButton" to="." method="_on_ChestChangeButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Arms/ArmsChangeButton" to="." method="_on_ArmsChangeButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Legs/LegsChangeButton" to="." method="_on_LegsChangeButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer/Boots/BootsChangeButton" to="." method="_on_BootsChangeButton_pressed"]
 [connection signal="character_equipped_item" from="MarginContainer/EquipModal" to="." method="_on_EquipModal_character_equipped_item"]
 [connection signal="pressed" from="MarginContainer/EquipModal/VBoxContainer/HBoxContainer/EquipButton" to="MarginContainer/EquipModal" method="_on_EquipButton_pressed"]
 [connection signal="pressed" from="MarginContainer/EquipModal/VBoxContainer/HBoxContainer/CloseButton" to="MarginContainer/EquipModal" method="_on_CloseButton_pressed"]
