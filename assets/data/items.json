@@ -1,6 +1,6 @@
 {
     "Wooden Sword": {
-        "category": "Weapon",
+        "category": "weapon",
         "image_name": "Wooden Sword.png",
         "attack": "3",
         "speed": 1,
@@ -9,7 +9,7 @@
         "description": "A basic wooden sword, or maybe its a stick?"
     },
     "Health Potion": {
-        "category": "Consumable",
+        "category": "consumable",
         "image_name": "HealthPotion.png",
         "add_health": 5,
         "stack_size": 99,
