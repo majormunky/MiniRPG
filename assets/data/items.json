@@ -1,7 +1,7 @@
 {
     "Wooden Sword": {
         "category": "Weapon",
-        "image_name": "Wooden stringSword.png",
+        "image_name": "Wooden Sword.png",
         "attack": "3",
         "speed": 1,
         "stack_size": 1,
@@ -40,5 +40,13 @@
         "stack_size": 1,
         "slot": "chest",
         "description": "Some basic armor made with iron"
+    },
+    "Wooden Wand": {
+        "category": "weapon",
+        "image_name": "armor_06.png",
+        "attack": 2,
+        "stack_size": 1,
+        "slot": "main_hand",
+        "description": "A stick that might help cast something.. maybe?"
     }
 }
