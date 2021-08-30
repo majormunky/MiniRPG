@@ -48,5 +48,13 @@
         "stack_size": 1,
         "slot": "main_hand",
         "description": "A stick that might help cast something.. maybe?"
+    },
+    "Leather Boots": {
+        "category": "armor",
+        "image_name": "armor_06.png",
+        "defense": 3,
+        "stack_size": 1,
+        "slot": "boots",
+        "description": "Some leather that you can wrap around your feet."
     }
 }
