@@ -9,6 +9,12 @@ onready var camera = $Camera2D
 onready var sprite = $Sprite
 onready var inspect_area = $InspectArea
 
+var direction = Vector2()
+var current_speed = null
+var is_moving = false
+var target_cell = null
+var target_direction = null
+
 signal player_inspected
 
 func _ready():
@@ -43,9 +49,46 @@ func update_map_limits():
 	camera.limit_bottom = MapData.map_height
 
 
+func _physics_process_in_progress(delta):
+	direction = Vector2.ZERO
+
+	if Input.is_action_pressed("walk_up"):
+		direction = Vector2.UP
+		
+	elif Input.is_action_pressed("walk_down"):
+		direction = Vector2.DOWN
+		
+	elif Input.is_action_pressed("walk_left"):
+		direction = Vector2.LEFT
+		
+	elif Input.is_action_pressed("walk_right"):
+		direction = Vector2.RIGHT
+		
+	if not is_moving and direction != Vector2.ZERO:
+		target_direction = direction
+		
+		var tile_size = 32
+		
+		#tile_size is the size of the tilemap in pixels.
+		var new_position = (position + direction * tile_size) # + (direction * 16)
+		
+		#Yes. I'm assuming you have a Tween node as a child.
+		$Tween.interpolate_property(self, 'position', position, new_position, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		#That last method's fifth property is how long it takes to go from one tile to the other in seconds.
+		$Tween.start()
+		is_moving = true
+
+
+#This function is connected to the tween node's tween_completed signal.
+func _on_Tween_tween_completed(object, key):
+	is_moving = false
+
+
 func _physics_process(delta):
 	if GameData.dialog_open:
 		return
+	
+	
 
 	var input = Vector2.ZERO
 	
