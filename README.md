@@ -18,3 +18,8 @@ F - Inspect
 ## Todo
 - Add info about artwork that came from HumbleBundles
 - Figure out why exporting locally vs github actions is giving us broken builds (on github actions)
+- Setup shop keepers in the town
+	- Item Shop
+	- Weapon Shop
+	- Armor Shop
+	- Inn
