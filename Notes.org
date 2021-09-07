@@ -1,0 +1,13 @@
+* Mini RPG Game
+** Overworld
+** Game Menu
+*** Status Menu
+	This menu shows the current list of characters that are a part of the party.  An info button can be clicked to view character stats and their current equpiment.
+**** Character Equip Menu
+	 This menu lets you equip items on a character.  Each slot has a button that can be clicked to select a new item.
+*** Items Menu
+	A list of items that the party has access to.
+	- Do we list equipped items?
+*** Save Menu
+	This menu lets you save the game
+	- TODO Add info (time and screenshot?) of the last save game
