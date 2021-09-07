@@ -92,8 +92,17 @@
                     {"text": "Welcome to green village!", "select": false}
                 ],
                 "map_image": "assets/characters/char3.png",
-                "position": {"x": 300, "y": 300},
+                "position": {"x": 320, "y": 320},
             },
+            {
+                "id": 4,
+                "name": "Alfred",
+                "dialog": [
+					{"text": "Welcome to the item shop", "select": false}
+				],
+                "map_image": "assets/characters/char2.png",
+                "position": {"x": 352, "y": 320}
+            }
         ],
         "monsters": {},
     },
