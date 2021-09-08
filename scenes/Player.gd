@@ -8,12 +8,16 @@ onready var animation_state = animation_tree.get("parameters/playback")
 onready var camera = $Camera2D
 onready var sprite = $Sprite
 onready var inspect_area = $InspectArea
+onready var ray = $RayCast2D
 
-var direction = Vector2()
-var current_speed = null
+const WALKING_SPEED = 4.0
+const TILE_SIZE = 32
+const HALF_TILE_SIZE = TILE_SIZE / 2
+
+var initial_position = Vector2.ZERO
+var input_direction = Vector2.ZERO
 var is_moving = false
-var target_cell = null
-var target_direction = null
+var percent_moved = 0.0
 
 signal player_inspected
 
@@ -33,6 +37,7 @@ func _ready():
 		sprite.region_rect.position.x = 48 * 3
 		sprite.region_rect.position.y = 48 * 6
 	update_map_limits()
+	initial_position = position
 
 
 func _input(event):
@@ -49,63 +54,43 @@ func update_map_limits():
 	camera.limit_bottom = MapData.map_height
 
 
-func _physics_process_in_progress(delta):
-	direction = Vector2.ZERO
-
-	if Input.is_action_pressed("walk_up"):
-		direction = Vector2.UP
-		
-	elif Input.is_action_pressed("walk_down"):
-		direction = Vector2.DOWN
-		
-	elif Input.is_action_pressed("walk_left"):
-		direction = Vector2.LEFT
-		
-	elif Input.is_action_pressed("walk_right"):
-		direction = Vector2.RIGHT
-		
-	if not is_moving and direction != Vector2.ZERO:
-		target_direction = direction
-		
-		var tile_size = 32
-		
-		#tile_size is the size of the tilemap in pixels.
-		var new_position = (position + direction * tile_size) # + (direction * 16)
-		
-		#Yes. I'm assuming you have a Tween node as a child.
-		$Tween.interpolate_property(self, 'position', position, new_position, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		#That last method's fifth property is how long it takes to go from one tile to the other in seconds.
-		$Tween.start()
-		is_moving = true
-
-
-#This function is connected to the tween node's tween_completed signal.
-func _on_Tween_tween_completed(object, key):
-	is_moving = false
-
-
 func _physics_process(delta):
 	if GameData.dialog_open:
 		return
-	
-	
 
-	var input = Vector2.ZERO
-	
-	input.x = Input.get_action_strength("walk_right") - Input.get_action_strength("walk_left")
-	input.y = Input.get_action_strength("walk_down") - Input.get_action_strength("walk_up")
-	input = input.normalized()
-	
-	if input != Vector2.ZERO:
-		animation_tree.set("parameters/Idle/blend_position", input);
-		animation_tree.set("parameters/Walk/blend_position", input);
-		animation_state.travel("Walk")
-		velocity = input * speed * delta
+	if is_moving == false:
+		process_player_input()
+	elif input_direction != Vector2.ZERO:
+		move(delta)
 	else:
-		animation_state.travel("Idle")
-		velocity = Vector2.ZERO
+		is_moving = false
 
-	velocity = move_and_collide(velocity)
+func process_player_input():
+	if input_direction.y == 0:
+		input_direction.x = int(Input.get_action_strength("walk_right")) - int(Input.get_action_strength("walk_left"))
+	if input_direction.x == 0:
+		input_direction.y = int(Input.get_action_strength("walk_down")) - int(Input.get_action_strength("walk_up"))
+	
+	if input_direction != Vector2.ZERO:
+		initial_position = position
+		is_moving = true
+
+
+func move(delta):
+	percent_moved += WALKING_SPEED * delta
+	var desired_step = input_direction * TILE_SIZE / 2
+	ray.cast_to = desired_step
+	ray.force_raycast_update()
+	if !ray.is_colliding():
+		
+		if percent_moved >= 1.0:
+			position = initial_position + (TILE_SIZE * input_direction)
+			is_moving = false
+			percent_moved = 0.0
+		else:		
+			position = initial_position + (TILE_SIZE * input_direction * percent_moved)
+	else:
+		is_moving = false
 
 
 func add_item(item_data):

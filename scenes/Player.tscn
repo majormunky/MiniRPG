@@ -297,12 +297,13 @@ start_node = "Idle"
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.41422, 2.47487 )
+position = Vector2( 16.6651, 22.2359 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
+offset = Vector2( 8, 8 )
 flip_h = true
 hframes = 3
 vframes = 3
@@ -333,6 +334,7 @@ limit_left = 0
 limit_top = 0
 
 [node name="InspectArea" type="Area2D" parent="."]
+position = Vector2( 16.8179, 18.4997 )
 collision_layer = 2
 collision_mask = 2
 
@@ -341,6 +343,6 @@ position = Vector2( -0.33371, 27.0305 )
 shape = SubResource( 24 )
 disabled = true
 
-[node name="Tween" type="Tween" parent="."]
-
-[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 16, 16 )
+cast_to = Vector2( 0, 16 )
