@@ -64,5 +64,13 @@
         "stack_size": 1,
         "slot": "boots",
         "description": "Just some thread"
+    },
+    "Iron Boots": {
+        "category": "armor",
+        "image_name": "armor_06.png",
+        "defense": 5,
+        "stack_size": 1,
+        "slot": "boots",
+        "description": "Some iron cups that you can strap to your feet"
     }
 }
