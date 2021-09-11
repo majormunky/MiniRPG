@@ -87,10 +87,16 @@ func move(delta):
 			position = initial_position + (TILE_SIZE * input_direction)
 			is_moving = false
 			percent_moved = 0.0
+			animation_state.travel("Idle")
 		else:		
 			position = initial_position + (TILE_SIZE * input_direction * percent_moved)
+		
+			animation_tree.set("parameters/Idle/blend_position", input_direction);
+			animation_tree.set("parameters/Walk/blend_position", input_direction);
+			animation_state.travel("Walk")
 	else:
 		is_moving = false
+		animation_state.travel("Idle")
 
 
 func add_item(item_data):
