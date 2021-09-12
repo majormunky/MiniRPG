@@ -2,6 +2,7 @@ extends Control
 
 onready var save_game_list = $MarginContainer/VBoxContainer/ItemList
 onready var transition = $TransitionRect
+onready var Character = preload("res://scenes/characters/Character.gd")
 var saved_game_file_list = null
 
 func _ready():
@@ -52,7 +53,10 @@ func _on_LoadGameButton_pressed():
 		# PlayerData.max_hp = data.max_hp
 		
 		# Load characters
-		PlayerData.characters.append_array(data.characters)
+		for char_info in data.characters:
+			var new_char = Character.new(char_info)
+			PlayerData.characters.append(new_char)
+		# PlayerData.characters.append_array(data.characters)
 		
 		# figure out what map to load
 		PlayerData.current_map = data.current_location.map
