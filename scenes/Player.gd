@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 var velocity = Vector2.ZERO
 var speed = 200
+var characters = []
+
 onready var animation_player = $AnimationPlayer
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
@@ -9,6 +11,7 @@ onready var camera = $Camera2D
 onready var sprite = $Sprite
 onready var inspect_area = $InspectArea
 onready var ray = $RayCast2D
+onready var Character = preload("res://scenes/characters/Character.gd")
 
 const WALKING_SPEED = 4.0
 const TILE_SIZE = 32
@@ -22,6 +25,12 @@ var percent_moved = 0.0
 signal player_inspected
 
 func _ready():
+	print("About to setup char data")
+	for char_data in PlayerData.characters:
+		var new_char = Character.new(char_data)
+		characters.append(new_char)
+	print("Done setup up char data")
+	
 	var main_char_type = PlayerData.characters[0].type
 	# var char_type_data = ""
 	if main_char_type == "Warrior":
