@@ -21,17 +21,20 @@ func _ready():
 	var monster_data = load_json_data("res://assets/data/monsters.json")
 	for monster_key in monster_data:
 		GameData.monster_data[monster_key] = monster_data[monster_key]
-
+	
+	# transition.visible = true
 	transition.fadeOut()
 
 
 func _on_New_Game_pressed():
+	transition.visible = true
 	transition.fadeIn()
 	yield(get_tree().create_timer(0.5), "timeout")
 	var _error = get_tree().change_scene("res://scenes/CreatePlayer.tscn")
 
 
 func _on_Load_Game_pressed():
+	transition.visible = true
 	print("Changing scenes")
 	transition.fadeIn()
 	yield(get_tree().create_timer(0.5), "timeout")
