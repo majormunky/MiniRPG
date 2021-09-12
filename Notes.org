@@ -1,5 +1,11 @@
 * Mini RPG Game
 ** Overworld
+*** Fighting
+	Fighting is done using a turn based system.  Each character has a speed stat that will determine how often they get to fight.
+	When the battle starts, every character gets a timer that when it goes off, is that characters turn to fight
+	There will be a list of characters pending to do the actual fight, as we may have a queue of actions setup
+	When the characters timer goes off, we should show a battle menu for that character, and after selecting the action, that will go into the list
+	Enemy monsters also will have a speed stat that will determine when they get to go.
 ** Game Menu
 *** Status Menu
 	This menu shows the current list of characters that are a part of the party.  An info button can be clicked to view character stats and their current equpiment.
