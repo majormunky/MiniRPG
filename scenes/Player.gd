@@ -31,8 +31,8 @@ func _ready():
 		characters.append(new_char)
 	print("Done setup up char data")
 	
-	var main_char_type = PlayerData.characters[0].type
-	# var char_type_data = ""
+	var main_char_type = get_main_character_type()
+
 	if main_char_type == "Warrior":
 		sprite.region_rect.position.x = 48 * 4
 		sprite.region_rect.position.y = 48 * 4
@@ -55,6 +55,12 @@ func _input(event):
 		yield(get_tree().create_timer(0.1), "timeout")
 		inspect_area.get_node("CollisionShape2D").disabled = true
 		emit_signal("player_inspected")
+
+
+func get_main_character_type():
+	if len(characters) == 0:
+		return null
+	return characters[0].type
 
 
 func update_map_limits():
