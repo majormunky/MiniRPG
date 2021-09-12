@@ -84,6 +84,7 @@ func update_character_info(data):
 	parent.get_node("MarginContainer/VBoxContainer/Intelligence/Data").text = str(data["int"])
 	parent.get_node("MarginContainer/VBoxContainer/Attack/Data").text = calculate_attack(data)
 	parent.get_node("MarginContainer/VBoxContainer/Defense/Data").text = calculate_defense(data)
+	parent.get_node("MarginContainer/VBoxContainer/Speed/Data").text = calculate_speed(data)
 	
 	if data["equipment"]["helmet"]:
 		equip_parent.get_node("Helmet/Data").text = data["equipment"]["helmet"]
@@ -139,6 +140,13 @@ func calculate_attack(char_data):
 		item_data = GameData.item_data[char_data["equipment"]["off_hand"]]
 		atk_value += int(item_data["attack"])
 	return str(int(char_data["str"] * 1.25) + atk_value)
+
+
+func calculate_speed(char_data):
+	var speed_value = 0
+	print("Calculating Speed")
+	speed_value += int(char_data["dex"])
+	return str(speed_value)
 
 
 func update_status_page():
