@@ -2,5 +2,9 @@
 	"Slime": {
 		"max_hp": 15,
 		"attack": 4,
+	},
+	"Rat": {
+		"max_hp": 10,
+		"attack": 8
 	}
 }
