@@ -75,78 +75,24 @@ func update_character_info(data):
 	var parent = get_node("MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2")
 	var equip_parent = get_node("MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer/VBoxContainer")
 	
-	parent.get_node("MarginContainer/VBoxContainer/Name/Data").text = data["character_name"]
-	parent.get_node("MarginContainer/VBoxContainer/Exp/Data").text = str(data["experience"])
-	parent.get_node("MarginContainer/VBoxContainer/HP/Data").text = str(data["current_hp"]) + "/" + str(data["max_hp"])
-	parent.get_node("MarginContainer/VBoxContainer/Job/Data").text = data["type"]
-	parent.get_node("MarginContainer/VBoxContainer/Strength/Data").text = str(data["str"])
-	parent.get_node("MarginContainer/VBoxContainer/Dexterity/Data").text = str(data["dex"])
-	parent.get_node("MarginContainer/VBoxContainer/Intelligence/Data").text = str(data["int"])
-	parent.get_node("MarginContainer/VBoxContainer/Attack/Data").text = calculate_attack(data)
-	parent.get_node("MarginContainer/VBoxContainer/Defense/Data").text = calculate_defense(data)
-	parent.get_node("MarginContainer/VBoxContainer/Speed/Data").text = calculate_speed(data)
-	
-	if data["equipment"]["helmet"]:
-		equip_parent.get_node("Helmet/Data").text = data["equipment"]["helmet"]
-	
-	if data["equipment"]["chest"]:
-		equip_parent.get_node("Chest/Data").text = data["equipment"]["chest"]
-	
-	if data["equipment"]["arms"]:
-		equip_parent.get_node("Arms/Data").text = data["equipment"]["arms"]
-	
-	if data["equipment"]["legs"]:
-		equip_parent.get_node("Legs/Data").text = data["equipment"]["legs"]
-	
-	if data["equipment"]["boots"]:
-		equip_parent.get_node("Boots/Data").text = data["equipment"]["boots"]
-	
-	if data["equipment"]["main_hand"]:
-		equip_parent.get_node("Main_Hand/Data").text = data["equipment"]["main_hand"]
-	
-	if data["equipment"]["off_hand"]:
-		equip_parent.get_node("Main_Hand/Data").text = data["equipment"]["off_hand"]
+	parent.get_node("MarginContainer/VBoxContainer/Name/Data").text = data.character_name
+	parent.get_node("MarginContainer/VBoxContainer/Exp/Data").text = str(data.experience)
+	parent.get_node("MarginContainer/VBoxContainer/HP/Data").text = data.get_hp_display()
+	parent.get_node("MarginContainer/VBoxContainer/Job/Data").text = data.type
+	parent.get_node("MarginContainer/VBoxContainer/Strength/Data").text = str(data.strength)
+	parent.get_node("MarginContainer/VBoxContainer/Dexterity/Data").text = str(data.dexterity)
+	parent.get_node("MarginContainer/VBoxContainer/Intelligence/Data").text = str(data.intelligence)
+	parent.get_node("MarginContainer/VBoxContainer/Attack/Data").text = data.calculate_attack()
+	parent.get_node("MarginContainer/VBoxContainer/Defense/Data").text = data.calculate_defense()
+	parent.get_node("MarginContainer/VBoxContainer/Speed/Data").text = data.calculate_speed()
 
-func calculate_defense(char_data):
-	var def_value = 0
-	print("Calculating Defense")
-	if char_data["equipment"]["helmet"]:
-		var item_data = GameData.item_data[char_data["equipment"]["helmet"]]
-		def_value += item_data["defense"]
-	if char_data["equipment"]["chest"]:
-		var item_data = GameData.item_data[char_data["equipment"]["chest"]]
-		def_value += item_data["defense"]
-	if char_data["equipment"]["arms"]:
-		var item_data = GameData.item_data[char_data["equipment"]["arms"]]
-		def_value += item_data["defense"]
-	if char_data["equipment"]["legs"]:
-		var item_data = GameData.item_data[char_data["equipment"]["legs"]]
-		def_value += item_data["defense"]
-	if char_data["equipment"]["boots"]:
-		var item_data = GameData.item_data[char_data["equipment"]["boots"]]
-		def_value += item_data["defense"]
-	
-	return str(int(char_data["dex"] * 0.5 + char_data["str"] * 0.5) + def_value)
-
-
-func calculate_attack(char_data):
-	var atk_value = 0
-	print("Calculating Attack")
-	var item_data = null
-	if char_data["equipment"]["main_hand"]:
-		item_data = GameData.item_data[char_data["equipment"]["main_hand"]]
-		atk_value += int(item_data["attack"])
-	if char_data["equipment"]["off_hand"]:
-		item_data = GameData.item_data[char_data["equipment"]["off_hand"]]
-		atk_value += int(item_data["attack"])
-	return str(int(char_data["str"] * 1.25) + atk_value)
-
-
-func calculate_speed(char_data):
-	var speed_value = 0
-	print("Calculating Speed")
-	speed_value += int(char_data["dex"])
-	return str(speed_value)
+	equip_parent.get_node("Helmet/Data").text = data.get_equipment_slot_name("helmet")
+	equip_parent.get_node("Chest/Data").text = data.get_equipment_slot_name("chest")
+	equip_parent.get_node("Arms/Data").text = data.get_equipment_slot_name("arms")
+	equip_parent.get_node("Legs/Data").text = data.get_equipment_slot_name("legs")
+	equip_parent.get_node("Boots/Data").text = data.get_equipment_slot_name("boots")
+	equip_parent.get_node("Main_Hand/Data").text = data.get_equipment_slot_name("main_hand")
+	equip_parent.get_node("Main_Hand/Data").text = data.get_equipment_slot_name("off_hand")
 
 
 func update_status_page():
@@ -271,7 +217,7 @@ func _on_BootsChangeButton_pressed():
 func _on_EquipModal_character_equipped_item(item_name, slot_name):
 	print("In Menu, Character Equipped Item", item_name, slot_name, selected_character)
 	equip_modal.visible = false
-	var equipped_container = $MarginContainer/HBoxContainer/CharacterInfoMenu/VBoxContainer/HBoxContainer2/EquippedContainer
+	var equipped_container = $MarginContainer/HBoxContainer/CharacterInfoMenu/MarginContainer/VBoxContainer/HBoxContainer2/EquippedContainer
 	equipped_container.find_node(slot_name).get_node("Data").text = item_name
 	
 	PlayerData.equip_item(selected_character, slot_name, item_name)

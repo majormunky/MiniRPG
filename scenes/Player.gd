@@ -25,26 +25,11 @@ var percent_moved = 0.0
 signal player_inspected
 
 func _ready():
-	print("About to setup char data")
-	for char_data in PlayerData.characters:
-		var new_char = Character.new(char_data)
-		characters.append(new_char)
-	print("Done setup up char data")
 	
-	var main_char_type = get_main_character_type()
-
-	if main_char_type == "Warrior":
-		sprite.region_rect.position.x = 48 * 4
-		sprite.region_rect.position.y = 48 * 4
-	elif main_char_type == "Mage":
-		sprite.region_rect.position.x = 0
-		sprite.region_rect.position.y = 48 * 5
-	elif main_char_type == "Thief":
-		sprite.region_rect.position.x = 48 * 2
-		sprite.region_rect.position.y = 48 * 6
-	elif main_char_type == "Cleric":
-		sprite.region_rect.position.x = 48 * 3
-		sprite.region_rect.position.y = 48 * 6
+	var main_char = get_main_character()
+	sprite.region_rect.position.x = main_char.profile_offset["x"]
+	sprite.region_rect.position.y = main_char.profile_offset["y"]
+	
 	update_map_limits()
 	initial_position = position
 
@@ -57,10 +42,10 @@ func _input(event):
 		emit_signal("player_inspected")
 
 
-func get_main_character_type():
-	if len(characters) == 0:
+func get_main_character():
+	if len(PlayerData.characters) == 0:
 		return null
-	return characters[0].type
+	return PlayerData.characters[0]
 
 
 func update_map_limits():
