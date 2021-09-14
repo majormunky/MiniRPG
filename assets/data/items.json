@@ -72,5 +72,14 @@
         "stack_size": 1,
         "slot": "boots",
         "description": "Some iron cups that you can strap to your feet"
+    },
+    "Iron Sword": {
+        "category": "weapon",
+        "image_name": "Iron Sword.png",
+        "attack": "8",
+        "speed": 1,
+        "stack_size": 1,
+        "slot": "main_hand",
+        "description": "A basic iron sword"
     }
 }
