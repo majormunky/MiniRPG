@@ -17,3 +17,8 @@
 *** Save Menu
 	This menu lets you save the game
 	- TODO Add info (time and screenshot?) of the last save game
+
+
+* Todo
+- Fix the load game screen so that you can control it with a controller
+- Same with new game screen
