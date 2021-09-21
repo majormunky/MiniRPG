@@ -20,7 +20,11 @@
 
 
 * Todo
-- Fix the load game screen so that you can control it with a controller
-- Same with new game screen
-- Figure out best way to do keyboard input with a controller
+** Controller Stuff
+	- Fix the load game screen so that you can control it with a controller
+	- Same with new game screen
+	- Setup game menu to use controller
+	- Figure out best way to do keyboard input with a controller
+** Misc
 - Check into: https://www.reddit.com/r/godot/comments/pqvdfs/finally_my_tool_that_adds_postprocessing_effects/ to make game look more retro
+
