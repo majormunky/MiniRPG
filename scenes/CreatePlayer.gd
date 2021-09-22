@@ -61,6 +61,7 @@ func create_save_game(user_name, char_type):
 					"dex": char_type_info["dex"],
 					"int": char_type_info["int"],
 					"profile_image": "assets/characters/" + char_type.to_lower() + ".png",
+					"profile_offset": {"x": char_type_info["map_image_offset"]["x"], "y": char_type_info["map_image_offset"]["y"]},
 					"equipment": {
 						"helmet": null,
 						"chest": null,
