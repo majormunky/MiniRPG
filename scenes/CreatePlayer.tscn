@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/CreatePlayer.gd" type="Script" id=2]
 [ext_resource path="res://scenes/TransitionRect.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/InputLetters.gd" type="Script" id=4]
 
 [node name="CreatePlayer" type="Control"]
 anchor_right = 1.0
@@ -22,8 +23,6 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 0.495087
-margin_bottom = 0.495117
 custom_constants/margin_right = 32
 custom_constants/margin_top = 32
 custom_constants/margin_left = 32
@@ -81,7 +80,22 @@ rect_min_size = Vector2( 500, 35 )
 theme = ExtResource( 1 )
 max_length = 12
 
+[node name="InputLetters" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+margin_left = 558.0
+margin_top = 275.0
+margin_right = 658.0
+margin_bottom = 557.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+custom_constants/vseparation = 32
+custom_constants/hseparation = 64
+columns = 9
+script = ExtResource( 4 )
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
 margin_top = 275.0
 margin_right = 1216.0
 margin_bottom = 470.0
@@ -108,25 +122,27 @@ theme = ExtResource( 1 )
 auto_height = true
 
 [node name="FinishButton" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 502.0
+margin_top = 589.0
 margin_right = 1216.0
-margin_bottom = 562.0
+margin_bottom = 649.0
 rect_min_size = Vector2( 200, 0 )
 theme = ExtResource( 1 )
 text = "Finish"
 
 [node name="ErrorText" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
-margin_top = 594.0
+margin_top = 681.0
 margin_right = 1216.0
-margin_bottom = 649.0
+margin_bottom = 736.0
 theme = ExtResource( 1 )
 custom_colors/default_color = Color( 1, 0, 0, 1 )
 fit_content_height = true
 
 [node name="TransitionRect" parent="." instance=ExtResource( 3 )]
+visible = false
 margin_right = 0.0
 margin_bottom = 0.0
 color = Color( 0, 0, 0, 1 )
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="letter_selected" from="MarginContainer/VBoxContainer/InputLetters" to="." method="_on_InputLetters_letter_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/FinishButton" to="." method="_on_FinishButton_pressed"]

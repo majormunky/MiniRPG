@@ -116,3 +116,7 @@ func _on_BackButton_pressed():
 	transition.fadeIn()
 	yield(get_tree().create_timer(0.5), "timeout")
 	var _error = get_tree().change_scene("res://scenes/MainMenu.tscn")
+
+
+func _on_InputLetters_letter_selected(letter):
+	name_input.text += letter
