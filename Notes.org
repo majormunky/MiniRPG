@@ -29,3 +29,7 @@
 - Check into: https://www.reddit.com/r/godot/comments/pqvdfs/finally_my_tool_that_adds_postprocessing_effects/ to make game look more retro
 - Setup create character page to first ask the player for a name, with a grid of letters that can be chosen with a controller.  Hitting next would bring them to the list of character types (Take a look at switch games)
 - Need to figure out how to setup shops.  We mainly just need an item name and an amount that it sells for to get this to work.
+
+
+* Controller Input
+- Currently the keyboard is setup alphabetically.  If we try to do a qwerty layout, we need to figure out how to introduce spaces as we need to be sure each row has the keys that corrolate with the keyboard

@@ -91,7 +91,7 @@ size_flags_vertical = 3
 theme = ExtResource( 1 )
 custom_constants/vseparation = 32
 custom_constants/hseparation = 64
-columns = 9
+columns = 10
 script = ExtResource( 4 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]

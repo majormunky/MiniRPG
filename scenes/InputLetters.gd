@@ -6,7 +6,8 @@ signal letter_selected(letter)
 
 func setup_letters():
 	var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	for letter in alphabet:
+	var query_alpha = "QWERTYUIOPASDFGHJKLZXCVBNM"
+	for letter in query_alpha:
 		var new_label = RichTextLabel.new()
 		new_label.bbcode_enabled = true
 		new_label.set_bbcode("[center]" + letter + "[/center]")
