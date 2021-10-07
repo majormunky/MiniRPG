@@ -1,14 +1,39 @@
 extends GridContainer
 
 var selected = Vector2(0, 0)
+var showing_case = "upper"
 
 signal letter_selected(letter)
 
+func change_case():
+	if showing_case == "upper":
+		showing_case = "lower"
+	else:
+		showing_case = "upper"
+	setup_letters()
+
+
+func clear_letters():
+	for child in get_children():
+		child.queue_free()
+
+
+
 func setup_letters():
+	clear_letters()
+	
 	var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	var lower_alphabet = "abcdefghijklmnopqrstuvwxyz"
 	var query_alpha = "QWERTYUIOPASDFGHJKLZXCVBNM"
-	for letter in alphabet:
+	
+	var selected_alphabet = null
+	
+	if showing_case == "lower":
+		selected_alphabet = lower_alphabet
+	elif showing_case == "upper":
+		selected_alphabet = alphabet
+	
+	for letter in selected_alphabet:
 		var new_label = RichTextLabel.new()
 		new_label.bbcode_enabled = true
 		new_label.set_bbcode("[center]" + letter + "[/center]")
@@ -65,5 +90,8 @@ func _unhandled_input(event):
 	elif event.is_action_released("ui_accept"):
 		var selected = get_selected()
 		emit_signal("letter_selected", selected.name)
+	elif event.is_action_pressed("ui_change_case"):
+		print("change case!")
+		change_case()
 	draw_selected()
-		
+
