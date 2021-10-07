@@ -58,7 +58,8 @@ func reset_node():
 func draw_selected():
 	var child_index = selected.y * get_columns() + selected.x
 	var selected_node = get_child(child_index)
-	selected_node.set_bbcode("[center]>" + selected_node.name + "[/center]")
+	if selected_node:
+		selected_node.set_bbcode("[center]>" + selected_node.name + "[/center]")
 
 
 func get_selected():
@@ -67,10 +68,25 @@ func get_selected():
 	return selected_node
 
 
+func is_valid_node(node):
+	var child_index = node.y * get_columns() + node.x
+	var selected_node = get_child(child_index)
+	if selected_node:
+		print(selected_node.name)
+		return true
+	return false
+
+
 func _unhandled_input(event):
 	if event.is_action_released("ui_right"):
 		reset_node()
-		selected.x += 1
+		
+		var test_node = Vector2(selected.x + 1, selected.y)
+		if is_valid_node(test_node):
+			selected.x += 1
+		else:
+			# wrap around
+			selected.x = 0
 	elif event.is_action_released("ui_left"):
 		reset_node()
 		selected.x -= 1
