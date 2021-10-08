@@ -2,6 +2,7 @@ extends GridContainer
 
 var selected = Vector2(0, 0)
 var showing_case = "upper"
+var state = "selecting"
 
 signal letter_selected(letter)
 
@@ -50,12 +51,18 @@ func _ready():
 
 
 func reset_node():
+	if selected == null:
+		return
+
 	var child_index = selected.y * get_columns() + selected.x
 	var selected_node = get_child(child_index)
 	selected_node.set_bbcode("[center]" + selected_node.name + "[/center]")
 
 
 func draw_selected():
+	if selected == null:
+		return
+
 	var child_index = selected.y * get_columns() + selected.x
 	var selected_node = get_child(child_index)
 	if selected_node:
@@ -63,6 +70,9 @@ func draw_selected():
 
 
 func get_selected():
+	if selected == null:
+		return null
+
 	var child_index = selected.y * get_columns() + selected.x
 	var selected_node = get_child(child_index)
 	return selected_node
@@ -78,6 +88,9 @@ func is_valid_node(node):
 
 
 func _unhandled_input(event):
+	if selected == null:
+		return
+
 	if event.is_action_released("ui_right"):
 		reset_node()
 		
@@ -89,20 +102,28 @@ func _unhandled_input(event):
 			selected.x = 0
 	elif event.is_action_released("ui_left"):
 		reset_node()
-		selected.x -= 1
-		if selected.x < 0:
-			selected.x = 7
-			selected.y = 2
+		
+		var test_node = Vector2(selected.x - 1, selected.y)
+		if is_valid_node(test_node):
+			selected.x -= 1
 	elif event.is_action_released("ui_up"):
 		reset_node()
+
 		selected.y -= 1
 		if selected.y < 0:
-			selected.y = 2
+			selected.y = 0
 	elif event.is_action_released("ui_down"):
 		reset_node()
-		selected.y += 1
-		if selected.y > 2:
-			selected.y = 0
+		
+		var test_node = Vector2(selected.x, selected.y + 1)
+		# selected.y += 1
+		if is_valid_node(test_node):
+			selected.y += 1
+		else:
+			print("Invalid node")
+			if selected.y > 2:
+				state = "disabled"
+				selected = Vector2.ZERO
 	elif event.is_action_released("ui_accept"):
 		var selected = get_selected()
 		emit_signal("letter_selected", selected.name)

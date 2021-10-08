@@ -84,7 +84,7 @@ max_length = 12
 margin_left = 558.0
 margin_top = 183.0
 margin_right = 658.0
-margin_bottom = 649.0
+margin_bottom = 563.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -131,12 +131,21 @@ theme = ExtResource( 1 )
 text = "Finish"
 
 [node name="ErrorText" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
-margin_top = 681.0
+margin_top = 595.0
 margin_right = 1216.0
-margin_bottom = 736.0
+margin_bottom = 650.0
 theme = ExtResource( 1 )
 custom_colors/default_color = Color( 1, 0, 0, 1 )
 fit_content_height = true
+
+[node name="FinishLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_left = 543.0
+margin_top = 682.0
+margin_right = 672.0
+margin_bottom = 736.0
+size_flags_horizontal = 4
+theme = ExtResource( 1 )
+text = "Finish"
 
 [node name="TransitionRect" parent="." instance=ExtResource( 3 )]
 visible = false
