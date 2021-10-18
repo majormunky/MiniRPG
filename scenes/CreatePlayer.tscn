@@ -154,5 +154,6 @@ margin_bottom = 0.0
 color = Color( 0, 0, 0, 1 )
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="finished_name" from="MarginContainer/VBoxContainer/InputLetters" to="." method="_on_InputLetters_finished_name"]
 [connection signal="letter_selected" from="MarginContainer/VBoxContainer/InputLetters" to="." method="_on_InputLetters_letter_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/FinishButton" to="." method="_on_FinishButton_pressed"]

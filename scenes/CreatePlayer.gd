@@ -120,3 +120,8 @@ func _on_BackButton_pressed():
 
 func _on_InputLetters_letter_selected(letter):
 	name_input.text += letter
+
+
+func _on_InputLetters_finished_name():
+	print("Player finished name entry")
+	print(name_input.text)

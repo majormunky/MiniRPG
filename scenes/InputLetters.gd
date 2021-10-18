@@ -5,6 +5,7 @@ var showing_case = "upper"
 var state = "selecting"
 
 signal letter_selected(letter)
+signal finished_name
 
 func change_case():
 	if showing_case == "upper":
@@ -43,7 +44,17 @@ func setup_letters():
 		new_label.rect_min_size.y = 80
 		new_label.scroll_active = false
 		add_child(new_label)
-
+	
+	var end_label = RichTextLabel.new()
+	end_label.bbcode_enabled = true
+	end_label.set_bbcode("[center]end[/center]")
+	
+	end_label.rect_min_size.x = 120
+	end_label.rect_min_size.y = 80
+	
+	add_child(end_label)
+	
+	end_label.name = "end"
 
 func _ready():
 	setup_letters()
@@ -65,6 +76,7 @@ func draw_selected():
 
 	var child_index = selected.y * get_columns() + selected.x
 	var selected_node = get_child(child_index)
+	print(selected_node.text)
 	if selected_node:
 		selected_node.set_bbcode("[center]>" + selected_node.name + "[/center]")
 
@@ -126,7 +138,11 @@ func _unhandled_input(event):
 				selected = Vector2.ZERO
 	elif event.is_action_released("ui_accept"):
 		var selected = get_selected()
-		emit_signal("letter_selected", selected.name)
+		if selected.name == "end":
+			print("end")
+			emit_signal("finished_name")
+		else:
+			emit_signal("letter_selected", selected.name)
 	elif event.is_action_pressed("ui_change_case"):
 		print("change case!")
 		change_case()
