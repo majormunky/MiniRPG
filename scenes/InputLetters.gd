@@ -76,9 +76,11 @@ func draw_selected():
 
 	var child_index = selected.y * get_columns() + selected.x
 	var selected_node = get_child(child_index)
-	print(selected_node.text)
+	var name = selected_node.name
+	if len(name) > 1:
+		name = "end"
 	if selected_node:
-		selected_node.set_bbcode("[center]>" + selected_node.name + "[/center]")
+		selected_node.set_bbcode("[center]>" + name + "[/center]")
 
 
 func get_selected():
@@ -138,7 +140,7 @@ func _unhandled_input(event):
 				selected = Vector2.ZERO
 	elif event.is_action_released("ui_accept"):
 		var selected = get_selected()
-		if selected.name == "end":
+		if selected.name.match("*end*"):
 			print("end")
 			emit_signal("finished_name")
 		else:
