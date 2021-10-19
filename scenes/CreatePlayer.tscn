@@ -83,7 +83,6 @@ max_length = 12
 [node name="InputLetters" type="GridContainer" parent="MarginContainer/VBoxContainer"]
 margin_left = 558.0
 margin_top = 183.0
-margin_right = 658.0
 margin_bottom = 563.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 4
@@ -91,7 +90,7 @@ size_flags_vertical = 3
 theme = ExtResource( 1 )
 custom_constants/vseparation = 32
 custom_constants/hseparation = 64
-columns = 10
+columns = 9
 script = ExtResource( 4 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
