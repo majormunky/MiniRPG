@@ -32,4 +32,4 @@
 
 
 * Controller Input
-- Currently the keyboard is setup alphabetically.  If we try to do a qwerty layout, we need to figure out how to introduce spaces as we need to be sure each row has the keys that corrolate with the keyboard
+- Need to see how to best switch between selecting letters and going to a "done" button
