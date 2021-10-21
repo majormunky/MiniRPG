@@ -5,6 +5,7 @@ onready var char_type_menu = $MarginContainer/VBoxContainer/HBoxContainer/ItemLi
 onready var name_input = $MarginContainer/VBoxContainer/NameInput/TextEdit
 onready var error_box = $MarginContainer/VBoxContainer/ErrorText
 onready var transition = $TransitionRect
+onready var char_type_box = $CharacterTypeContainer
 
 
 func _ready():
